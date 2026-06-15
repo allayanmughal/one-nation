@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+  --font-brand: 'Space Grotesk', sans-serif;
+
+  --color-primary: #01411c;
+  --color-primary-dark: #002c13;
+  --color-primary-light: #095c2b;
+  --color-primary-glow: rgba(1, 65, 28, 0.15);
+
+  --color-accent: #d4af37;
+  --color-accent-dark: #b89326;
+  --color-accent-light: #e8c65d;
+  --color-accent-glow: rgba(212, 175, 55, 0.2);
+
+  --color-dark-bg: #0b0f17;
+  --color-dark-card: #131924;
+  --color-dark-border: rgba(255, 255, 255, 0.08);
+
+  --animate-pulse-slow: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s infinite linear;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: .8;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(1, 65, 28, 0.04);
+}
+
+@utility glass-dark {
+  background: rgba(19, 25, 36, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+@utility text-glow-accent {
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+@utility text-glow-primary {
+  text-shadow: 0 0 15px rgba(1, 65, 28, 0.4);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-accent-dark);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Typewriter animation helper */
+.typewriter-cursor::after {
+  content: '|';
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Custom styles for maps and media elements */
+.parallax-bg {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
