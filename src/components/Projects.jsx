@@ -34,11 +34,10 @@ export default function Projects({ projects }) {
               <button
                 key={tab}
                 onClick={() => setFilter(tab)}
-                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${
-                  filter === tab
+                className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${filter === tab
                     ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow-sm'
                     : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-accent'
-                }`}
+                  }`}
               >
                 {tab}
               </button>
@@ -73,11 +72,10 @@ export default function Projects({ projects }) {
                   />
                   {/* Status Badge */}
                   <span
-                    className={`absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold text-white uppercase shadow-md ${
-                      project.status.toLowerCase() === 'ongoing'
+                    className={`absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold text-white uppercase shadow-md ${project.status.toLowerCase() === 'ongoing'
                         ? 'bg-amber-600 dark:bg-amber-500'
                         : 'bg-primary dark:bg-primary-light'
-                    }`}
+                      }`}
                   >
                     {project.status.toLowerCase() === 'ongoing' ? (
                       <Clock size={12} className="animate-spin" style={{ animationDuration: '3s' }} />
@@ -120,6 +118,74 @@ export default function Projects({ projects }) {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Expansion Section A: Project Lifecycle */}
+        <div className="mt-28 border-t border-gray-100 dark:border-dark-border/40 pt-20 mb-20">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+              Welfare Delivery Roadmap
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+              How We Deploy Projects
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: "1. Audit Matching", desc: "Incoming sponsor funds are matched with direct manufacturer pricing quotes to minimize overhead." },
+              { title: "2. Volunteer Packing", desc: "Food sacks, hygiene items, and filter parts are packed and quality-inspected by local student chapters." },
+              { title: "3. Recipient Verification", desc: "Local coordinators verify beneficiary logs against union council lists to guarantee aid reaches families in need." },
+              { title: "4. Direct Distribution", desc: "Relief is handed over directly at secure distribution points, with photo/video media uploaded live to the registry." }
+            ].map((step, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.12 * idx }}
+                className="p-6 rounded-2xl bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border shadow-sm flex flex-col justify-between"
+              >
+                <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-2 leading-snug">
+                  {step.title}
+                </h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                  {step.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Expansion Section B: Regional Deployments */}
+        <div className="py-16 bg-gray-50 dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2rem] p-8 sm:p-10 mb-8 overflow-hidden relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <div className="lg:col-span-5 self-center">
+              <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+                Regional Impact
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1 mb-4 leading-tight">
+                Active Deployment Hubs
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                Our current welfare footprint across Abbottabad, Haripur, and surrounding Khyber Pakhtunkhwa districts.
+              </p>
+            </div>
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { city: "Abbottabad & Havelian Hub", stat: "1,500+ Ration Packs Distributed", desc: "Our HQ location coordinates regional winter packs and grocery deliveries." },
+                { city: "Haripur Districts", stat: "3 RO Plants Live (5,000+ residents)", desc: "Providing clean fluoride-filtered water to rural outskirt settlements." },
+                { city: "Galyat Highlands", stat: "500+ Blanket Bundles Delivered", desc: "Emergency heavy thermal wraps delivered to mountain homes during snowfall." },
+                { city: "Peshawar & Universities", stat: "4 Campus Chapters Active", desc: "Training 400+ student ambassadors to run blood camps and first-aid seminars." }
+              ].map((hub, idx) => (
+                <div key={idx} className="p-5 rounded-xl bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border">
+                  <h4 className="text-xs font-bold text-primary dark:text-accent uppercase tracking-wider mb-1">{hub.city}</h4>
+                  <p className="text-sm font-extrabold text-gray-900 dark:text-white mb-1">{hub.stat}</p>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400">{hub.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Lightbox / Details Modal */}
@@ -175,11 +241,10 @@ export default function Projects({ projects }) {
                     {selectedProject.date}
                   </span>
                   <span
-                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white uppercase ${
-                      selectedProject.status.toLowerCase() === 'ongoing'
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white uppercase ${selectedProject.status.toLowerCase() === 'ongoing'
                         ? 'bg-amber-600 dark:bg-amber-500'
                         : 'bg-primary dark:bg-primary-light'
-                    }`}
+                      }`}
                   >
                     {selectedProject.status}
                   </span>
@@ -199,8 +264,7 @@ export default function Projects({ projects }) {
                   <button
                     onClick={() => {
                       setSelectedProject(null);
-                      const el = document.getElementById('get-involved');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      window.location.hash = '#/get-involved';
                     }}
                     className="px-6 py-3 bg-primary hover:bg-primary-light dark:bg-accent dark:hover:bg-accent-light text-white dark:text-primary-dark font-bold text-sm rounded-full shadow transition-all duration-300 hover:scale-[1.02]"
                   >

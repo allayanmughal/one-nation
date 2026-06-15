@@ -35,6 +35,8 @@ import SocialProof from './components/SocialProof';
 import Contact from './components/Contact';
 import AdminDashboard from './components/AdminDashboard';
 import Logo from './components/Logo';
+import HomeView from './components/HomeView';
+import AdminLogin from './components/AdminLogin';
 
 // SEED DATA FOR DEMO RUNS
 const SEED_PROJECTS = [
@@ -128,8 +130,18 @@ const SEED_NEWSLETTERS = [
 ];
 
 export default function App() {
-  const [currentView, setCurrentView] = useState('landing'); // 'landing' | 'admin'
-  const [activeSection, setActiveSection] = useState('home');
+  const parseHash = () => {
+    const hash = window.location.hash;
+    if (!hash) return 'home';
+    const route = hash.replace(/^#\/?/, '');
+    const validPages = ['home', 'about', 'mission', 'projects', 'get-involved', 'contact', 'admin'];
+    return validPages.includes(route) ? route : 'home';
+  };
+
+  const [currentPage, setCurrentPage] = useState(parseHash());
+  const [adminAuthenticated, setAdminAuthenticated] = useState(
+    sessionStorage.getItem('one_nation_admin_auth') === 'true'
+  );
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Global State (Dynamic and Sync'd with local storage)
@@ -202,6 +214,17 @@ export default function App() {
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
+  // Listen to hash changes for page routing
+  useEffect(() => {
+    const handleHashChange = () => {
+      const page = parseHash();
+      setCurrentPage(page);
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   // Sync Dark Mode class when toggled
   const toggleDarkMode = () => {
     const nextDark = !darkMode;
@@ -251,24 +274,12 @@ export default function App() {
       top: 0,
       behavior: 'smooth'
     });
-    setActiveSection('home');
   };
 
-  const handleLinkClick = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = el.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveSection(id);
-    }
+  const handleLogout = () => {
+    sessionStorage.removeItem('one_nation_admin_auth');
+    setAdminAuthenticated(false);
+    window.location.hash = '#/home';
   };
 
   return (
@@ -278,57 +289,66 @@ export default function App() {
       <Navbar
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-        currentView={currentView}
-        setCurrentView={setCurrentView}
+        activeSection={currentPage}
+        setActiveSection={(section) => {
+          window.location.hash = `#/${section}`;
+        }}
+        currentView={currentPage === 'admin' ? 'admin' : 'landing'}
+        setCurrentView={(view) => {
+          if (view === 'admin') {
+            window.location.hash = '#/admin';
+          } else {
+            window.location.hash = '#/home';
+          }
+        }}
       />
 
       {/* 2. MAIN CORE VIEWPORTS */}
       <main className="flex-grow">
         <AnimatePresence mode="wait">
-          {currentView === 'landing' ? (
-            <motion.div
-              key="landing-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <Hero />
-              <About />
-              <Mission />
-              <Projects projects={projects} />
-              <GetInvolved onVolunteerRegister={handleVolunteerRegister} />
-              <SocialProof />
-              <Contact onContactSubmit={handleContactSubmit} />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="admin-view"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4 }}
-            >
-              <AdminDashboard
-                projects={projects}
-                setProjects={setProjects}
-                volunteers={volunteers}
-                setVolunteers={setVolunteers}
-                inquiries={inquiries}
-                setInquiries={setInquiries}
-                newsletters={newsletters}
-                setNewsletters={setNewsletters}
-                setCurrentView={setCurrentView}
-              />
-            </motion.div>
-          )}
+          <motion.div
+            key={currentPage}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3 }}
+          >
+            {currentPage === 'home' && <HomeView projects={projects} />}
+            {currentPage === 'about' && <About />}
+            {currentPage === 'mission' && <Mission />}
+            {currentPage === 'projects' && <Projects projects={projects} />}
+            {currentPage === 'get-involved' && <GetInvolved onVolunteerRegister={handleVolunteerRegister} />}
+            {currentPage === 'contact' && <Contact onContactSubmit={handleContactSubmit} />}
+            {currentPage === 'admin' && (
+              !adminAuthenticated ? (
+                <AdminLogin onLoginSuccess={() => setAdminAuthenticated(true)} />
+              ) : (
+                <AdminDashboard
+                  projects={projects}
+                  setProjects={setProjects}
+                  volunteers={volunteers}
+                  setVolunteers={setVolunteers}
+                  inquiries={inquiries}
+                  setInquiries={setInquiries}
+                  newsletters={newsletters}
+                  setNewsletters={setNewsletters}
+                  setCurrentView={(view) => {
+                    if (view === 'landing') {
+                      window.location.hash = '#/home';
+                    } else {
+                      window.location.hash = '#/admin';
+                    }
+                  }}
+                  onLogout={handleLogout}
+                />
+              )
+            )}
+          </motion.div>
         </AnimatePresence>
       </main>
 
-      {/* 3. GLOBAL FOOTER (Only shown on Landing site) */}
-      {currentView === 'landing' && (
+      {/* 3. GLOBAL FOOTER (Only shown on non-Admin site) */}
+      {currentPage !== 'admin' && (
         <footer className="bg-primary-dark text-white border-t border-white/5 pt-16 pb-8 transition-colors">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
@@ -346,19 +366,19 @@ export default function App() {
                 <div>
                   <h4 className="text-xs font-bold text-accent uppercase tracking-widest mb-4">Navigations</h4>
                   <ul className="space-y-2.5 text-xs sm:text-sm text-gray-300">
-                    <li><button onClick={() => handleLinkClick('home')} className="hover:text-accent hover:underline cursor-pointer">Home</button></li>
-                    <li><button onClick={() => handleLinkClick('about')} className="hover:text-accent hover:underline cursor-pointer">About Us</button></li>
-                    <li><button onClick={() => handleLinkClick('mission')} className="hover:text-accent hover:underline cursor-pointer">Mission</button></li>
-                    <li><button onClick={() => handleLinkClick('projects')} className="hover:text-accent hover:underline cursor-pointer">Projects</button></li>
+                    <li><button onClick={() => { window.location.hash = '#/home'; }} className="hover:text-accent hover:underline cursor-pointer">Home</button></li>
+                    <li><button onClick={() => { window.location.hash = '#/about'; }} className="hover:text-accent hover:underline cursor-pointer">About Us</button></li>
+                    <li><button onClick={() => { window.location.hash = '#/mission'; }} className="hover:text-accent hover:underline cursor-pointer">Mission</button></li>
+                    <li><button onClick={() => { window.location.hash = '#/projects'; }} className="hover:text-accent hover:underline cursor-pointer">Projects</button></li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-accent uppercase tracking-widest mb-4">Support Channels</h4>
                   <ul className="space-y-2.5 text-xs sm:text-sm text-gray-300">
-                    <li><button onClick={() => handleLinkClick('get-involved')} className="hover:text-accent hover:underline cursor-pointer">Volunteer</button></li>
-                    <li><button onClick={() => handleLinkClick('get-involved')} className="hover:text-accent hover:underline cursor-pointer">Collaborate</button></li>
-                    <li><button onClick={() => handleLinkClick('contact')} className="hover:text-accent hover:underline cursor-pointer">Contact</button></li>
-                    <li><button onClick={() => setCurrentView('admin')} className="hover:text-accent hover:underline cursor-pointer text-left">Admin Panel</button></li>
+                    <li><button onClick={() => { window.location.hash = '#/get-involved'; }} className="hover:text-accent hover:underline cursor-pointer">Volunteer</button></li>
+                    <li><button onClick={() => { window.location.hash = '#/get-involved'; }} className="hover:text-accent hover:underline cursor-pointer">Collaborate</button></li>
+                    <li><button onClick={() => { window.location.hash = '#/contact'; }} className="hover:text-accent hover:underline cursor-pointer">Contact</button></li>
+                    <li><button onClick={() => { window.location.hash = '#/admin'; }} className="hover:text-accent hover:underline cursor-pointer text-left">Admin Panel</button></li>
                   </ul>
                 </div>
               </div>

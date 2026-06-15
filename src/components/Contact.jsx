@@ -162,11 +162,10 @@ export default function Contact({ onContactSubmit }) {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${
-                        errors.name
+                      className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.name
                           ? 'border-red-500 focus:border-red-500'
                           : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                      } text-gray-900 dark:text-white`}
+                        } text-gray-900 dark:text-white`}
                       placeholder="Your Name"
                     />
                     {errors.name && (
@@ -181,11 +180,10 @@ export default function Contact({ onContactSubmit }) {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${
-                        errors.email
+                      className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.email
                           ? 'border-red-500 focus:border-red-500'
                           : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                      } text-gray-900 dark:text-white`}
+                        } text-gray-900 dark:text-white`}
                       placeholder="Email Address"
                     />
                     {errors.email && (
@@ -200,11 +198,10 @@ export default function Contact({ onContactSubmit }) {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${
-                        errors.subject
+                      className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.subject
                           ? 'border-red-500 focus:border-red-500'
                           : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                      } text-gray-900 dark:text-white`}
+                        } text-gray-900 dark:text-white`}
                       placeholder="Subject"
                     />
                     {errors.subject && (
@@ -219,11 +216,10 @@ export default function Contact({ onContactSubmit }) {
                       rows="4"
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 resize-none ${
-                        errors.message
+                      className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 resize-none ${errors.message
                           ? 'border-red-500 focus:border-red-500'
                           : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                      } text-gray-900 dark:text-white`}
+                        } text-gray-900 dark:text-white`}
                       placeholder="Your Message..."
                     />
                     {errors.message && (
@@ -282,6 +278,61 @@ export default function Contact({ onContactSubmit }) {
             </AnimatePresence>
           </div>
         </div>
+
+        {/* Expansion Section A: Regional Coordinator Directory */}
+        <div className="mt-28 border-t border-gray-100 dark:border-dark-border/40 pt-20 mb-20">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+              Local Coordinates
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+              Regional Chapter Hubs
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { city: "Abbottabad Chapter", lead: "Zainab Malik", email: "abbottabad@1nation.pk", desc: "Coordinates Galyat relief logistics and student advocate orientations." },
+              { city: "Haripur Chapter", lead: "Usman Shah", email: "haripur@1nation.pk", desc: "Manages reverse osmosis filtration projects and local water testing." },
+              { city: "Mansehra Chapter", lead: "Khurram Qureshi", email: "mansehra@1nation.pk", desc: "Manages remote village distributions and emergency winter clothing packs." },
+              { city: "Peshawar Chapter", lead: "Sana Bangash", email: "peshawar@1nation.pk", desc: "Coordinates university blood camps and youth leadership seminars." }
+            ].map((hub, idx) => (
+              <div key={idx} className="p-6 bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-2xl transition-all hover:shadow-md">
+                <span className="text-[10px] font-extrabold text-primary dark:text-accent uppercase tracking-wider block mb-1">
+                  {hub.city}
+                </span>
+                <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-2">
+                  {hub.lead}
+                </h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium mb-3 leading-relaxed">
+                  {hub.desc}
+                </p>
+                <a
+                  href={`mailto:${hub.email}`}
+                  className="text-xs font-bold text-primary dark:text-accent hover:underline block"
+                >
+                  {hub.email}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Expansion Section B: CSR & Proposal Guidelines */}
+        <div className="py-16 bg-gray-50 dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
+          <div className="max-w-3xl mx-auto text-center relative z-10">
+            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+              Institutional Partnerships
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1 mb-4 leading-tight">
+              CSR & Proposal Guidelines
+            </h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
+              For corporations, foundations, or governmental bureaus interested in co-sponsoring clean water plants, ration drives, or establishing student chapters, please contact our executive office directly at <a href="mailto:partnerships@1nation.pk" className="font-bold text-primary dark:text-accent hover:underline">partnerships@1nation.pk</a>. We provide fully audited impact reports, GPS coordinates of deployments, and media documentation.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
   );

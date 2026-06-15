@@ -15,8 +15,8 @@ export default function GetInvolved({ onVolunteerRegister }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  // Focus tracking for floating labels
   const [focusedField, setFocusedField] = useState(null);
+  const [activeFaq, setActiveFaq] = useState(null);
 
   const handleFocus = (field) => setFocusedField(field);
   const handleBlur = (field, value) => {
@@ -86,7 +86,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
 
         {/* Paths Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-          
+
           {/* PATH A: Volunteer Registration Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -126,11 +126,10 @@ export default function GetInvolved({ onVolunteerRegister }) {
                         onChange={handleChange}
                         onFocus={() => handleFocus('fullName')}
                         onBlur={(e) => handleBlur('fullName', e.target.value)}
-                        className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${
-                          errors.fullName
+                        className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.fullName
                             ? 'border-red-500 focus:border-red-500'
                             : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                        } text-gray-900 dark:text-white`}
+                          } text-gray-900 dark:text-white`}
                         placeholder="Full Name"
                       />
                       {errors.fullName && (
@@ -147,11 +146,10 @@ export default function GetInvolved({ onVolunteerRegister }) {
                         onChange={handleChange}
                         onFocus={() => handleFocus('email')}
                         onBlur={(e) => handleBlur('email', e.target.value)}
-                        className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${
-                          errors.email
+                        className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.email
                             ? 'border-red-500 focus:border-red-500'
                             : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                        } text-gray-900 dark:text-white`}
+                          } text-gray-900 dark:text-white`}
                         placeholder="Email Address"
                       />
                       {errors.email && (
@@ -169,11 +167,10 @@ export default function GetInvolved({ onVolunteerRegister }) {
                           onChange={handleChange}
                           onFocus={() => handleFocus('phone')}
                           onBlur={(e) => handleBlur('phone', e.target.value)}
-                          className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${
-                            errors.phone
+                          className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.phone
                               ? 'border-red-500 focus:border-red-500'
                               : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                          } text-gray-900 dark:text-white`}
+                            } text-gray-900 dark:text-white`}
                           placeholder="Phone Number (e.g. 03001234567)"
                         />
                         {errors.phone && (
@@ -189,11 +186,10 @@ export default function GetInvolved({ onVolunteerRegister }) {
                           onChange={handleChange}
                           onFocus={() => handleFocus('city')}
                           onBlur={(e) => handleBlur('city', e.target.value)}
-                          className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${
-                            errors.city
+                          className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.city
                               ? 'border-red-500 focus:border-red-500'
                               : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                          } text-gray-900 dark:text-white`}
+                            } text-gray-900 dark:text-white`}
                           placeholder="City / Location"
                         />
                         {errors.city && (
@@ -373,6 +369,107 @@ export default function GetInvolved({ onVolunteerRegister }) {
           </motion.div>
 
         </div>
+
+        {/* Expansion Section A: Volunteer Roadmap */}
+        <div className="mt-28 border-t border-gray-100 dark:border-dark-border/40 pt-20 mb-24">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+              Volunteer Journey
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+              Your Path to Impact
+            </h3>
+            <p className="text-xs text-gray-500 mt-2">
+              From registration to field deployment, we support your training and leadership journey.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-8 relative">
+            {[
+              { step: "01", title: "Submit Request", desc: "Fill out the registration form with your active contact coordinates and specific interest areas." },
+              { step: "02", title: "Orientation Hub", desc: "Receive a welcome briefing from our regional chapter leads and join our WhatsApp coordination community." },
+              { step: "03", title: "Skill Induction", desc: "Attend brief online training in relief logistics, public safety, and needs assessment protocols." },
+              { step: "04", title: "Active Drive", desc: "Deploy in regional ration distributions, RO plant checks, or emergency relief operations." }
+            ].map((item, idx) => (
+              <div key={idx} className="p-6 bg-gray-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-2xl relative">
+                <span className="text-3xl font-brand font-black text-primary/10 dark:text-accent/15 absolute top-6 right-6">
+                  {item.step}
+                </span>
+                <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-2 pr-10">
+                  {item.title}
+                </h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Expansion Section B: Volunteer FAQs Accordion */}
+        <div className="py-16 bg-gray-50 dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+                Got Questions?
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+                Volunteer FAQs
+              </h3>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "Who is eligible to volunteer with 1 Nation Pakistan?",
+                  a: "Any resident of Pakistan (especially university and college students) who is passionate about social cohesion and community development is welcome to apply. We have active chapters in Abbottabad, Haripur, Mansehra, and Peshawar."
+                },
+                {
+                  q: "Is there any registration fee to join?",
+                  a: "No, volunteering with 1 Nation Pakistan is completely free. We do not charge registration or participation fees. Any relief supplies distributed are fully funded by sponsors and institutional CSR partnerships."
+                },
+                {
+                  q: "Do volunteers receive certificates of appreciation?",
+                  a: "Yes! After completing at least one target field campaign or coordinating a campus blood drive, volunteers receive a registered NGO Certificate of Social Service to recognize their contribution."
+                },
+                {
+                  q: "What is the time commitment required?",
+                  a: "Volunteering is flexible. You can help during weekend ration distribution drives, coordinate blood donations, or participate in college advocacy seminars. We coordinate everything via regional WhatsApp group chats."
+                }
+              ].map((faq, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-2xl overflow-hidden transition-all duration-300"
+                >
+                  <button
+                    onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
+                    className="w-full px-6 py-5 text-left font-display font-bold text-sm sm:text-base text-gray-900 dark:text-white flex items-center justify-between gap-4 outline-none focus:text-primary dark:focus:text-accent"
+                  >
+                    <span>{faq.q}</span>
+                    <span className="text-lg transition-transform duration-300" style={{ transform: activeFaq === idx ? 'rotate(45deg)' : 'none' }}>
+                      +
+                    </span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {activeFaq === idx && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                      >
+                        <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-gray-500 dark:text-gray-400 border-t border-gray-50 dark:border-dark-border/40 leading-relaxed font-medium">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

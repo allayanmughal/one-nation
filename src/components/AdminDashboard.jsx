@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Edit3, Trash2, Users, FolderKanban, MessageSquare, Mail, Search, X, Check, Eye } from 'lucide-react';
+import { Plus, Edit3, Trash2, Users, FolderKanban, MessageSquare, Mail, Search, X, Check, Eye, LogOut } from 'lucide-react';
 
-export default function AdminDashboard({ projects, setProjects, volunteers, setVolunteers, inquiries, setInquiries, newsletters, setNewsletters, setCurrentView }) {
+export default function AdminDashboard({ projects, setProjects, volunteers, setVolunteers, inquiries, setInquiries, newsletters, setNewsletters, setCurrentView, onLogout }) {
   const [activeTab, setActiveTab] = useState('projects');
   const [searchQuery, setSearchQuery] = useState('');
-  
+
   // Forms states
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
@@ -65,7 +65,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
 
     if (editingProject) {
       // Edit mode
-      const updated = projects.map(p => 
+      const updated = projects.map(p =>
         p.id === editingProject ? { ...p, ...projectForm } : p
       );
       setProjects(updated);
@@ -119,10 +119,10 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
   return (
     <div className="pt-20 min-h-screen bg-gray-100 dark:bg-dark-bg text-gray-800 dark:text-gray-100 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
+
         {/* Dashboard Frame */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* LEFT COLUMN: Sidebar Navigation */}
           <div className="lg:col-span-3 bg-white dark:bg-dark-card rounded-3xl border border-gray-200 dark:border-dark-border p-6 shadow-sm">
             <h2 className="text-lg font-display font-extrabold text-primary dark:text-accent mb-6 uppercase tracking-wider">
@@ -133,21 +133,19 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               {/* Tab Button: Projects */}
               <button
                 onClick={() => setActiveTab('projects')}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${
-                  activeTab === 'projects'
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'projects'
                     ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
                     : 'hover:bg-gray-50 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-3">
                   <FolderKanban size={18} />
                   <span>Manage Projects</span>
                 </div>
-                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
-                  activeTab === 'projects'
+                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${activeTab === 'projects'
                     ? 'bg-white/20 text-white dark:bg-primary/20 dark:text-primary'
                     : 'bg-gray-100 dark:bg-dark-bg text-gray-500'
-                }`}>
+                  }`}>
                   {projects.length}
                 </span>
               </button>
@@ -155,21 +153,19 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               {/* Tab Button: Volunteers */}
               <button
                 onClick={() => setActiveTab('volunteers')}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${
-                  activeTab === 'volunteers'
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'volunteers'
                     ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
                     : 'hover:bg-gray-50 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-3">
                   <Users size={18} />
                   <span>Volunteers App</span>
                 </div>
-                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
-                  activeTab === 'volunteers'
+                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${activeTab === 'volunteers'
                     ? 'bg-white/20 text-white dark:bg-primary/20 dark:text-primary'
                     : 'bg-gray-100 dark:bg-dark-bg text-gray-500'
-                }`}>
+                  }`}>
                   {volunteers.length}
                 </span>
               </button>
@@ -177,21 +173,19 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               {/* Tab Button: Contact Inquiries */}
               <button
                 onClick={() => setActiveTab('inquiries')}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${
-                  activeTab === 'inquiries'
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'inquiries'
                     ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
                     : 'hover:bg-gray-50 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-3">
                   <MessageSquare size={18} />
                   <span>Messages Inquiries</span>
                 </div>
-                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
-                  activeTab === 'inquiries'
+                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${activeTab === 'inquiries'
                     ? 'bg-white/20 text-white dark:bg-primary/20 dark:text-primary'
                     : 'bg-gray-100 dark:bg-dark-bg text-gray-500'
-                }`}>
+                  }`}>
                   {inquiries.length}
                 </span>
               </button>
@@ -199,27 +193,33 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               {/* Tab Button: Newsletter */}
               <button
                 onClick={() => setActiveTab('newsletters')}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${
-                  activeTab === 'newsletters'
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'newsletters'
                     ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
                     : 'hover:bg-gray-50 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
-                }`}
+                  }`}
               >
                 <div className="flex items-center gap-3">
                   <Mail size={18} />
                   <span>Newsletter Subs</span>
                 </div>
-                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
-                  activeTab === 'newsletters'
+                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${activeTab === 'newsletters'
                     ? 'bg-white/20 text-white dark:bg-primary/20 dark:text-primary'
                     : 'bg-gray-100 dark:bg-dark-bg text-gray-500'
-                }`}>
+                  }`}>
                   {newsletters.length}
                 </span>
               </button>
             </nav>
 
             <hr className="border-gray-200 dark:border-dark-border mb-6" />
+
+            <button
+              onClick={onLogout}
+              className="w-full flex items-center justify-center gap-2 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl shadow transition-all duration-200 cursor-pointer mb-3"
+            >
+              <LogOut size={14} />
+              <span>Log Out Portal</span>
+            </button>
 
             <button
               onClick={() => setCurrentView('landing')}
@@ -231,15 +231,15 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
 
           {/* RIGHT COLUMN: Viewport Area */}
           <div className="lg:col-span-9 bg-white dark:bg-dark-card rounded-3xl border border-gray-200 dark:border-dark-border p-6 sm:p-8 shadow-sm min-h-[500px]">
-            
+
             {/* SEARCH & TITLE BANNER */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-100 dark:border-dark-border pb-6 mb-6">
               <div>
                 <h3 className="text-xl sm:text-2xl font-display font-extrabold text-gray-900 dark:text-white capitalize">
-                  {activeTab === 'projects' ? 'Welfare Initiatives Portal' : 
-                   activeTab === 'volunteers' ? 'Registered Volunteer Assets' : 
-                   activeTab === 'inquiries' ? 'Direct Contact Inquiries' : 
-                   'Newsletter Subscriber Log'}
+                  {activeTab === 'projects' ? 'Welfare Initiatives Portal' :
+                    activeTab === 'volunteers' ? 'Registered Volunteer Assets' :
+                      activeTab === 'inquiries' ? 'Direct Contact Inquiries' :
+                        'Newsletter Subscriber Log'}
                 </h3>
                 <p className="text-xs text-gray-500 mt-1">
                   Local storage mockup environment. Updates persist locally in your browser.
@@ -273,7 +273,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
             </div>
 
             {/* TAB VIEWPORTS */}
-            
+
             {/* VIEWPORT 1: PROJECTS */}
             {activeTab === 'projects' && (
               <div className="overflow-x-auto">
@@ -304,11 +304,10 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                           {project.location}
                         </td>
                         <td className="py-4 px-4">
-                          <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase ${
-                            project.status.toLowerCase() === 'ongoing'
+                          <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase ${project.status.toLowerCase() === 'ongoing'
                               ? 'bg-amber-100 dark:bg-amber-500/10 text-amber-800 dark:text-amber-400'
                               : 'bg-green-100 dark:bg-primary-light/10 text-primary dark:text-primary-light'
-                          }`}>
+                            }`}>
                             {project.status}
                           </span>
                         </td>
@@ -525,7 +524,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               </h4>
 
               <form onSubmit={handleProjectSubmit} className="space-y-4 text-sm font-semibold">
-                
+
                 {/* Project Title */}
                 <div>
                   <label className="block text-xs text-gray-500 mb-1">Project Title *</label>
@@ -628,7 +627,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
           </motion.div>
         )}
       </AnimatePresence>
-      
+
     </div>
   );
 }

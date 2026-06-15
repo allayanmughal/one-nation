@@ -14,24 +14,11 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
       } else {
         setIsScrolled(false);
       }
-
-      // Simple active section detection on scroll
-      const sections = ['home', 'about', 'mission', 'projects', 'get-involved', 'contact'];
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom >= 120) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [setActiveSection]);
+  }, []);
 
   const navLinks = [
     { name: 'Home', id: 'home' },
@@ -44,30 +31,15 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
 
   const handleScrollTo = (id) => {
     setIsOpen(false);
-    setCurrentView('landing');
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 80; // height of navbar
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = el.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveSection(id);
-    }
+    window.location.hash = `#/${id}`;
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
           ? 'py-3 bg-white/80 dark:bg-dark-bg/85 backdrop-blur-md border-b border-gray-100 dark:border-dark-border shadow-sm'
           : 'py-5 bg-transparent'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -90,11 +62,10 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
                 <button
                   key={link.id}
                   onClick={() => handleScrollTo(link.id)}
-                  className={`text-sm font-semibold tracking-wide transition-colors duration-200 cursor-pointer ${
-                    activeSection === link.id
+                  className={`text-sm font-semibold tracking-wide transition-colors duration-200 cursor-pointer ${activeSection === link.id
                       ? 'text-primary dark:text-accent font-bold'
                       : 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent'
-                  }`}
+                    }`}
                 >
                   {link.name}
                 </button>
@@ -203,11 +174,10 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
                     <button
                       key={link.id}
                       onClick={() => handleScrollTo(link.id)}
-                      className={`py-2 px-3 rounded-lg text-left text-base font-semibold tracking-wide transition-all duration-200 ${
-                        activeSection === link.id
+                      className={`py-2 px-3 rounded-lg text-left text-base font-semibold tracking-wide transition-all duration-200 ${activeSection === link.id
                           ? 'bg-primary/10 text-primary dark:text-accent dark:bg-accent/10'
                           : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-card/50'
-                      }`}
+                        }`}
                     >
                       {link.name}
                     </button>
