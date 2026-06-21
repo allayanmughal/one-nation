@@ -4,6 +4,38 @@ import { ArrowRight, Flag, HeartHandshake, ShieldCheck, Compass, MessageSquare, 
 import Hero from './Hero';
 import mushtaqGhaniPhoto from '../assets/mushtaq_ghani.jpg';
 
+// Sub-Component: Decorative Leaf Branch SVG
+function LeafBranch({ className = "" }) {
+  return (
+    <svg 
+      viewBox="0 0 100 100" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="1.5" 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      className={className}
+    >
+      {/* Main Stem */}
+      <path d="M20,95 C30,70 50,30 80,10" />
+      {/* Leaf 1 */}
+      <path d="M40,65 C30,60 32,45 45,48 C55,50 52,60 40,65 Z" fill="currentColor" fillOpacity="0.1" />
+      {/* Leaf 2 */}
+      <path d="M55,45 C45,40 47,25 60,28 C70,30 67,40 55,45 Z" fill="currentColor" fillOpacity="0.1" />
+      {/* Leaf 3 */}
+      <path d="M30,80 C20,75 22,60 35,63 C45,65 42,75 30,80 Z" fill="currentColor" fillOpacity="0.1" />
+      {/* Leaf 4 */}
+      <path d="M45,60 C35,55 37,40 50,43 C60,45 57,55 45,60 Z" fill="currentColor" fillOpacity="0.1" />
+      {/* Leaf 5 */}
+      <path d="M58,55 C68,52 70,37 57,35 C47,33 48,47 58,55 Z" fill="currentColor" fillOpacity="0.1" />
+      {/* Leaf 6 */}
+      <path d="M42,75 C52,72 54,57 41,55 C31,53 32,67 42,75 Z" fill="currentColor" fillOpacity="0.1" />
+      {/* Tip Leaf */}
+      <path d="M72,20 C72,8 84,4 88,12 C80,18 76,20 72,20 Z" fill="currentColor" fillOpacity="0.1" />
+    </svg>
+  );
+}
+
 const FOCUS_AREAS = [
   {
     title: 'Education',
@@ -370,27 +402,79 @@ export default function HomeView({ projects }) {
       {/* 2. Mission Teaser Banner with Tilt Card Wrap */}
       <section className="py-20 bg-light-bg dark:bg-dark-bg border-t border-primary/5 dark:border-dark-border overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <InteractiveTiltCard className="p-8 sm:p-12 rounded-2xl surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm">
+          <InteractiveTiltCard className="p-8 sm:p-12 rounded-[2rem] surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border shadow-xl shadow-primary/8 dark:shadow-sm">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-8">
-                <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase block mb-3">
+              {/* Left Column: Text & CTA */}
+              <div className="lg:col-span-7 flex flex-col items-start text-left">
+                <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase block mb-2">
                   Our Movement Tagline
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-primary dark:text-white leading-tight">
+                <div className="h-0.5 w-10 bg-accent mb-6 rounded-full" />
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-black dark:text-white leading-tight mb-6">
                   "Be a Nation, Not Separation"
                 </h2>
-                <p className="mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mb-8">
                   We advocate for national unity across all segments of Pakistan. By organizing volunteer wings and establishing structured distribution lines, we deliver food security, clean water filtration, and emergency relief to families in critical need.
                 </p>
-              </div>
-              <div className="lg:col-span-4 flex justify-start lg:justify-end">
                 <a
                   href="#/mission"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent hover:bg-accent-light dark:bg-accent dark:hover:bg-accent-light text-white dark:text-primary-dark font-extrabold text-sm uppercase tracking-wide rounded-full shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all duration-300 group"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent hover:bg-accent-dark dark:bg-accent dark:hover:bg-accent-light text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all duration-300 group cursor-pointer"
                 >
                   <span>Read Full Mission</span>
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </a>
+              </div>
+
+              {/* Right Column: Overlapping Circle Mockup Images */}
+              <div className="lg:col-span-5 relative flex items-center justify-center min-h-[360px] w-full mt-10 lg:mt-0">
+                {/* Dashed Circular Paths & Leaves (z-0) */}
+                <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
+                  {/* Dashed Arc 1 around top circle */}
+                  <svg className="absolute w-72 h-72 text-gray-300/40 dark:text-gray-700/45 -top-4 -right-4 animate-pulse-slow" viewBox="0 0 100 100" fill="none">
+                    <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 4" />
+                  </svg>
+                  {/* Dashed Arc 2 around left circle */}
+                  <svg className="absolute w-64 h-64 text-gray-300/40 dark:text-gray-700/45 -bottom-8 -left-8" viewBox="0 0 100 100" fill="none">
+                    <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 4" />
+                  </svg>
+
+                  {/* Leaf branches */}
+                  <LeafBranch className="absolute -top-6 -right-12 w-24 h-24 text-accent/20 rotate-[15deg]" />
+                  <LeafBranch className="absolute -bottom-10 -left-10 w-24 h-24 text-accent/20 -rotate-[145deg]" />
+                </div>
+
+                {/* Overlapping Circle Images */}
+                <div className="relative w-full max-w-[340px] sm:max-w-[380px] h-[340px] mx-auto z-10">
+                  {/* Circle 1: Top Right (Medical Camp) */}
+                  <div className="w-40 h-40 sm:w-44 sm:h-44 rounded-full border-[6px] border-white shadow-2xl overflow-hidden absolute top-2 right-4 z-10 hover:scale-105 transition-transform duration-300">
+                    <img
+                      src="/medical_camp.jpeg"
+                      alt="Doctor at Free Medical Camp"
+                      className="w-full h-full object-cover object-center"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Circle 2: Bottom Left (Massive Plantation) */}
+                  <div className="w-40 h-40 sm:w-44 sm:h-44 rounded-full border-[6px] border-white shadow-2xl overflow-hidden absolute bottom-12 left-0 z-20 hover:scale-105 transition-transform duration-300">
+                    <img
+                      src="/massive_plantation.jpeg"
+                      alt="Volunteers planting tree"
+                      className="w-full h-full object-cover object-center"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Circle 3: Bottom Right (Special Nation / Ration Distribution) */}
+                  <div className="w-40 h-40 sm:w-44 sm:h-44 rounded-full border-[6px] border-white shadow-2xl overflow-hidden absolute bottom-2 right-12 sm:right-16 z-20 hover:scale-105 transition-transform duration-300">
+                    <img
+                      src="/special_nation.jpeg"
+                      alt="Welfare ration distribution"
+                      className="w-full h-full object-cover object-center"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </InteractiveTiltCard>
