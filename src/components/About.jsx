@@ -90,7 +90,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gray-50 dark:bg-dark-bg/40 transition-colors duration-300">
+    <section id="about" className="py-24 bg-light-bg dark:bg-dark-bg/40 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header Grid & Stats */}

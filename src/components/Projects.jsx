@@ -12,7 +12,7 @@ export default function Projects({ projects }) {
   });
 
   return (
-    <section id="projects" className="py-24 bg-gray-50 dark:bg-dark-bg/40 transition-colors duration-300">
+    <section id="projects" className="py-24 bg-light-bg dark:bg-dark-bg/40 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">

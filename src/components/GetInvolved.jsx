@@ -69,7 +69,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
   const whatsappLink = "https://wa.me/923435707812?text=Hello%20%231NationPakistan%2C%20I%E2%80%99m%20interested%20in%20becoming%20a%20Collaborator%2FPartner%20organization.%20Please%20share%20more%20details%20about%20partnership%20opportunities.";
 
   return (
-    <section id="get-involved" className="py-24 bg-white dark:bg-dark-bg transition-colors duration-300">
+    <section id="get-involved" className="py-24 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-20">
@@ -92,7 +92,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            className="bg-gray-50 dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm flex flex-col justify-between relative"
+            className="bg-white dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm flex flex-col justify-between relative"
           >
             <div>
               <div className="flex items-center gap-3 mb-6">
@@ -272,7 +272,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
             className="flex flex-col justify-between gap-8"
           >
             {/* Why Partner block */}
-            <div className="bg-gray-50 dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm">
+            <div className="bg-white dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm">
               <div className="flex items-center gap-3 mb-6">
                 <span className="p-2 bg-accent/10 rounded-xl text-accent-dark dark:text-accent">
                   <Building size={22} />
@@ -391,7 +391,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
               { step: "03", title: "Skill Induction", desc: "Attend brief online training in relief logistics, public safety, and needs assessment protocols." },
               { step: "04", title: "Active Drive", desc: "Deploy in regional ration distributions, RO plant checks, or emergency relief operations." }
             ].map((item, idx) => (
-              <div key={idx} className="p-6 bg-gray-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-2xl relative">
+              <div key={idx} className="p-6 bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-2xl relative">
                 <span className="text-3xl font-brand font-black text-primary/10 dark:text-accent/15 absolute top-6 right-6">
                   {item.step}
                 </span>
@@ -407,7 +407,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
         </div>
 
         {/* Expansion Section B: Volunteer FAQs Accordion */}
-        <div className="py-16 bg-gray-50 dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
+        <div className="py-16 bg-white dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">

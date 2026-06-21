@@ -72,7 +72,7 @@ export default function Mission() {
   };
 
   return (
-    <section id="mission" className="py-24 bg-white dark:bg-dark-bg transition-colors duration-300">
+    <section id="mission" className="py-24 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Title */}

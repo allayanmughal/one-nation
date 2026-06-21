@@ -5,20 +5,22 @@ import Logo from './Logo';
 
 export default function Navbar({ darkMode, toggleDarkMode, activeSection, setActiveSection, currentView, setCurrentView }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolledState, setIsScrolledState] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
-        setIsScrolled(true);
+        setIsScrolledState(true);
       } else {
-        setIsScrolled(false);
+        setIsScrolledState(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const isScrolled = isScrolledState || activeSection !== 'home';
 
   const navLinks = [
     { name: 'Home', id: 'home' },
@@ -52,7 +54,7 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
             }}
             className="cursor-pointer"
           >
-            <Logo className="h-11 w-11 sm:h-12 sm:w-12" />
+            <Logo className="h-11 w-11 sm:h-12 sm:w-12" lightModeColor={isScrolled ? "text-primary" : "text-white"} />
           </a>
 
           {/* Desktop Navigation Links */}
@@ -62,20 +64,21 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
                 <button
                   key={link.id}
                   onClick={() => handleScrollTo(link.id)}
-                  className={`text-sm font-semibold tracking-wide transition-colors duration-200 cursor-pointer ${activeSection === link.id
-                      ? 'text-primary dark:text-accent font-bold'
-                      : 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent'
-                    }`}
+                  className={`text-sm font-semibold tracking-wide transition-colors duration-200 cursor-pointer ${
+                    activeSection === link.id
+                      ? (isScrolled ? 'text-primary dark:text-accent font-bold' : 'text-accent font-bold')
+                      : (isScrolled ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent' : 'text-white/80 hover:text-white')
+                  }`}
                 >
                   {link.name}
                 </button>
               ))}
             </nav>
           ) : (
-            <div className="hidden md:flex items-center space-x-3 text-sm text-gray-500">
-              <span className="font-semibold text-primary dark:text-accent">Admin Portal Mockup</span>
-              <span className="text-gray-300">|</span>
-              <span>Local State Only</span>
+            <div className="hidden md:flex items-center space-x-3 text-sm">
+              <span className={`font-semibold ${isScrolled ? 'text-primary dark:text-accent' : 'text-accent'}`}>Admin Portal Mockup</span>
+              <span className={isScrolled ? "text-gray-300" : "text-white/40"}>|</span>
+              <span className={isScrolled ? "text-gray-500" : "text-white/80"}>Local State Only</span>
             </div>
           )}
 
@@ -84,7 +87,11 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
             {/* Admin Toggle */}
             <button
               onClick={() => setCurrentView(currentView === 'landing' ? 'admin' : 'landing')}
-              className="p-2 rounded-full text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-dark-card transition-colors duration-200"
+              className={`p-2 rounded-full transition-colors duration-200 ${
+                isScrolled
+                  ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-dark-card'
+                  : 'text-white/80 hover:text-white hover:bg-white/10'
+              }`}
               title={currentView === 'landing' ? 'Admin Panel Mockup' : 'Back to Website'}
             >
               {currentView === 'landing' ? <Settings size={20} /> : <LogOut size={20} />}
@@ -93,7 +100,11 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
             {/* Dark Mode Toggle */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-full text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-dark-card transition-all duration-300 relative overflow-hidden"
+              className={`p-2 rounded-full transition-all duration-300 relative overflow-hidden ${
+                isScrolled
+                  ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-dark-card'
+                  : 'text-white/80 hover:text-white hover:bg-white/10'
+              }`}
               aria-label="Toggle dark mode"
             >
               <motion.div
@@ -131,7 +142,7 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
             {/* Dark Mode Toggle Mobile */}
             <button
               onClick={toggleDarkMode}
-              className="p-1.5 rounded-full text-gray-600 dark:text-gray-300"
+              className={`p-1.5 rounded-full ${isScrolled ? 'text-gray-600 dark:text-gray-300' : 'text-white/90'}`}
               aria-label="Toggle dark mode"
             >
               {darkMode ? <Sun size={20} className="text-accent" /> : <Moon size={20} />}
@@ -140,7 +151,7 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
             {/* Admin Toggle Mobile */}
             <button
               onClick={() => setCurrentView(currentView === 'landing' ? 'admin' : 'landing')}
-              className="p-1.5 rounded-full text-gray-600 dark:text-gray-300"
+              className={`p-1.5 rounded-full ${isScrolled ? 'text-gray-600 dark:text-gray-300' : 'text-white/90'}`}
             >
               {currentView === 'landing' ? <Settings size={20} /> : <LogOut size={20} />}
             </button>
@@ -148,7 +159,11 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
             {/* Hamburger Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-1.5 rounded-full text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent focus:outline-none"
+              className={`p-1.5 rounded-full focus:outline-none ${
+                isScrolled
+                  ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent'
+                  : 'text-white/90 hover:text-white'
+              }`}
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}

@@ -9,19 +9,20 @@
   --font-display: 'Montserrat', sans-serif;
   --font-brand: 'Space Grotesk', sans-serif;
 
-  --color-primary: #01411c;
-  --color-primary-dark: #002c13;
-  --color-primary-light: #095c2b;
-  --color-primary-glow: rgba(1, 65, 28, 0.15);
+  --color-primary: #0A1F44;
+  --color-primary-dark: #04152D;
+  --color-primary-light: #1C3B6E;
+  --color-primary-glow: rgba(10, 31, 68, 0.15);
 
-  --color-accent: #d4af37;
-  --color-accent-dark: #b89326;
-  --color-accent-light: #e8c65d;
-  --color-accent-glow: rgba(212, 175, 55, 0.2);
+  --color-accent: #4CAF50;
+  --color-accent-dark: #0F5A25;
+  --color-accent-light: #88C34A;
+  --color-accent-glow: rgba(76, 175, 80, 0.2);
 
-  --color-dark-bg: #0b0f17;
-  --color-dark-card: #131924;
+  --color-dark-bg: #04152D;
+  --color-dark-card: #0B1B36;
   --color-dark-border: rgba(255, 255, 255, 0.08);
+  --color-light-bg: #EBEFF2;
 
   --animate-pulse-slow: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-float: float 6s ease-in-out infinite;
@@ -74,11 +75,11 @@
 }
 
 @utility text-glow-accent {
-  text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  text-shadow: 0 0 15px rgba(76, 175, 80, 0.45);
 }
 
 @utility text-glow-primary {
-  text-shadow: 0 0 15px rgba(1, 65, 28, 0.4);
+  text-shadow: 0 0 15px rgba(10, 31, 68, 0.45);
 }
 
 html {

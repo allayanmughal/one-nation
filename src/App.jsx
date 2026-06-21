@@ -283,7 +283,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-dark-bg transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-light-bg dark:bg-dark-bg transition-colors duration-300">
       
       {/* 1. STICKY NAVBAR */}
       <Navbar

@@ -51,7 +51,7 @@ export default function Contact({ onContactSubmit }) {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white dark:bg-dark-bg transition-colors duration-300">
+    <section id="contact" className="py-24 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-20">
@@ -73,7 +73,7 @@ export default function Contact({ onContactSubmit }) {
             {/* Info Cards */}
             <div className="space-y-6">
               {/* Card 1: Location */}
-              <div className="flex items-start gap-4 bg-gray-50 dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border">
+              <div className="flex items-start gap-4 bg-white dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border">
                 <span className="p-3 bg-primary/10 dark:bg-accent/10 rounded-xl text-primary dark:text-accent flex-shrink-0">
                   <MapPin size={20} />
                 </span>
@@ -90,7 +90,7 @@ export default function Contact({ onContactSubmit }) {
                 href="https://wa.me/923435707812"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 bg-gray-50 dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border hover:border-accent/20 transition-all duration-300 cursor-pointer block group"
+                className="flex items-start gap-4 bg-white dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border hover:border-accent/20 transition-all duration-300 cursor-pointer block group"
               >
                 <span className="p-3 bg-primary/10 dark:bg-accent/10 rounded-xl text-primary dark:text-accent flex-shrink-0">
                   <Phone size={20} />
@@ -106,7 +106,7 @@ export default function Contact({ onContactSubmit }) {
               {/* Card 3: Email */}
               <a
                 href="mailto:info@1nation.pk"
-                className="flex items-start gap-4 bg-gray-50 dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border hover:border-accent/20 transition-all duration-300 cursor-pointer block group"
+                className="flex items-start gap-4 bg-white dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border hover:border-accent/20 transition-all duration-300 cursor-pointer block group"
               >
                 <span className="p-3 bg-primary/10 dark:bg-accent/10 rounded-xl text-primary dark:text-accent flex-shrink-0">
                   <Mail size={20} />
@@ -140,7 +140,7 @@ export default function Contact({ onContactSubmit }) {
           </div>
 
           {/* Form Column */}
-          <div className="lg:col-span-7 bg-gray-50 dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-white dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm flex flex-col justify-between">
             <AnimatePresence mode="wait">
               {!isSuccess ? (
                 <motion.form
@@ -319,7 +319,7 @@ export default function Contact({ onContactSubmit }) {
         </div>
 
         {/* Expansion Section B: CSR & Proposal Guidelines */}
-        <div className="py-16 bg-gray-50 dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
+        <div className="py-16 bg-white dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-3xl mx-auto text-center relative z-10">
             <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
               Institutional Partnerships
