@@ -24,7 +24,7 @@
   --color-dark-bg: #04152D;
   --color-dark-card: #1B1F24;
   --color-dark-border: rgba(255, 255, 255, 0.08);
-  --color-light-bg: #F4F6F8;
+  --color-light-bg: #F8F9FA;
 
   --color-campaign-medical: #00AEEF;
   --color-campaign-haya: #E91E63;
@@ -99,6 +99,32 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.3s ease;
+}
+
+html:not(.dark) body {
+  color: var(--color-primary);
+  background-color: var(--color-light-bg);
+}
+
+/* Light mode design tokens (dark mode unchanged) */
+html:not(.dark) .surface-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(4, 21, 45, 0.08);
+  box-shadow: 0 10px 40px -12px rgba(4, 21, 45, 0.1);
+}
+
+html:not(.dark) .surface-card-hover:hover {
+  border-color: rgba(76, 175, 80, 0.35);
+}
+
+html:not(.dark) .icon-badge {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  box-shadow: 0 4px 14px -4px rgba(76, 175, 80, 0.45);
+}
+
+html:not(.dark) .section-divider {
+  border-color: rgba(4, 21, 45, 0.08);
 }
 
 /* Custom scrollbar */

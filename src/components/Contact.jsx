@@ -58,7 +58,7 @@ export default function Contact({ onContactSubmit }) {
           <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
             Get In Touch
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-gray-900 dark:text-white mt-2 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-primary dark:text-white mt-2 mb-6">
             Contact 1 Nation Pakistan
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
@@ -73,12 +73,12 @@ export default function Contact({ onContactSubmit }) {
             {/* Info Cards */}
             <div className="space-y-6">
               {/* Card 1: Location */}
-              <div className="flex items-start gap-4 bg-white dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border">
-                <span className="p-3 bg-primary/10 dark:bg-accent/10 rounded-xl text-primary dark:text-accent flex-shrink-0">
+              <div className="flex items-start gap-4 surface-card dark:bg-dark-card p-6 rounded-2xl border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm">
+                <span className="p-3 rounded-xl bg-accent text-white shadow-sm shadow-accent/30 dark:bg-accent/10 dark:text-accent flex-shrink-0">
                   <MapPin size={20} />
                 </span>
                 <div>
-                  <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-1">Headquarters Location</h4>
+                  <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-1">Headquarters Location</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                     Main Abbottabad Road, Havelian City, District Abbottabad, Khyber Pakhtunkhwa, Pakistan
                   </p>
@@ -90,13 +90,13 @@ export default function Contact({ onContactSubmit }) {
                 href="https://wa.me/923435707812"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 bg-white dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border hover:border-accent/20 transition-all duration-300 cursor-pointer block group"
+                className="flex items-start gap-4 surface-card dark:bg-dark-card p-6 rounded-2xl border border-primary/5 dark:border-dark-border hover:border-accent/30 transition-all duration-300 cursor-pointer block group shadow-lg shadow-primary/8 dark:shadow-sm"
               >
-                <span className="p-3 bg-primary/10 dark:bg-accent/10 rounded-xl text-primary dark:text-accent flex-shrink-0">
+                <span className="p-3 rounded-xl bg-accent text-white shadow-sm shadow-accent/30 dark:bg-accent/10 dark:text-accent flex-shrink-0">
                   <Phone size={20} />
                 </span>
                 <div>
-                  <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-1 group-hover:text-primary dark:group-hover:text-accent transition-colors">WhatsApp Hotline</h4>
+                  <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-1 group-hover:text-primary dark:group-hover:text-accent transition-colors">WhatsApp Hotline</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed group-hover:underline">
                     +92 343 5707812
                   </p>
@@ -106,13 +106,13 @@ export default function Contact({ onContactSubmit }) {
               {/* Card 3: Email */}
               <a
                 href="mailto:info@1nation.pk"
-                className="flex items-start gap-4 bg-white dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border hover:border-accent/20 transition-all duration-300 cursor-pointer block group"
+                className="flex items-start gap-4 surface-card dark:bg-dark-card p-6 rounded-2xl border border-primary/5 dark:border-dark-border hover:border-accent/30 transition-all duration-300 cursor-pointer block group shadow-lg shadow-primary/8 dark:shadow-sm"
               >
-                <span className="p-3 bg-primary/10 dark:bg-accent/10 rounded-xl text-primary dark:text-accent flex-shrink-0">
+                <span className="p-3 rounded-xl bg-accent text-white shadow-sm shadow-accent/30 dark:bg-accent/10 dark:text-accent flex-shrink-0">
                   <Mail size={20} />
                 </span>
                 <div>
-                  <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-1 group-hover:text-primary dark:group-hover:text-accent transition-colors">Email Support</h4>
+                  <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-1 group-hover:text-primary dark:group-hover:text-accent transition-colors">Email Support</h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed group-hover:underline">
                     info@1nation.pk
                   </p>
@@ -121,7 +121,7 @@ export default function Contact({ onContactSubmit }) {
             </div>
 
             {/* Stylized Vector Map Representation */}
-            <div className="relative h-48 rounded-2xl overflow-hidden bg-primary-dark border border-gray-100 dark:border-dark-border flex flex-col justify-end p-5 shadow-inner">
+            <div className="relative h-48 rounded-2xl overflow-hidden bg-primary-dark border border-primary/5 dark:border-dark-border flex flex-col justify-end p-5 shadow-inner">
               {/* Background decorative map grid lines */}
               <div className="absolute inset-0 opacity-15" style={{
                 backgroundImage: 'radial-gradient(circle, #fff 10%, transparent 11%)',
@@ -140,7 +140,7 @@ export default function Contact({ onContactSubmit }) {
           </div>
 
           {/* Form Column */}
-          <div className="lg:col-span-7 bg-white dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-7 surface-card dark:bg-dark-card rounded-3xl p-8 border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm flex flex-col justify-between">
             <AnimatePresence mode="wait">
               {!isSuccess ? (
                 <motion.form
@@ -151,7 +151,7 @@ export default function Contact({ onContactSubmit }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <h3 className="text-2xl font-display font-extrabold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-2xl font-display font-extrabold text-primary dark:text-white mb-2">
                     Send a Message
                   </h3>
 
@@ -164,8 +164,8 @@ export default function Contact({ onContactSubmit }) {
                       onChange={handleChange}
                       className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.name
                           ? 'border-red-500 focus:border-red-500'
-                          : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                        } text-gray-900 dark:text-white`}
+                          : 'border-primary/10 dark:border-dark-border focus:border-accent dark:focus:border-accent'
+                        } text-primary dark:text-white`}
                       placeholder="Your Name"
                     />
                     {errors.name && (
@@ -182,8 +182,8 @@ export default function Contact({ onContactSubmit }) {
                       onChange={handleChange}
                       className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.email
                           ? 'border-red-500 focus:border-red-500'
-                          : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                        } text-gray-900 dark:text-white`}
+                          : 'border-primary/10 dark:border-dark-border focus:border-accent dark:focus:border-accent'
+                        } text-primary dark:text-white`}
                       placeholder="Email Address"
                     />
                     {errors.email && (
@@ -200,8 +200,8 @@ export default function Contact({ onContactSubmit }) {
                       onChange={handleChange}
                       className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.subject
                           ? 'border-red-500 focus:border-red-500'
-                          : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                        } text-gray-900 dark:text-white`}
+                          : 'border-primary/10 dark:border-dark-border focus:border-accent dark:focus:border-accent'
+                        } text-primary dark:text-white`}
                       placeholder="Subject"
                     />
                     {errors.subject && (
@@ -218,8 +218,8 @@ export default function Contact({ onContactSubmit }) {
                       onChange={handleChange}
                       className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 resize-none ${errors.message
                           ? 'border-red-500 focus:border-red-500'
-                          : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                        } text-gray-900 dark:text-white`}
+                          : 'border-primary/10 dark:border-dark-border focus:border-accent dark:focus:border-accent'
+                        } text-primary dark:text-white`}
                       placeholder="Your Message..."
                     />
                     {errors.message && (
@@ -261,7 +261,7 @@ export default function Contact({ onContactSubmit }) {
                   >
                     <CheckCircle2 size={36} />
                   </motion.div>
-                  <h4 className="text-2xl font-display font-extrabold text-gray-900 dark:text-white mb-2">
+                  <h4 className="text-2xl font-display font-extrabold text-primary dark:text-white mb-2">
                     Message Sent Successfully!
                   </h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400 max-w-sm mb-8 leading-relaxed">
@@ -280,12 +280,12 @@ export default function Contact({ onContactSubmit }) {
         </div>
 
         {/* Expansion Section A: Regional Coordinator Directory */}
-        <div className="mt-28 border-t border-gray-100 dark:border-dark-border/40 pt-20 mb-20">
+        <div className="mt-28 border-t border-primary/5 dark:border-dark-border/40 section-divider pt-20 mb-20">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
               Local Coordinates
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
               Regional Chapter Hubs
             </h3>
           </div>
@@ -297,11 +297,11 @@ export default function Contact({ onContactSubmit }) {
               { city: "Mansehra Chapter", lead: "Khurram Qureshi", email: "mansehra@1nation.pk", desc: "Manages remote village distributions and emergency winter clothing packs." },
               { city: "Peshawar Chapter", lead: "Sana Bangash", email: "peshawar@1nation.pk", desc: "Coordinates university blood camps and youth leadership seminars." }
             ].map((hub, idx) => (
-              <div key={idx} className="p-6 bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-2xl transition-all hover:shadow-md">
+              <div key={idx} className="p-6 surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border rounded-2xl transition-all hover:shadow-xl hover:border-accent/30">
                 <span className="text-[10px] font-extrabold text-primary dark:text-accent uppercase tracking-wider block mb-1">
                   {hub.city}
                 </span>
-                <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-2">
+                <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-2">
                   {hub.lead}
                 </h4>
                 <p className="text-xs text-gray-500 dark:text-gray-400 font-medium mb-3 leading-relaxed">
@@ -319,12 +319,12 @@ export default function Contact({ onContactSubmit }) {
         </div>
 
         {/* Expansion Section B: CSR & Proposal Guidelines */}
-        <div className="py-16 bg-white dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
+        <div className="py-16 surface-card dark:bg-dark-card/30 border border-primary/5 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden shadow-lg shadow-primary/8 dark:shadow-none">
           <div className="max-w-3xl mx-auto text-center relative z-10">
             <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
-              Institutional Partnerships
+              Institutional Collaborations
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1 mb-4 leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1 mb-4 leading-tight">
               CSR & Proposal Guidelines
             </h3>
             <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">

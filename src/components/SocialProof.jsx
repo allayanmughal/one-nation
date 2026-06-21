@@ -57,14 +57,14 @@ export default function SocialProof() {
   ];
 
   return (
-    <section id="social-proof" className="py-24 bg-gray-50 dark:bg-dark-bg/40 transition-colors duration-300">
+    <section id="social-proof" className="py-24 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
             Social Media Branding
           </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-gray-900 dark:text-white mt-2 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-primary dark:text-white mt-2 mb-4">
             Follow Our Active Journey
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
@@ -73,12 +73,12 @@ export default function SocialProof() {
         </div>
 
         {/* Instagram Mock Profile Widget */}
-        <div className="max-w-3xl mx-auto bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-3xl p-6 sm:p-8 mb-12 shadow-sm flex flex-col md:flex-row gap-8 items-center md:items-start text-left">
+        <div className="max-w-3xl mx-auto surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border rounded-3xl p-6 sm:p-8 mb-12 shadow-lg shadow-primary/8 dark:shadow-sm flex flex-col md:flex-row gap-8 items-center md:items-start text-left">
           {/* Avatar */}
           <div className="relative flex-shrink-0">
             <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-[#fd5949] via-[#d6249f] to-[#285AEB] flex items-center justify-center">
               <div className="w-full h-full rounded-full bg-white dark:bg-dark-card p-1">
-                <div className="w-full h-full rounded-full overflow-hidden bg-primary flex items-center justify-center p-1 border border-gray-100 dark:border-dark-border">
+                <div className="w-full h-full rounded-full overflow-hidden bg-primary flex items-center justify-center p-1 border border-primary/5 dark:border-dark-border">
                   <img src="/logo.jpeg" alt="1Nation Logo" className="w-full h-full object-cover rounded-full" />
                 </div>
               </div>
@@ -89,7 +89,7 @@ export default function SocialProof() {
           {/* Profile Data */}
           <div className="flex-grow space-y-4 w-full text-center md:text-left">
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-              <h3 className="text-xl font-display font-extrabold text-gray-900 dark:text-white">@1nation_pk</h3>
+              <h3 className="text-xl font-display font-extrabold text-primary dark:text-white">@1nation_pk</h3>
               <a
                 href="https://www.instagram.com/1nation_pk/"
                 target="_blank"
@@ -101,24 +101,24 @@ export default function SocialProof() {
             </div>
 
             {/* Stats */}
-            <div className="flex justify-center md:justify-start gap-8 border-t border-b border-gray-50 dark:border-dark-border/40 py-3 text-xs sm:text-sm">
+            <div className="flex justify-center md:justify-start gap-8 border-t border-b border-primary/5 dark:border-dark-border/40 py-3 text-xs sm:text-sm">
               <div>
-                <span className="font-extrabold text-gray-900 dark:text-white">1,248</span>{' '}
+                <span className="font-extrabold text-primary dark:text-white">1,248</span>{' '}
                 <span className="text-gray-500 dark:text-gray-400 font-semibold">posts</span>
               </div>
               <div>
-                <span className="font-extrabold text-gray-900 dark:text-white">25.6K</span>{' '}
+                <span className="font-extrabold text-primary dark:text-white">25.6K</span>{' '}
                 <span className="text-gray-500 dark:text-gray-400 font-semibold">followers</span>
               </div>
               <div>
-                <span className="font-extrabold text-gray-900 dark:text-white">112</span>{' '}
+                <span className="font-extrabold text-primary dark:text-white">112</span>{' '}
                 <span className="text-gray-500 dark:text-gray-400 font-semibold">following</span>
               </div>
             </div>
 
             {/* Bio info */}
             <div className="space-y-1.5 text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-300">
-              <p className="font-black text-gray-900 dark:text-white">One Nation Pakistan</p>
+              <p className="font-black text-primary dark:text-white">One Nation Pakistan</p>
               <p>🤝 Humanitarian & Social Welfare</p>
               <p>🌱 Environment • Health • Education</p>
               <p>🐾 Street Animal Welfare</p>
@@ -139,7 +139,7 @@ export default function SocialProof() {
               ].map((tag, idx) => (
                 <span
                   key={idx}
-                  className="px-2 py-1 rounded bg-gray-50 dark:bg-dark-bg/60 border border-gray-150 dark:border-dark-border text-[9px] sm:text-[10px] font-bold text-primary dark:text-accent"
+                  className="px-2 py-1 rounded bg-white dark:bg-dark-bg/60 border border-primary/10 dark:border-dark-border text-[9px] sm:text-[10px] font-bold text-primary dark:text-accent"
                 >
                   {tag}
                 </span>
@@ -160,7 +160,7 @@ export default function SocialProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * post.id }}
-              className="group block relative aspect-square rounded-3xl overflow-hidden shadow-sm border border-gray-100 dark:border-dark-border cursor-pointer bg-gray-100"
+              className="group block relative aspect-square rounded-3xl overflow-hidden shadow-lg shadow-primary/8 dark:shadow-sm border border-primary/5 dark:border-dark-border cursor-pointer bg-primary/5"
             >
               {/* Image */}
               <img

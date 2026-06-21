@@ -48,7 +48,7 @@ const SEED_PROJECTS = [
     status: "Completed",
     category: "Project Haya",
     description: "Provided essential food rations and grocery supplies to over 1,500 families affected by inflation.",
-    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
+    image: "/ration_drive.png",
     details: "The ration packs were distributed transparently across two distribution points in KP. Each pack contained flour, ghee, sugar, pulses, tea, and dry milk. Volunteers monitored the list via local coordinators."
   },
   {
@@ -59,7 +59,7 @@ const SEED_PROJECTS = [
     status: "Ongoing",
     category: "Nature Rehabilitation",
     description: "Installing reverse osmosis water filtration plants to supply clean drinking water to 5,000 residents.",
-    image: "https://images.unsplash.com/photo-1541944743827-e04aa6427c33?auto=format&fit=crop&w=800&q=80",
+    image: "/water_filtration.png",
     details: "This project addresses critical arsenic and fluoride contamination in drinking water sources in Haripur's outskirts. Construction is complete, and we are currently assembling the filtration membranes and testing purity."
   },
   {
@@ -70,7 +70,7 @@ const SEED_PROJECTS = [
     status: "Completed",
     category: "Special Nation",
     description: "Distributed heavy blankets, warm clothing, and fuel supplies to high-altitude mountain communities.",
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
+    image: "/winter_aid.png",
     details: "High-altitude winter conditions severely impact low-income families. Our team coordinated with regional volunteers to distribute 500+ blanket packs, fleece jackets, and fuel logs to the Galyat region."
   },
   {
@@ -129,7 +129,7 @@ const SEED_INQUIRIES = [
   {
     name: "Bilal Shah",
     email: "bilal@gmail.com",
-    subject: "Partnership in Swat",
+    subject: "Collaboration in Swat",
     message: "We would love to coordinate a food relief drive in Swat. Please send details."
   },
   {
@@ -174,6 +174,7 @@ export default function App() {
   // Local Storage and Theme Initialization
   useEffect(() => {
     // 1. Projects
+    localStorage.removeItem('one_nation_projects'); // Force reset to seed data
     const localProjects = localStorage.getItem('one_nation_projects');
     if (localProjects) {
       setProjects(JSON.parse(localProjects));

@@ -20,8 +20,8 @@ export default function Mission() {
       icon: Flame,
     },
     {
-      title: "Institutional Collaboration",
-      description: "Partnering with government welfare bureaus, private CSR initiatives, and local NGOs to streamline distribution networks and maximize the reach of social aid programs.",
+      title: "Community Collaboration",
+      description: "Collaborating with private CSR initiatives, academic institutions, and local NGOs to streamline distribution networks and maximize the reach of social aid programs.",
       icon: Building2,
     }
   ];
@@ -90,7 +90,7 @@ export default function Mission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-gray-900 dark:text-white mt-2 mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-primary dark:text-white mt-2 mb-6"
           >
             The Foundations of Our Impact
           </motion.h2>
@@ -119,13 +119,13 @@ export default function Mission() {
               <motion.div
                 key={idx}
                 variants={cardVariants}
-                className="group relative bg-gray-50 dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border overflow-hidden hover:border-accent/30 dark:hover:border-accent/40 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.02] flex flex-col h-full"
+                className="group relative surface-card dark:bg-dark-card rounded-3xl p-8 border border-primary/5 dark:border-dark-border overflow-hidden hover:border-accent/40 dark:hover:border-accent/40 shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full"
               >
                 <div className="absolute -top-12 -left-12 w-24 h-24 bg-primary/5 dark:bg-accent/5 rounded-full blur-xl group-hover:scale-[3] transition-transform duration-500 pointer-events-none" />
-                <div className="mb-6 w-14 h-14 rounded-2xl bg-primary/10 dark:bg-accent/10 flex items-center justify-center text-primary dark:text-accent group-hover:bg-primary group-hover:text-white dark:group-hover:bg-accent dark:group-hover:text-primary-dark transition-all duration-300 shadow-sm">
+                <div className="mb-6 w-14 h-14 rounded-full bg-accent dark:rounded-2xl dark:bg-accent/10 flex items-center justify-center text-white dark:text-accent group-hover:bg-accent-dark dark:group-hover:bg-accent dark:group-hover:text-primary-dark transition-all duration-300 shadow-sm shadow-accent/30">
                   <IconComponent size={24} className="group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-display font-extrabold text-gray-900 dark:text-white mb-4 leading-tight group-hover:text-primary dark:group-hover:text-accent transition-colors duration-200">
+                <h3 className="text-xl font-display font-extrabold text-primary dark:text-white mb-4 leading-tight group-hover:text-accent dark:group-hover:text-accent transition-colors duration-200">
                   {pillar.title}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-grow">
@@ -143,7 +143,7 @@ export default function Mission() {
             <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
               How We Work
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
               Our Distribution Pipeline
             </h3>
             <p className="text-xs sm:text-sm text-gray-500 mt-2">
@@ -159,12 +159,12 @@ export default function Mission() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.12 * idx }}
-                className="bg-gray-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border p-6 rounded-2xl relative"
+                className="surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border p-6 rounded-2xl relative shadow-lg shadow-primary/8 dark:shadow-sm"
               >
                 <span className="text-xs font-bold text-primary dark:text-accent font-brand tracking-widest block mb-2">
                   STAGE {stage.step}
                 </span>
-                <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-2 leading-tight">
+                <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-2 leading-tight">
                   {stage.title}
                 </h4>
                 <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">

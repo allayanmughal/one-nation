@@ -90,7 +90,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-light-bg dark:bg-dark-bg/40 transition-colors duration-300">
+    <section id="about" className="py-24 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header Grid & Stats */}
@@ -109,7 +109,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-gray-900 dark:text-white mt-2 mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-primary dark:text-white mt-2 mb-6"
             >
               Uniting Hearts for a Stronger, More Prosperous Pakistan
             </motion.h2>
@@ -132,7 +132,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * idx }}
-                className="bg-white dark:bg-dark-card p-6 rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm hover:shadow-md transition-shadow"
+                className="surface-card dark:bg-dark-card p-6 rounded-2xl border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-shadow"
               >
                 <div className="text-3xl sm:text-4xl font-brand font-bold text-primary dark:text-accent mb-2">
                   <CountUp to={stat.count} suffix={stat.suffix} />
@@ -151,7 +151,7 @@ export default function About() {
             <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
               Our Journey
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
               Development Milestones
             </h3>
           </div>
@@ -164,7 +164,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.15 * idx, duration: 0.5 }}
-                className="bg-white dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm relative group hover:shadow-md transition-all"
+                className="surface-card dark:bg-dark-card rounded-3xl p-8 border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm relative group hover:shadow-xl transition-all"
               >
                 <span className="text-4xl sm:text-5xl font-brand font-black text-primary/10 dark:text-accent/15 absolute top-6 right-6 transition-colors group-hover:text-accent/20">
                   {milestone.year}
@@ -172,7 +172,7 @@ export default function About() {
                 <span className="text-xs font-bold text-primary dark:text-accent uppercase tracking-widest mb-4 block">
                   Phase {idx + 1}
                 </span>
-                <h4 className="text-xl font-display font-extrabold text-gray-900 dark:text-white mb-3">
+                <h4 className="text-xl font-display font-extrabold text-primary dark:text-white mb-3">
                   {milestone.title}
                 </h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
@@ -184,14 +184,14 @@ export default function About() {
         </div>
 
         {/* Expansion Section B: Our Commitments */}
-        <div className="mb-24 py-16 bg-white dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
+        <div className="mb-24 py-16 surface-card dark:bg-dark-card/30 border border-primary/5 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden shadow-lg shadow-primary/8 dark:shadow-none">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4 self-center">
               <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
                 Transparency & Governance
               </span>
-              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1 mb-4 leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1 mb-4 leading-tight">
                 Our Core Promises
               </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
@@ -207,12 +207,12 @@ export default function About() {
                     initial={{ opacity: 0, scale: 0.96 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="p-6 rounded-2xl bg-gray-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border flex flex-col items-start"
+                    className="p-6 rounded-2xl surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-md flex flex-col items-start"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 dark:bg-accent/15 flex items-center justify-center text-primary dark:text-accent mb-4 shadow-sm">
+                    <div className="w-10 h-10 rounded-full bg-accent dark:rounded-xl dark:bg-accent/15 flex items-center justify-center text-white dark:text-accent mb-4 shadow-sm shadow-accent/30 dark:shadow-sm">
                       <Icon size={20} />
                     </div>
-                    <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-2 leading-snug">
+                    <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-2 leading-snug">
                       {item.title}
                     </h4>
                     <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
@@ -231,7 +231,7 @@ export default function About() {
             <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
               Our Leadership
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
               Visionaries Behind 1 Nation
             </h3>
           </div>
@@ -242,7 +242,7 @@ export default function About() {
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-dark-card rounded-3xl border border-gray-100 dark:border-dark-border shadow-lg relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="surface-card dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-lg relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-full blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
               <div className="h-4 bg-gradient-to-r from-primary to-accent" />
@@ -264,7 +264,7 @@ export default function About() {
                     </span>
                   </div>
 
-                  <h4 className="text-xl font-display font-extrabold text-gray-900 dark:text-white mb-1">
+                  <h4 className="text-xl font-display font-extrabold text-primary dark:text-white mb-1">
                     Mushtaq Ahmed Ghani
                   </h4>
                   <p className="text-xs font-bold text-primary dark:text-accent tracking-wide uppercase mb-4">
@@ -282,7 +282,7 @@ export default function About() {
                     </span>
                   </div>
 
-                  <hr className="w-full border-gray-100 dark:border-dark-border mb-6" />
+                  <hr className="w-full border-primary/5 dark:border-dark-border mb-6" />
 
                   <p className="text-sm text-gray-600 dark:text-gray-300 italic leading-relaxed mb-6">
                     "A veteran lawmaker and public servant representing Abbottabad. Having served as Speaker of the Khyber Pakhtunkhwa Assembly, he guides our welfare vision to ensure transparency, structured growth, and collaboration with national and provincial institutions."
@@ -293,7 +293,7 @@ export default function About() {
                   href="https://en.wikipedia.org/wiki/Mushtaq_Ahmed_Ghani"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-gray-50 hover:bg-gray-100 dark:bg-dark-bg/60 dark:hover:bg-dark-bg text-xs font-bold text-primary dark:text-accent rounded-xl border border-gray-150 dark:border-dark-border transition-colors hover:scale-[1.01] active:scale-95 shadow-sm cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-white hover:bg-accent/5 dark:bg-dark-bg/60 dark:hover:bg-dark-bg text-xs font-bold text-primary dark:text-accent rounded-xl border border-primary/10 dark:border-dark-border transition-colors hover:scale-[1.01] active:scale-95 shadow-sm cursor-pointer"
                 >
                   Read Biography on Wikipedia
                 </a>
@@ -306,7 +306,7 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-white dark:bg-dark-card rounded-3xl border border-gray-100 dark:border-dark-border shadow-lg relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="surface-card dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-lg relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-full blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
               <div className="h-4 bg-gradient-to-r from-accent to-primary" />
@@ -328,7 +328,7 @@ export default function About() {
                     </span>
                   </div>
 
-                  <h4 className="text-xl font-display font-extrabold text-gray-900 dark:text-white mb-1">
+                  <h4 className="text-xl font-display font-extrabold text-primary dark:text-white mb-1">
                     Harmain Ghani
                   </h4>
                   <p className="text-xs font-bold text-primary dark:text-accent tracking-wide uppercase mb-4">
@@ -346,7 +346,7 @@ export default function About() {
                     </span>
                   </div>
 
-                  <hr className="w-full border-gray-100 dark:border-dark-border mb-6" />
+                  <hr className="w-full border-primary/5 dark:border-dark-border mb-6" />
 
                   <p className="text-sm text-gray-600 dark:text-gray-300 italic leading-relaxed mb-6">
                     "As the Co-Founder and Executive Director, Harmain drives the organizational strategy, youth coordination wings, and ground execution. She ensures transparent distribution loops, coordinates medical camps, and leads regional disaster relief programs across Khyber Pakhtunkhwa."

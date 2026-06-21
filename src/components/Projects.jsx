@@ -12,7 +12,7 @@ export default function Projects({ projects }) {
   });
 
   return (
-    <section id="projects" className="py-24 bg-light-bg dark:bg-dark-bg/40 transition-colors duration-300">
+    <section id="projects" className="py-24 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -20,7 +20,7 @@ export default function Projects({ projects }) {
             <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
               Our Initiatives
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-gray-900 dark:text-white mt-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-primary dark:text-white mt-2">
               Transforming Commmunities
             </h2>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-4">
@@ -29,7 +29,7 @@ export default function Projects({ projects }) {
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex bg-white dark:bg-dark-card p-1.5 rounded-full border border-gray-100 dark:border-dark-border shadow-sm self-start md:self-end">
+          <div className="flex surface-card dark:bg-dark-card p-1.5 rounded-full border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm self-start md:self-end">
             {['all', 'ongoing', 'completed'].map((tab) => (
               <button
                 key={tab}
@@ -59,7 +59,7 @@ export default function Projects({ projects }) {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
                 key={project.id}
-                className="group bg-white dark:bg-dark-card rounded-3xl overflow-hidden border border-gray-100 dark:border-dark-border hover:border-accent/20 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full cursor-pointer"
+                className="group surface-card dark:bg-dark-card rounded-3xl overflow-hidden border border-primary/5 dark:border-dark-border hover:border-accent/30 shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
                 {/* Image & Status Badge */}
@@ -115,7 +115,7 @@ export default function Projects({ projects }) {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-display font-extrabold text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors duration-200 mb-3 line-clamp-1">
+                  <h3 className="text-xl font-display font-extrabold text-primary dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors duration-200 mb-3 line-clamp-1">
                     {project.title}
                   </h3>
 
@@ -123,7 +123,7 @@ export default function Projects({ projects }) {
                     {project.description}
                   </p>
 
-                  <div className="mt-auto pt-4 border-t border-gray-100 dark:border-dark-border flex items-center justify-between">
+                  <div className="mt-auto pt-4 border-t border-primary/5 dark:border-dark-border flex items-center justify-between">
                     <span className="text-xs font-semibold text-primary dark:text-accent group-hover:translate-x-1 transition-transform duration-300 flex items-center gap-1.5">
                       <Info size={14} />
                       Learn More
@@ -136,12 +136,12 @@ export default function Projects({ projects }) {
         </motion.div>
 
         {/* Expansion Section A: Project Lifecycle */}
-        <div className="mt-28 border-t border-gray-100 dark:border-dark-border/40 pt-20 mb-20">
+        <div className="mt-28 border-t border-primary/5 dark:border-dark-border/40 pt-20 mb-20">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
               Welfare Delivery Roadmap
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
               How We Deploy Projects
             </h3>
           </div>
@@ -159,9 +159,9 @@ export default function Projects({ projects }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.12 * idx }}
-                className="p-6 rounded-2xl bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border shadow-sm flex flex-col justify-between"
+                className="p-6 rounded-2xl surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm flex flex-col justify-between"
               >
-                <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-2 leading-snug">
+                <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-2 leading-snug">
                   {step.title}
                 </h4>
                 <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
@@ -173,13 +173,13 @@ export default function Projects({ projects }) {
         </div>
 
         {/* Expansion Section B: Regional Deployments */}
-        <div className="py-16 bg-gray-50 dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2rem] p-8 sm:p-10 mb-8 overflow-hidden relative">
+        <div className="py-16 bg-white dark:bg-dark-card/30 border border-primary/5 dark:border-dark-border/40 rounded-[2rem] p-8 sm:p-10 mb-8 overflow-hidden relative shadow-lg shadow-primary/5">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5 self-center">
               <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
                 Regional Impact
               </span>
-              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1 mb-4 leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1 mb-4 leading-tight">
                 Active Deployment Hubs
               </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
@@ -193,9 +193,9 @@ export default function Projects({ projects }) {
                 { city: "Galyat Highlands", stat: "500+ Blanket Bundles Delivered", desc: "Emergency heavy thermal wraps delivered to mountain homes during snowfall." },
                 { city: "Peshawar & Universities", stat: "4 Campus Chapters Active", desc: "Training 400+ student ambassadors to run blood camps and first-aid seminars." }
               ].map((hub, idx) => (
-                <div key={idx} className="p-5 rounded-xl bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border">
+                <div key={idx} className="p-5 rounded-xl surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border shadow-md shadow-primary/5 dark:shadow-none">
                   <h4 className="text-xs font-bold text-primary dark:text-accent uppercase tracking-wider mb-1">{hub.city}</h4>
-                  <p className="text-sm font-extrabold text-gray-900 dark:text-white mb-1">{hub.stat}</p>
+                  <p className="text-sm font-extrabold text-primary dark:text-white mb-1">{hub.stat}</p>
                   <p className="text-[11px] text-gray-500 dark:text-gray-400">{hub.desc}</p>
                 </div>
               ))}
@@ -219,7 +219,7 @@ export default function Projects({ projects }) {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 350 }}
-              className="bg-white dark:bg-dark-card rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-gray-100 dark:border-dark-border text-left relative"
+              className="bg-white dark:bg-dark-card rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-primary/5 dark:border-dark-border text-left relative"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -291,7 +291,7 @@ export default function Projects({ projects }) {
                 </p>
 
                 {/* Modal footer CTA */}
-                <div className="pt-6 border-t border-gray-100 dark:border-dark-border flex justify-end">
+                <div className="pt-6 border-t border-primary/5 dark:border-dark-border flex justify-end">
                   <button
                     onClick={() => {
                       setSelectedProject(null);

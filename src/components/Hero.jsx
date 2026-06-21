@@ -249,7 +249,7 @@ export default function Hero() {
             className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border-2 border-white/40 hover:border-accent hover:bg-accent/10 text-white hover:text-accent font-bold text-sm sm:text-base rounded-full transition-all duration-300 cursor-pointer group"
           >
             <Handshake size={18} className="group-hover:scale-125 transition-transform" />
-            <span>Partner With Us</span>
+            <span>Collaborate With Us</span>
           </motion.button>
         </motion.div>
       </motion.div>

@@ -39,7 +39,7 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
-          ? 'py-3 bg-white/80 dark:bg-dark-bg/85 backdrop-blur-md border-b border-gray-100 dark:border-dark-border shadow-sm'
+          ? 'py-3 bg-white/90 dark:bg-dark-bg/85 backdrop-blur-md border-b border-primary/5 dark:border-dark-border shadow-sm shadow-primary/5'
           : 'py-5 bg-transparent'
         }`}
     >
@@ -64,10 +64,10 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
                 <button
                   key={link.id}
                   onClick={() => handleScrollTo(link.id)}
-                  className={`text-sm font-semibold tracking-wide transition-colors duration-200 cursor-pointer ${
+                  className={`relative text-sm font-semibold tracking-wide transition-colors duration-200 cursor-pointer pb-0.5 ${
                     activeSection === link.id
-                      ? (isScrolled ? 'text-primary dark:text-accent font-bold' : 'text-accent font-bold')
-                      : (isScrolled ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent' : 'text-white/80 hover:text-white')
+                      ? (isScrolled ? 'text-primary dark:text-accent font-bold border-b-2 border-accent' : 'text-accent font-bold')
+                      : (isScrolled ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent border-b-2 border-transparent' : 'text-white/80 hover:text-white border-b-2 border-transparent')
                   }`}
                 >
                   {link.name}
@@ -89,7 +89,7 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
               onClick={() => setCurrentView(currentView === 'landing' ? 'admin' : 'landing')}
               className={`p-2 rounded-full transition-colors duration-200 ${
                 isScrolled
-                  ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-dark-card'
+                  ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent hover:bg-accent/5 dark:hover:bg-dark-card'
                   : 'text-white/80 hover:text-white hover:bg-white/10'
               }`}
               title={currentView === 'landing' ? 'Admin Panel Mockup' : 'Back to Website'}
@@ -102,7 +102,7 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
               onClick={toggleDarkMode}
               className={`p-2 rounded-full transition-all duration-300 relative overflow-hidden ${
                 isScrolled
-                  ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-dark-card'
+                  ? 'text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-accent hover:bg-accent/5 dark:hover:bg-dark-card'
                   : 'text-white/80 hover:text-white hover:bg-white/10'
               }`}
               aria-label="Toggle dark mode"

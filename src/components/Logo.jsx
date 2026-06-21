@@ -7,7 +7,7 @@ export default function Logo({ className = "h-12 w-12", showText = true, showSlo
         <img
           src="/logo.jpeg"
           alt="1 Nation Pakistan"
-          className="h-full w-auto object-contain rounded-full bg-white p-0.5 shadow-sm border border-gray-200 dark:border-white/10 transition-all duration-300"
+          className="h-full w-auto object-contain rounded-full bg-white dark:bg-dark-bg p-0.5 shadow-sm border border-primary/10 dark:border-white/10 transition-all duration-300"
         />
       </div>
 

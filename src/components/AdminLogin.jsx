@@ -27,14 +27,14 @@ export default function AdminLogin({ onLoginSuccess }) {
   };
 
   return (
-    <div className="min-h-[85vh] flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8 bg-gray-50 dark:bg-dark-bg/20 transition-colors duration-300">
+    <div className="min-h-[85vh] flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8 bg-light-bg dark:bg-dark-bg/20 transition-colors duration-300">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="w-full max-w-md"
       >
-        <div className="glass dark:glass-dark rounded-3xl p-8 sm:p-10 shadow-2xl relative border border-white/20 dark:border-white/5 overflow-hidden">
+        <div className="surface-card dark:glass-dark rounded-3xl p-8 sm:p-10 shadow-2xl relative border border-primary/5 dark:border-white/5 overflow-hidden">
           {/* Ambient Glows */}
           <div className="absolute -top-12 -left-12 w-32 h-32 bg-primary/10 dark:bg-accent/15 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute -bottom-16 -right-16 w-36 h-36 bg-accent/10 dark:bg-primary/20 rounded-full blur-3xl pointer-events-none" />
@@ -42,7 +42,7 @@ export default function AdminLogin({ onLoginSuccess }) {
           {/* Header */}
           <div className="flex flex-col items-center mb-8 text-center relative z-10">
             <Logo className="h-16 w-16 mb-4" />
-            <h2 className="text-2xl font-display font-extrabold text-gray-900 dark:text-white">
+            <h2 className="text-2xl font-display font-extrabold text-primary dark:text-white">
               Admin Portal Gate
             </h2>
             <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-2 uppercase tracking-widest">
@@ -85,7 +85,7 @@ export default function AdminLogin({ onLoginSuccess }) {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Enter username"
-                  className="block w-full pl-11 pr-4 py-3 bg-white/50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl text-sm font-semibold text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent focus:border-transparent transition-all"
+                  className="block w-full pl-11 pr-4 py-3 bg-white dark:bg-dark-bg/60 border border-primary/10 dark:border-dark-border rounded-xl text-sm font-semibold text-primary dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent dark:focus:ring-accent focus:border-transparent transition-all"
                 />
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function AdminLogin({ onLoginSuccess }) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter password"
-                  className="block w-full pl-11 pr-4 py-3 bg-white/50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl text-sm font-semibold text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent focus:border-transparent transition-all"
+                  className="block w-full pl-11 pr-4 py-3 bg-white dark:bg-dark-bg/60 border border-primary/10 dark:border-dark-border rounded-xl text-sm font-semibold text-primary dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent dark:focus:ring-accent focus:border-transparent transition-all"
                 />
               </div>
             </div>

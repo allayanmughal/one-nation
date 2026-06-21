@@ -66,7 +66,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
     }
   };
 
-  const whatsappLink = "https://wa.me/923435707812?text=Hello%20%231NationPakistan%2C%20I%E2%80%99m%20interested%20in%20becoming%20a%20Collaborator%2FPartner%20organization.%20Please%20share%20more%20details%20about%20partnership%20opportunities.";
+  const whatsappLink = "https://wa.me/923435707812?text=Hello%20%231NationPakistan%2C%20I%E2%80%99m%20interested%20in%20becoming%20a%20Collaborator%20organization.%20Please%20share%20more%20details%20about%20collaboration%20opportunities.";
 
   return (
     <section id="get-involved" className="py-24 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
@@ -76,7 +76,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
           <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
             Join the Movement
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-gray-900 dark:text-white mt-2 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-primary dark:text-white mt-2 mb-6">
             Two Paths. One Mission.
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
@@ -92,14 +92,14 @@ export default function GetInvolved({ onVolunteerRegister }) {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            className="bg-white dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm flex flex-col justify-between relative"
+            className="surface-card dark:bg-dark-card rounded-3xl p-8 border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm flex flex-col justify-between relative"
           >
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <span className="p-2 bg-primary/10 dark:bg-accent/10 rounded-xl text-primary dark:text-accent">
+                <span className="p-2 rounded-full bg-accent text-white shadow-sm shadow-accent/30 dark:rounded-xl dark:bg-accent/10 dark:text-accent">
                   <Heart size={22} className="fill-current" />
                 </span>
-                <h3 className="text-2xl font-display font-extrabold text-gray-900 dark:text-white">
+                <h3 className="text-2xl font-display font-extrabold text-primary dark:text-white">
                   Become a Volunteer
                 </h3>
               </div>
@@ -128,8 +128,8 @@ export default function GetInvolved({ onVolunteerRegister }) {
                         onBlur={(e) => handleBlur('fullName', e.target.value)}
                         className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.fullName
                             ? 'border-red-500 focus:border-red-500'
-                            : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                          } text-gray-900 dark:text-white`}
+                            : 'border-primary/10 dark:border-dark-border focus:border-accent dark:focus:border-accent'
+                          } text-primary dark:text-white`}
                         placeholder="Full Name"
                       />
                       {errors.fullName && (
@@ -148,8 +148,8 @@ export default function GetInvolved({ onVolunteerRegister }) {
                         onBlur={(e) => handleBlur('email', e.target.value)}
                         className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.email
                             ? 'border-red-500 focus:border-red-500'
-                            : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                          } text-gray-900 dark:text-white`}
+                            : 'border-primary/10 dark:border-dark-border focus:border-accent dark:focus:border-accent'
+                          } text-primary dark:text-white`}
                         placeholder="Email Address"
                       />
                       {errors.email && (
@@ -169,8 +169,8 @@ export default function GetInvolved({ onVolunteerRegister }) {
                           onBlur={(e) => handleBlur('phone', e.target.value)}
                           className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.phone
                               ? 'border-red-500 focus:border-red-500'
-                              : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                            } text-gray-900 dark:text-white`}
+                              : 'border-primary/10 dark:border-dark-border focus:border-accent dark:focus:border-accent'
+                            } text-primary dark:text-white`}
                           placeholder="Phone Number (e.g. 03001234567)"
                         />
                         {errors.phone && (
@@ -188,8 +188,8 @@ export default function GetInvolved({ onVolunteerRegister }) {
                           onBlur={(e) => handleBlur('city', e.target.value)}
                           className={`w-full px-4 py-3.5 bg-white dark:bg-dark-bg/60 border rounded-xl text-sm font-medium outline-none transition-all duration-300 ${errors.city
                               ? 'border-red-500 focus:border-red-500'
-                              : 'border-gray-200 dark:border-dark-border focus:border-primary dark:focus:border-accent'
-                            } text-gray-900 dark:text-white`}
+                              : 'border-primary/10 dark:border-dark-border focus:border-accent dark:focus:border-accent'
+                            } text-primary dark:text-white`}
                           placeholder="City / Location"
                         />
                         {errors.city && (
@@ -207,7 +207,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
                         onChange={handleChange}
                         onFocus={() => handleFocus('notes')}
                         onBlur={(e) => handleBlur('notes', e.target.value)}
-                        className="w-full px-4 py-3 bg-white dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl text-sm font-medium outline-none transition-all duration-300 focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white resize-none"
+                        className="w-full px-4 py-3 bg-white dark:bg-dark-bg/60 border border-primary/10 dark:border-dark-border rounded-xl text-sm font-medium outline-none transition-all duration-300 focus:border-accent dark:focus:border-accent text-primary dark:text-white resize-none"
                         placeholder="Additional Notes / Skills (Optional)"
                       />
                     </div>
@@ -242,11 +242,11 @@ export default function GetInvolved({ onVolunteerRegister }) {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", damping: 12, delay: 0.1 }}
-                      className="w-16 h-16 bg-primary/10 dark:bg-accent/15 rounded-full flex items-center justify-center text-primary dark:text-accent mb-6"
+                      className="w-16 h-16 bg-accent/15 dark:bg-accent/15 rounded-full flex items-center justify-center text-accent dark:text-accent mb-6"
                     >
                       <CheckCircle2 size={36} />
                     </motion.div>
-                    <h4 className="text-2xl font-display font-extrabold text-gray-900 dark:text-white mb-2">
+                    <h4 className="text-2xl font-display font-extrabold text-primary dark:text-white mb-2">
                       Application Submitted!
                     </h4>
                     <p className="text-sm text-gray-600 dark:text-gray-400 max-w-sm mb-6 leading-relaxed">
@@ -264,28 +264,28 @@ export default function GetInvolved({ onVolunteerRegister }) {
             </div>
           </motion.div>
 
-          {/* PATH B: Collaborator & Partner Path */}
+          {/* PATH B: Collaborator Path */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             className="flex flex-col justify-between gap-8"
           >
-            {/* Why Partner block */}
-            <div className="bg-white dark:bg-dark-card rounded-3xl p-8 border border-gray-100 dark:border-dark-border shadow-sm">
+            {/* Why Collaborate block */}
+            <div className="surface-card dark:bg-dark-card rounded-3xl p-8 border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm">
               <div className="flex items-center gap-3 mb-6">
-                <span className="p-2 bg-accent/10 rounded-xl text-accent-dark dark:text-accent">
+                <span className="p-2 rounded-full bg-accent text-white shadow-sm shadow-accent/30 dark:rounded-xl dark:bg-accent/10 dark:text-accent">
                   <Building size={22} />
                 </span>
-                <h3 className="text-2xl font-display font-extrabold text-gray-900 dark:text-white">
-                  Collaborator & Partnership Path
+                <h3 className="text-2xl font-display font-extrabold text-primary dark:text-white">
+                  Collaborator Path
                 </h3>
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                 We align with corporate CSR departments, NGOs, academic institutions, and administrative offices to run large-scale community distributions.
               </p>
 
-              {/* Partnership Bulletpoints */}
+              {/* Collaboration Bulletpoints */}
               <ul className="space-y-4">
                 {[
                   "Complete transparency and audited distribution tracking.",
@@ -302,9 +302,9 @@ export default function GetInvolved({ onVolunteerRegister }) {
             </div>
 
             {/* Instagram style Sponsored Ad Widget (WhatsApp CTA) */}
-            <div className="bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-3xl overflow-hidden shadow-md group relative">
+            <div className="surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border rounded-3xl overflow-hidden shadow-lg shadow-primary/8 dark:shadow-md group relative">
               {/* Ad Header */}
-              <div className="p-4 flex items-center justify-between border-b border-gray-100 dark:border-dark-border bg-gray-50/50 dark:bg-dark-bg/20">
+              <div className="p-4 flex items-center justify-between border-b border-primary/5 dark:border-dark-border bg-light-bg/80 dark:bg-dark-bg/20">
                 <div className="flex items-center gap-3">
                   {/* Miniature Logo Emblem */}
                   <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center p-0.5 border border-accent/30 overflow-hidden">
@@ -313,7 +313,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-gray-900 dark:text-white leading-tight">1nation_pk</h4>
+                    <h4 className="text-xs font-bold text-primary dark:text-white leading-tight">1nation_pk</h4>
                     <span className="text-[9px] font-semibold text-gray-500 uppercase tracking-widest leading-none">Sponsored</span>
                   </div>
                 </div>
@@ -337,15 +337,15 @@ export default function GetInvolved({ onVolunteerRegister }) {
               </div>
 
               {/* Ad Body Caption */}
-              <div className="p-5 border-b border-gray-100 dark:border-dark-border">
+              <div className="p-5 border-b border-primary/5 dark:border-dark-border">
                 <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                  <span className="font-bold text-gray-900 dark:text-white mr-1.5">1nation_pk</span>
+                  <span className="font-bold text-primary dark:text-white mr-1.5">1nation_pk</span>
                   Join forces with 1 Nation Pakistan. Let's align resources, organize medical drives, and deliver relief where it matters most. Click below to start an automated WhatsApp inquiry. 🤝✨ #BeANation #Collaboration
                 </p>
               </div>
 
               {/* CTA Ad Banner Button (WhatsApp Deep Link) */}
-              <div className="p-3 bg-gray-50 dark:bg-dark-bg/20">
+              <div className="p-3 bg-light-bg/80 dark:bg-dark-bg/20">
                 <a
                   href={whatsappLink}
                   target="_blank"
@@ -358,7 +358,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
                       <span className="absolute -inset-1.5 rounded-full bg-white/30 animate-ping" />
                       <Phone size={16} className="fill-current text-white relative z-10" />
                     </div>
-                    <span>Partner on WhatsApp</span>
+                    <span>Collaborate on WhatsApp</span>
                   </div>
                   <span className="text-[10px] font-extrabold px-2.5 py-1 rounded bg-white/20 uppercase tracking-widest">
                     Contact Us
@@ -371,12 +371,12 @@ export default function GetInvolved({ onVolunteerRegister }) {
         </div>
 
         {/* Expansion Section A: Volunteer Roadmap */}
-        <div className="mt-28 border-t border-gray-100 dark:border-dark-border/40 pt-20 mb-24">
+        <div className="mt-28 border-t border-primary/5 dark:border-dark-border/40 pt-20 mb-24">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
               Volunteer Journey
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
               Your Path to Impact
             </h3>
             <p className="text-xs text-gray-500 mt-2">
@@ -391,11 +391,11 @@ export default function GetInvolved({ onVolunteerRegister }) {
               { step: "03", title: "Skill Induction", desc: "Attend brief online training in relief logistics, public safety, and needs assessment protocols." },
               { step: "04", title: "Active Drive", desc: "Deploy in regional ration distributions, RO plant checks, or emergency relief operations." }
             ].map((item, idx) => (
-              <div key={idx} className="p-6 bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-2xl relative">
+              <div key={idx} className="p-6 bg-white dark:bg-dark-card border border-primary/5 dark:border-dark-border rounded-2xl relative">
                 <span className="text-3xl font-brand font-black text-primary/10 dark:text-accent/15 absolute top-6 right-6">
                   {item.step}
                 </span>
-                <h4 className="text-base font-display font-extrabold text-gray-900 dark:text-white mb-2 pr-10">
+                <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-2 pr-10">
                   {item.title}
                 </h4>
                 <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
@@ -407,13 +407,13 @@ export default function GetInvolved({ onVolunteerRegister }) {
         </div>
 
         {/* Expansion Section B: Volunteer FAQs Accordion */}
-        <div className="py-16 bg-white dark:bg-dark-card/30 border border-gray-100 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
+        <div className="py-16 bg-white dark:bg-dark-card/30 border border-primary/5 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
                 Got Questions?
               </span>
-              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900 dark:text-white mt-1">
+              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
                 Volunteer FAQs
               </h3>
             </div>
@@ -426,7 +426,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
                 },
                 {
                   q: "Is there any registration fee to join?",
-                  a: "No, volunteering with 1 Nation Pakistan is completely free. We do not charge registration or participation fees. Any relief supplies distributed are fully funded by sponsors and institutional CSR partnerships."
+                  a: "No, volunteering with 1 Nation Pakistan is completely free. We do not charge registration or participation fees. Any relief supplies distributed are fully funded by sponsors and institutional CSR collaborations."
                 },
                 {
                   q: "Do volunteers receive certificates of appreciation?",
@@ -439,11 +439,11 @@ export default function GetInvolved({ onVolunteerRegister }) {
               ].map((faq, idx) => (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border rounded-2xl overflow-hidden transition-all duration-300"
+                  className="bg-white dark:bg-dark-card border border-primary/5 dark:border-dark-border rounded-2xl overflow-hidden transition-all duration-300 shadow-md shadow-primary/5 dark:shadow-none"
                 >
                   <button
                     onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-                    className="w-full px-6 py-5 text-left font-display font-bold text-sm sm:text-base text-gray-900 dark:text-white flex items-center justify-between gap-4 outline-none focus:text-primary dark:focus:text-accent"
+                    className="w-full px-6 py-5 text-left font-display font-bold text-sm sm:text-base text-primary dark:text-white flex items-center justify-between gap-4 outline-none focus:text-primary dark:focus:text-accent"
                   >
                     <span>{faq.q}</span>
                     <span className="text-lg transition-transform duration-300" style={{ transform: activeFaq === idx ? 'rotate(45deg)' : 'none' }}>
@@ -458,7 +458,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.25 }}
                       >
-                        <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-gray-500 dark:text-gray-400 border-t border-gray-50 dark:border-dark-border/40 leading-relaxed font-medium">
+                        <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-gray-500 dark:text-gray-400 border-t border-primary/5 dark:border-dark-border/40 leading-relaxed font-medium">
                           {faq.a}
                         </div>
                       </motion.div>

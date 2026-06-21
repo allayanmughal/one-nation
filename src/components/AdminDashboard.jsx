@@ -120,14 +120,14 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
   }, [activeTab]);
 
   return (
-    <div className="pt-20 min-h-screen bg-gray-100 dark:bg-dark-bg text-gray-800 dark:text-gray-100 transition-colors duration-300">
+    <div className="pt-20 min-h-screen bg-light-bg dark:bg-dark-bg text-gray-800 dark:text-gray-100 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Dashboard Frame */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
           {/* LEFT COLUMN: Sidebar Navigation */}
-          <div className="lg:col-span-3 bg-white dark:bg-dark-card rounded-3xl border border-gray-200 dark:border-dark-border p-6 shadow-sm">
+          <div className="lg:col-span-3 surface-card dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border p-6 shadow-lg shadow-primary/8 dark:shadow-sm">
             <h2 className="text-lg font-display font-extrabold text-primary dark:text-accent mb-6 uppercase tracking-wider">
               Control Panel
             </h2>
@@ -138,7 +138,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                 onClick={() => setActiveTab('projects')}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'projects'
                     ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
-                    : 'hover:bg-gray-50 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
+                    : 'hover:bg-accent/5 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
                   }`}
               >
                 <div className="flex items-center gap-3">
@@ -147,7 +147,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                 </div>
                 <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${activeTab === 'projects'
                     ? 'bg-white/20 text-white dark:bg-primary/20 dark:text-primary'
-                    : 'bg-gray-100 dark:bg-dark-bg text-gray-500'
+                    : 'bg-accent/10 dark:bg-dark-bg text-accent-dark dark:text-gray-500'
                   }`}>
                   {projects.length}
                 </span>
@@ -158,7 +158,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                 onClick={() => setActiveTab('volunteers')}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'volunteers'
                     ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
-                    : 'hover:bg-gray-50 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
+                    : 'hover:bg-accent/5 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
                   }`}
               >
                 <div className="flex items-center gap-3">
@@ -167,7 +167,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                 </div>
                 <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${activeTab === 'volunteers'
                     ? 'bg-white/20 text-white dark:bg-primary/20 dark:text-primary'
-                    : 'bg-gray-100 dark:bg-dark-bg text-gray-500'
+                    : 'bg-accent/10 dark:bg-dark-bg text-accent-dark dark:text-gray-500'
                   }`}>
                   {volunteers.length}
                 </span>
@@ -178,7 +178,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                 onClick={() => setActiveTab('inquiries')}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'inquiries'
                     ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
-                    : 'hover:bg-gray-50 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
+                    : 'hover:bg-accent/5 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
                   }`}
               >
                 <div className="flex items-center gap-3">
@@ -187,7 +187,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                 </div>
                 <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${activeTab === 'inquiries'
                     ? 'bg-white/20 text-white dark:bg-primary/20 dark:text-primary'
-                    : 'bg-gray-100 dark:bg-dark-bg text-gray-500'
+                    : 'bg-accent/10 dark:bg-dark-bg text-accent-dark dark:text-gray-500'
                   }`}>
                   {inquiries.length}
                 </span>
@@ -198,7 +198,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                 onClick={() => setActiveTab('newsletters')}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'newsletters'
                     ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
-                    : 'hover:bg-gray-50 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
+                    : 'hover:bg-accent/5 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
                   }`}
               >
                 <div className="flex items-center gap-3">
@@ -207,14 +207,14 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                 </div>
                 <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${activeTab === 'newsletters'
                     ? 'bg-white/20 text-white dark:bg-primary/20 dark:text-primary'
-                    : 'bg-gray-100 dark:bg-dark-bg text-gray-500'
+                    : 'bg-accent/10 dark:bg-dark-bg text-accent-dark dark:text-gray-500'
                   }`}>
                   {newsletters.length}
                 </span>
               </button>
             </nav>
 
-            <hr className="border-gray-200 dark:border-dark-border mb-6" />
+            <hr className="border-primary/5 dark:border-dark-border mb-6" />
 
             <button
               onClick={onLogout}
@@ -233,12 +233,12 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
           </div>
 
           {/* RIGHT COLUMN: Viewport Area */}
-          <div className="lg:col-span-9 bg-white dark:bg-dark-card rounded-3xl border border-gray-200 dark:border-dark-border p-6 sm:p-8 shadow-sm min-h-[500px]">
+          <div className="lg:col-span-9 surface-card dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border p-6 sm:p-8 shadow-lg shadow-primary/8 dark:shadow-sm min-h-[500px]">
 
             {/* SEARCH & TITLE BANNER */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-100 dark:border-dark-border pb-6 mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-primary/5 dark:border-dark-border pb-6 mb-6">
               <div>
-                <h3 className="text-xl sm:text-2xl font-display font-extrabold text-gray-900 dark:text-white capitalize">
+                <h3 className="text-xl sm:text-2xl font-display font-extrabold text-primary dark:text-white capitalize">
                   {activeTab === 'projects' ? 'Welfare Initiatives Portal' :
                     activeTab === 'volunteers' ? 'Registered Volunteer Assets' :
                       activeTab === 'inquiries' ? 'Direct Contact Inquiries' :
@@ -269,7 +269,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search records..."
-                    className="w-full pl-9 pr-4 py-2 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl text-xs font-semibold outline-none focus:border-primary dark:focus:border-accent"
+                    className="w-full pl-9 pr-4 py-2 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl text-xs font-semibold outline-none focus:border-primary dark:focus:border-accent"
                   />
                 </div>
               )}
@@ -282,7 +282,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm border-collapse">
                   <thead>
-                    <tr className="border-b border-gray-100 dark:border-dark-border text-gray-500 font-bold text-xs uppercase tracking-wider">
+                    <tr className="border-b border-primary/5 dark:border-dark-border text-gray-500 font-bold text-xs uppercase tracking-wider">
                       <th className="py-3 px-4">Title & Details</th>
                       <th className="py-3 px-4">Location</th>
                       <th className="py-3 px-4">Status</th>
@@ -299,7 +299,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                             className="w-12 h-12 object-cover rounded-lg flex-shrink-0"
                           />
                           <div>
-                            <h4 className="font-extrabold text-gray-900 dark:text-white line-clamp-1">{project.title}</h4>
+                            <h4 className="font-extrabold text-primary dark:text-white line-clamp-1">{project.title}</h4>
                             <p className="text-xs text-primary dark:text-accent font-bold mt-0.5">{project.category || 'Welfare'}</p>
                             <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">{project.description}</p>
                           </div>
@@ -345,7 +345,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm border-collapse">
                   <thead>
-                    <tr className="border-b border-gray-100 dark:border-dark-border text-gray-500 font-bold text-xs uppercase tracking-wider">
+                    <tr className="border-b border-primary/5 dark:border-dark-border text-gray-500 font-bold text-xs uppercase tracking-wider">
                       <th className="py-3 px-4">Name</th>
                       <th className="py-3 px-4">Contact Contact</th>
                       <th className="py-3 px-4">City</th>
@@ -361,7 +361,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                       )
                       .map((volunteer, idx) => (
                         <tr key={idx} className="border-b border-gray-50 dark:border-dark-border hover:bg-gray-50/50 dark:hover:bg-dark-bg/20 transition-colors">
-                          <td className="py-4 px-4 font-extrabold text-gray-900 dark:text-white">
+                          <td className="py-4 px-4 font-extrabold text-primary dark:text-white">
                             {volunteer.fullName}
                           </td>
                           <td className="py-4 px-4 font-medium text-xs text-gray-600 dark:text-gray-400 space-y-0.5">
@@ -402,7 +402,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm border-collapse">
                   <thead>
-                    <tr className="border-b border-gray-100 dark:border-dark-border text-gray-500 font-bold text-xs uppercase tracking-wider">
+                    <tr className="border-b border-primary/5 dark:border-dark-border text-gray-500 font-bold text-xs uppercase tracking-wider">
                       <th className="py-3 px-4">From</th>
                       <th className="py-3 px-4">Subject</th>
                       <th className="py-3 px-4">Message</th>
@@ -417,7 +417,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                       )
                       .map((inquiry, idx) => (
                         <tr key={idx} className="border-b border-gray-50 dark:border-dark-border hover:bg-gray-50/50 dark:hover:bg-dark-bg/20 transition-colors">
-                          <td className="py-4 px-4 font-extrabold text-gray-900 dark:text-white">
+                          <td className="py-4 px-4 font-extrabold text-primary dark:text-white">
                             <p>{inquiry.name}</p>
                             <span className="text-[10px] text-gray-500 font-medium">{inquiry.email}</span>
                           </td>
@@ -454,7 +454,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               <div className="max-w-md">
                 <table className="w-full text-left text-sm border-collapse">
                   <thead>
-                    <tr className="border-b border-gray-100 dark:border-dark-border text-gray-500 font-bold text-xs uppercase tracking-wider">
+                    <tr className="border-b border-primary/5 dark:border-dark-border text-gray-500 font-bold text-xs uppercase tracking-wider">
                       <th className="py-3 px-4">Subscriber Email</th>
                       <th className="py-3 px-4 text-right">Action</th>
                     </tr>
@@ -514,7 +514,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-white dark:bg-dark-card rounded-3xl border border-gray-200 dark:border-dark-border max-w-lg w-full p-6 sm:p-8 shadow-2xl relative text-left"
+              className="bg-white dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border max-w-lg w-full p-6 sm:p-8 shadow-2xl relative text-left"
             >
               <button
                 onClick={() => setIsProjectModalOpen(false)}
@@ -523,7 +523,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                 <X size={20} />
               </button>
 
-              <h4 className="text-xl font-display font-extrabold text-gray-900 dark:text-white mb-6">
+              <h4 className="text-xl font-display font-extrabold text-primary dark:text-white mb-6">
                 {editingProject ? 'Edit Project Details' : 'Add New Welfare Project'}
               </h4>
 
@@ -538,7 +538,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                     required
                     value={projectForm.title}
                     onChange={handleProjectFormChange}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
                   />
                 </div>
 
@@ -552,7 +552,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                       required
                       value={projectForm.location}
                       onChange={handleProjectFormChange}
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
                     />
                   </div>
                   <div>
@@ -562,7 +562,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                       name="date"
                       value={projectForm.date}
                       onChange={handleProjectFormChange}
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
                     />
                   </div>
                 </div>
@@ -574,7 +574,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                       name="status"
                       value={projectForm.status}
                       onChange={handleProjectFormChange}
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
                     >
                       <option value="Ongoing">Ongoing</option>
                       <option value="Completed">Completed</option>
@@ -586,7 +586,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                       name="category"
                       value={projectForm.category}
                       onChange={handleProjectFormChange}
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
                     >
                       <option value="Free Medical Camps">Free Medical Camps</option>
                       <option value="Project Haya">Project Haya</option>
@@ -605,7 +605,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                     name="image"
                     value={projectForm.image}
                     onChange={handleProjectFormChange}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
                   />
                 </div>
 
@@ -618,7 +618,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                     required
                     value={projectForm.description}
                     onChange={handleProjectFormChange}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
                   />
                 </div>
 
@@ -630,7 +630,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                     rows="3"
                     value={projectForm.details}
                     onChange={handleProjectFormChange}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white resize-none"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white resize-none"
                   />
                 </div>
 
