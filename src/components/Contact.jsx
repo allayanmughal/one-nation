@@ -58,7 +58,7 @@ export default function Contact({ onContactSubmit }) {
           <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
             Get In Touch
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-accent dark:text-white mt-2 mb-6 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-black dark:text-white mt-2 mb-6">
             Contact 1 Nation Pakistan
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
@@ -151,7 +151,7 @@ export default function Contact({ onContactSubmit }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <h3 className="text-2xl font-display font-extrabold text-accent dark:text-white mb-2">
+                  <h3 className="text-2xl font-display font-extrabold text-black dark:text-white mb-2">
                     Send a Message
                   </h3>
 
@@ -282,7 +282,7 @@ export default function Contact({ onContactSubmit }) {
         {/* Expansion Section A: Regional Coordinator Directory */}
         <div className="mt-28 border-t border-primary/5 dark:border-dark-border/40 section-divider pt-20 mb-20">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Local Coordinates
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
@@ -298,7 +298,7 @@ export default function Contact({ onContactSubmit }) {
               { city: "Peshawar Chapter", lead: "Sana Bangash", email: "peshawar@1nation.pk", desc: "Coordinates university blood camps and youth leadership seminars." }
             ].map((hub, idx) => (
               <div key={idx} className="p-6 surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border rounded-2xl transition-all hover:shadow-xl hover:border-accent/30">
-                <span className="text-[10px] font-extrabold text-primary dark:text-accent uppercase tracking-wider block mb-1">
+                <span className="text-[10px] font-extrabold text-accent dark:text-accent uppercase tracking-wider block mb-1">
                   {hub.city}
                 </span>
                 <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-2">
@@ -309,7 +309,7 @@ export default function Contact({ onContactSubmit }) {
                 </p>
                 <a
                   href={`mailto:${hub.email}`}
-                  className="text-xs font-bold text-primary dark:text-accent hover:underline block"
+                  className="text-xs font-bold text-accent dark:text-accent hover:underline block"
                 >
                   {hub.email}
                 </a>
@@ -321,14 +321,14 @@ export default function Contact({ onContactSubmit }) {
         {/* Expansion Section B: CSR & Proposal Guidelines */}
         <div className="py-16 surface-card dark:bg-dark-card/30 border border-primary/5 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden shadow-lg shadow-primary/8 dark:shadow-none">
           <div className="max-w-3xl mx-auto text-center relative z-10">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Institutional Collaborations
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1 mb-4 leading-tight">
               CSR & Proposal Guidelines
             </h3>
             <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
-              For corporations, foundations, or governmental bureaus interested in co-sponsoring clean water plants, ration drives, or establishing student chapters, please contact our executive office directly at <a href="mailto:partnerships@1nation.pk" className="font-bold text-primary dark:text-accent hover:underline">partnerships@1nation.pk</a>. We provide fully audited impact reports, GPS coordinates of deployments, and media documentation.
+              For corporations, foundations, or governmental bureaus interested in co-sponsoring clean water plants, ration drives, or establishing student chapters, please contact our executive office directly at <a href="mailto:partnerships@1nation.pk" className="font-bold text-accent dark:text-accent hover:underline">partnerships@1nation.pk</a>. We provide fully audited impact reports, GPS coordinates of deployments, and media documentation.
             </p>
           </div>
         </div>

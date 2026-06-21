@@ -109,7 +109,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-accent dark:text-white mt-2 mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-black dark:text-white mt-2 mb-6"
             >
               Uniting Hearts for a Stronger, More Prosperous Pakistan
             </motion.h2>
@@ -134,7 +134,7 @@ export default function About() {
                 transition={{ delay: 0.1 * idx }}
                 className="surface-card dark:bg-dark-card p-6 rounded-2xl border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-shadow"
               >
-                <div className="text-3xl sm:text-4xl font-brand font-bold text-accent dark:text-accent mb-2">
+                <div className="text-3xl sm:text-4xl font-brand font-bold text-black dark:text-white mb-2">
                   <CountUp to={stat.count} suffix={stat.suffix} />
                 </div>
                 <div className="text-xs sm:text-sm font-semibold text-gray-500 dark:text-gray-400">
@@ -172,7 +172,7 @@ export default function About() {
                 <span className="text-xs font-bold text-accent dark:text-accent uppercase tracking-widest mb-4 block">
                   Phase {idx + 1}
                 </span>
-                <h4 className="text-xl font-display font-extrabold text-accent dark:text-white mb-3">
+                <h4 className="text-xl font-display font-extrabold text-black dark:text-white mb-3">
                   {milestone.title}
                 </h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
@@ -191,7 +191,7 @@ export default function About() {
               <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
                 Transparency & Governance
               </span>
-              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-accent dark:text-white mt-1 mb-4 leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-black dark:text-white mt-1 mb-4 leading-tight">
                 Our Core Promises
               </h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
@@ -228,7 +228,7 @@ export default function About() {
         {/* Leadership Section */}
         <div>
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Our Leadership
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">

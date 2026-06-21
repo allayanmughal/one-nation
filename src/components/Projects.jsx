@@ -20,7 +20,7 @@ export default function Projects({ projects }) {
             <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Our Initiatives
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-accent dark:text-white mt-2 dark:text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-black dark:text-white mt-2">
               Transforming Commmunities
             </h2>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-4">
@@ -138,7 +138,7 @@ export default function Projects({ projects }) {
         {/* Expansion Section A: Project Lifecycle */}
         <div className="mt-28 border-t border-primary/5 dark:border-dark-border/40 pt-20 mb-20">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Welfare Delivery Roadmap
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
@@ -176,7 +176,7 @@ export default function Projects({ projects }) {
         <div className="py-16 bg-white dark:bg-dark-card/30 border border-primary/5 dark:border-dark-border/40 rounded-[2rem] p-8 sm:p-10 mb-8 overflow-hidden relative shadow-lg shadow-primary/5">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5 self-center">
-              <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+              <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
                 Regional Impact
               </span>
               <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1 mb-4 leading-tight">
@@ -194,7 +194,7 @@ export default function Projects({ projects }) {
                 { city: "Peshawar & Universities", stat: "4 Campus Chapters Active", desc: "Training 400+ student ambassadors to run blood camps and first-aid seminars." }
               ].map((hub, idx) => (
                 <div key={idx} className="p-5 rounded-xl surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border shadow-md shadow-primary/5 dark:shadow-none">
-                  <h4 className="text-xs font-bold text-primary dark:text-accent uppercase tracking-wider mb-1">{hub.city}</h4>
+                  <h4 className="text-xs font-bold text-accent dark:text-accent uppercase tracking-wider mb-1">{hub.city}</h4>
                   <p className="text-sm font-extrabold text-primary dark:text-white mb-1">{hub.stat}</p>
                   <p className="text-[11px] text-gray-500 dark:text-gray-400">{hub.desc}</p>
                 </div>

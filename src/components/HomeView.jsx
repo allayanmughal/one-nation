@@ -82,53 +82,6 @@ function InteractiveTiltCard({ children, className = "" }) {
   );
 }
 
-// Sub-Component 2: Magnetic 3D Link Card (Quick Links)
-function MagneticLink({ children, href, className = "" }) {
-  const [coords, setCoords] = useState({ x: 0, y: 0, rotateX: 0, rotateY: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const normX = (mouseX / width) - 0.5;
-    const normY = (mouseY / height) - 0.5;
-
-    setCoords({
-      x: normX * 16,
-      y: normY * 16,
-      rotateX: -normY * 14,
-      rotateY: normX * 14
-    });
-  };
-
-  return (
-    <motion.a
-      href={href}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        setCoords({ x: 0, y: 0, rotateX: 0, rotateY: 0 });
-      }}
-      animate={{
-        x: coords.x,
-        y: coords.y,
-        rotateX: coords.rotateX,
-        rotateY: coords.rotateY,
-        scale: isHovered ? 1.04 : 1
-      }}
-      transition={{ type: "spring", stiffness: 120, damping: 18 }}
-      style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
-      className={`group block shadow-sm hover:shadow-md transition-shadow duration-300 ${className}`}
-    >
-      {children}
-    </motion.a>
-  );
-}
 
 // Sub-Component 3: 3D Parallax Depth Card (Featured Projects)
 function ParallaxProjectCard({ project, onClick }) {
@@ -239,7 +192,7 @@ function PatronShowcase() {
             {/* Our Focus Areas */}
             <div className="bg-white dark:bg-dark-card rounded-2xl p-6 sm:p-8 shadow-lg shadow-primary/8 border border-primary/5 dark:border-dark-border surface-card">
               <div className="mb-6 sm:mb-8">
-                <h4 className="text-lg sm:text-xl font-display font-extrabold text-accent dark:text-accent">
+                <h4 className="text-lg sm:text-xl font-display font-extrabold text-black dark:text-white">
                   Our Focus Areas
                 </h4>
                 <div className="h-0.5 w-12 bg-accent mt-2 rounded-full" />
@@ -409,37 +362,6 @@ export default function HomeView({ projects }) {
     }
   ];
 
-  const quickLinks = [
-    {
-      title: "About Our Movement",
-      description: "Learn about speaker Mushtaq Ahmed Ghani, Harmain Ghani, and our welfare history.",
-      hash: "#/about",
-      icon: Compass,
-      color: "from-emerald-500/10 to-emerald-600/10 hover:border-emerald-500/30 text-emerald-700 dark:text-emerald-400"
-    },
-    {
-      title: "Our Mission Pillars",
-      description: "Understand the four foundational pillars that guide our charity and cohesion efforts.",
-      hash: "#/mission",
-      icon: Flag,
-      color: "from-amber-500/10 to-amber-600/10 hover:border-amber-500/30 text-amber-700 dark:text-amber-400"
-    },
-    {
-      title: "Become a Volunteer",
-      description: "Register to join our regional chapters and assist in field distributions.",
-      hash: "#/get-involved",
-      icon: HeartHandshake,
-      color: "from-blue-500/10 to-blue-600/10 hover:border-blue-500/30 text-blue-700 dark:text-blue-400"
-    },
-    {
-      title: "Get In Touch",
-      description: "Send direct inquiries, CSR alignment proposals, or check our map location.",
-      hash: "#/contact",
-      icon: MessageSquare,
-      color: "from-purple-500/10 to-purple-600/10 hover:border-purple-500/30 text-purple-700 dark:text-purple-400"
-    }
-  ];
-
   return (
     <div className="relative overflow-hidden bg-light-bg dark:bg-dark-bg text-gray-800 dark:text-gray-100 transition-colors duration-300">
       {/* 1. Hero Banner with Parallax */}
@@ -451,7 +373,7 @@ export default function HomeView({ projects }) {
           <InteractiveTiltCard className="p-8 sm:p-12 rounded-2xl surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-sm">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-8">
-                <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase block mb-3">
+                <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase block mb-3">
                   Our Movement Tagline
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-primary dark:text-white leading-tight">
@@ -479,7 +401,7 @@ export default function HomeView({ projects }) {
       <section className="py-24 bg-light-bg dark:bg-dark-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Our Values in Action
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
@@ -521,7 +443,7 @@ export default function HomeView({ projects }) {
       <section className="py-24 bg-light-bg dark:bg-dark-bg border-t border-primary/5 dark:border-dark-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Ongoing Initiatives
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
@@ -556,42 +478,6 @@ export default function HomeView({ projects }) {
       {/* 5.5 Brand Positioning Statement Quote */}
       <BrandPositioningQuote />
 
-      {/* 6. Quick Links Navigation Grid (Magnetic Cards) */}
-      <section className="py-20 bg-light-bg dark:bg-dark-bg border-t border-primary/5 dark:border-dark-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
-              Explore More
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
-              Quick Navigation Channels
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {quickLinks.map((link, idx) => {
-              const IconComponent = link.icon;
-              return (
-                <MagneticLink
-                  key={idx}
-                  href={link.hash}
-                  className={`p-6 rounded-2xl bg-white dark:bg-dark-card border border-primary/5 dark:border-dark-border/40 shadow-md shadow-primary/5 ${link.color}`}
-                >
-                  <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center mb-4 shadow-sm shadow-accent/30 text-white">
-                    <IconComponent size={22} className="text-white group-hover:scale-110 transition-transform" />
-                  </div>
-                  <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-2 transition-colors">
-                    {link.title}
-                  </h4>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
-                    {link.description}
-                  </p>
-                </MagneticLink>
-              );
-            })}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

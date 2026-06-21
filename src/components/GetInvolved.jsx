@@ -76,7 +76,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
           <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
             Join the Movement
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-accent dark:text-white mt-2 mb-6 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-black dark:text-white mt-2 mb-6">
             Two Paths. One Mission.
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
@@ -376,7 +376,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
             <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Volunteer Journey
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-accent dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-black dark:text-white mt-1">
               Your Path to Impact
             </h3>
             <p className="text-xs text-gray-500 mt-2">
@@ -413,7 +413,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
               <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
                 Got Questions?
               </span>
-              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-accent dark:text-white mt-1">
+              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-black dark:text-white mt-1">
                 Volunteer FAQs
               </h3>
             </div>

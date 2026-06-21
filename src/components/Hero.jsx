@@ -242,7 +242,7 @@ export default function Hero() {
           </motion.button>
 
           <motion.button
-            whileHover={{ scale: 1.08, rotateX: -12, rotateY: 12, z: 40 }}
+            whileHover={{ scale: 1.08, rotateX: 12, rotateY: -12, z: 40 }}
             whileTap={{ scale: 0.92 }}
             onClick={() => window.location.hash = '#/contact'}
             style={{ transformStyle: 'preserve-3d' }}

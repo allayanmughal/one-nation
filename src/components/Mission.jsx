@@ -81,7 +81,7 @@ export default function Mission() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-bold tracking-widest text-black dark:text-white uppercase"
+            className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase"
           >
             Our Mission Pillars
           </motion.span>
@@ -152,7 +152,7 @@ export default function Mission() {
             <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               How We Work
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-accent dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-black dark:text-white mt-1">
               Our Distribution Pipeline
             </h3>
             <p className="text-xs sm:text-sm text-gray-500 mt-2">
@@ -170,7 +170,7 @@ export default function Mission() {
                 transition={{ delay: 0.12 * idx }}
                 className="surface-card dark:bg-dark-card border border-primary/5 dark:border-dark-border p-6 rounded-2xl relative shadow-lg shadow-primary/8 dark:shadow-sm"
               >
-                <span className="text-xs font-bold text-primary dark:text-accent font-brand tracking-widest block mb-2">
+                <span className="text-xs font-bold text-accent dark:text-accent font-brand tracking-widest block mb-2">
                   STAGE {stage.step}
                 </span>
                 <h4 className="text-base font-display font-extrabold text-primary dark:text-white mb-2 leading-tight">
