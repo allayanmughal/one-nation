@@ -81,7 +81,7 @@ export default function Mission() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase"
+            className="text-xs font-bold tracking-widest text-black dark:text-white uppercase"
           >
             Our Mission Pillars
           </motion.span>
@@ -90,7 +90,7 @@ export default function Mission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-accent dark:text-white mt-2 mb-6 dark:text-white"
+            className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-black dark:text-white mt-2 mb-6"
           >
             The Foundations of Our Impact
           </motion.h2>
@@ -121,11 +121,11 @@ export default function Mission() {
                 className="group relative surface-card dark:bg-dark-card rounded-3xl overflow-hidden border border-primary/5 dark:border-dark-border hover:border-accent/40 dark:hover:border-accent/40 shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full"
               >
                 {/* Image Container */}
-                <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                <div className="relative h-64 sm:h-56 md:h-48 overflow-hidden bg-gray-100 dark:bg-gray-900">
                   <img
                     src={pillar.image}
                     alt={pillar.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
