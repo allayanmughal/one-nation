@@ -143,24 +143,24 @@ export default function Hero() {
         </div>
 
         {/* Main Animated Headline with drop shadow filters for maximum readability */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold text-white tracking-tight leading-none mb-6" style={{ transform: "translateZ(60px)" }}>
+        <h1 className="text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight leading-none mb-6" style={{ transform: "translateZ(60px)" }}>
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
-            className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gray-200"
+            className="block text-white"
             style={{ filter: 'drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.95))' }}
           >
-            Building One Nation.
+            ONE NATION
           </motion.span>
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-light to-accent text-glow-accent"
+            className="block mt-2 text-accent text-glow-accent"
             style={{ filter: 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.98))' }}
           >
-            One Community at a Time.
+            PAKISTAN
           </motion.span>
         </h1>
 

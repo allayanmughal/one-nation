@@ -54,7 +54,7 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
             }}
             className="cursor-pointer"
           >
-            <Logo className="h-11 w-11 sm:h-12 sm:w-12" lightModeColor={isScrolled ? "text-primary" : "text-white"} />
+            <Logo className="h-11 w-11 sm:h-12 sm:w-12" showSlogan={false} lightModeColor={isScrolled ? "text-primary" : "text-white"} />
           </a>
 
           {/* Desktop Navigation Links */}

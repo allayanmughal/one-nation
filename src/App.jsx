@@ -46,6 +46,7 @@ const SEED_PROJECTS = [
     location: "Abbottabad & Mansehra",
     date: "March 2026",
     status: "Completed",
+    category: "Project Haya",
     description: "Provided essential food rations and grocery supplies to over 1,500 families affected by inflation.",
     image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80",
     details: "The ration packs were distributed transparently across two distribution points in KP. Each pack contained flour, ghee, sugar, pulses, tea, and dry milk. Volunteers monitored the list via local coordinators."
@@ -56,6 +57,7 @@ const SEED_PROJECTS = [
     location: "Haripur Rural Districts",
     date: "June 2026",
     status: "Ongoing",
+    category: "Nature Rehabilitation",
     description: "Installing reverse osmosis water filtration plants to supply clean drinking water to 5,000 residents.",
     image: "https://images.unsplash.com/photo-1541944743827-e04aa6427c33?auto=format&fit=crop&w=800&q=80",
     details: "This project addresses critical arsenic and fluoride contamination in drinking water sources in Haripur's outskirts. Construction is complete, and we are currently assembling the filtration membranes and testing purity."
@@ -66,6 +68,7 @@ const SEED_PROJECTS = [
     location: "Galyat & Kaghan Valley",
     date: "January 2026",
     status: "Completed",
+    category: "Special Nation",
     description: "Distributed heavy blankets, warm clothing, and fuel supplies to high-altitude mountain communities.",
     image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
     details: "High-altitude winter conditions severely impact low-income families. Our team coordinated with regional volunteers to distribute 500+ blanket packs, fleece jackets, and fuel logs to the Galyat region."
@@ -76,6 +79,7 @@ const SEED_PROJECTS = [
     location: "Peshawar Universities",
     date: "October 2026",
     status: "Ongoing",
+    category: "One Nation Explorers",
     description: "Creating advocacy chapters to train student leaders in disaster relief, first aid, and community service.",
     image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
     details: "Empowering youth is core to 1 Nation. These chapters conduct emergency response workshops, blood donation camps, and local fundraising drives, mobilizing over 400 ambassadors in three major universities."
@@ -86,9 +90,21 @@ const SEED_PROJECTS = [
     location: "KP Tribal Districts",
     date: "November 2026",
     status: "Ongoing",
+    category: "Free Medical Camps",
     description: "Equipping specialized medical vans with basic diagnostics and medicines to travel to remote villages.",
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
     details: "Rural communities in remote valleys lack clinics. Mobile Health Clinic vans will operate weekly, staffed with volunteer physicians, delivering essential maternal care, pediatric checkups, and free medicines."
+  },
+  {
+    id: 6,
+    title: "IT Training Skills Lab",
+    location: "Havelian Skills Center",
+    date: "December 2026",
+    status: "Ongoing",
+    category: "Learn2Earn",
+    description: "Establishing a digital skills training lab to teach sewing, basic coding, and design to local underprivileged youth.",
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
+    details: "Learn2Earn aims to foster self-reliance. This lab will offer free certified computer courses, typing speed classes, graphic design, and basic freelancing tutorials to empower young boys and girls."
   }
 ];
 

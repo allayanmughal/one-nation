@@ -16,6 +16,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
     location: '',
     date: '',
     status: 'Ongoing',
+    category: 'Free Medical Camps',
     image: ''
   });
 
@@ -35,6 +36,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
       location: '',
       date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' }),
       status: 'Ongoing',
+      category: 'Free Medical Camps',
       image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80'
     });
     setIsProjectModalOpen(true);
@@ -50,6 +52,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
       location: project.location,
       date: project.date,
       status: project.status,
+      category: project.category || 'Free Medical Camps',
       image: project.image
     });
     setIsProjectModalOpen(true);
@@ -297,6 +300,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                           />
                           <div>
                             <h4 className="font-extrabold text-gray-900 dark:text-white line-clamp-1">{project.title}</h4>
+                            <p className="text-xs text-primary dark:text-accent font-bold mt-0.5">{project.category || 'Welfare'}</p>
                             <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">{project.description}</p>
                           </div>
                         </td>
@@ -577,15 +581,32 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs text-gray-500 mb-1">Image URL</label>
-                    <input
-                      type="url"
-                      name="image"
-                      value={projectForm.image}
+                    <label className="block text-xs text-gray-500 mb-1">Campaign Category</label>
+                    <select
+                      name="category"
+                      value={projectForm.category}
                       onChange={handleProjectFormChange}
                       className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white"
-                    />
+                    >
+                      <option value="Free Medical Camps">Free Medical Camps</option>
+                      <option value="Project Haya">Project Haya</option>
+                      <option value="Nature Rehabilitation">Nature Rehabilitation</option>
+                      <option value="Special Nation">Special Nation</option>
+                      <option value="Learn2Earn">Learn2Earn</option>
+                      <option value="One Nation Explorers">One Nation Explorers</option>
+                    </select>
                   </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs text-gray-500 mb-1">Image URL</label>
+                  <input
+                    type="url"
+                    name="image"
+                    value={projectForm.image}
+                    onChange={handleProjectFormChange}
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-gray-200 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-gray-900 dark:text-white"
+                  />
                 </div>
 
                 {/* Brief description */}

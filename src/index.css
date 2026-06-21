@@ -1,28 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-sans: 'Poppins', sans-serif;
   --font-display: 'Montserrat', sans-serif;
-  --font-brand: 'Space Grotesk', sans-serif;
+  --font-brand: 'Poppins', sans-serif;
 
-  --color-primary: #0A1F44;
-  --color-primary-dark: #04152D;
-  --color-primary-light: #1C3B6E;
-  --color-primary-glow: rgba(10, 31, 68, 0.15);
+  --color-primary: #04152D;
+  --color-primary-dark: #1B1F24;
+  --color-primary-light: #0D264C;
+  --color-primary-glow: rgba(4, 21, 45, 0.15);
 
   --color-accent: #4CAF50;
   --color-accent-dark: #0F5A25;
-  --color-accent-light: #88C34A;
+  --color-accent-light: #8BC34A;
   --color-accent-glow: rgba(76, 175, 80, 0.2);
 
+  --color-silver-gray: #BFC3C8;
+
   --color-dark-bg: #04152D;
-  --color-dark-card: #0B1B36;
+  --color-dark-card: #1B1F24;
   --color-dark-border: rgba(255, 255, 255, 0.08);
-  --color-light-bg: #EBEFF2;
+  --color-light-bg: #F4F6F8;
+
+  --color-campaign-medical: #00AEEF;
+  --color-campaign-haya: #E91E63;
+  --color-campaign-nature: #4CAF50;
+  --color-campaign-special: #9C27B0;
+  --color-campaign-learn: #FF9800;
+  --color-campaign-explorers: #795548;
 
   --animate-pulse-slow: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-float: float 6s ease-in-out infinite;

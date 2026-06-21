@@ -70,6 +70,22 @@ export default function Projects({ projects }) {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
+                  {/* Category Badge */}
+                  {project.category && (
+                    <span
+                      className={`absolute top-4 left-4 px-3 py-1.5 rounded-full text-[10px] font-black text-white uppercase shadow-md ${
+                        project.category === 'Free Medical Camps' ? 'bg-campaign-medical' :
+                        project.category === 'Project Haya' ? 'bg-campaign-haya' :
+                        project.category === 'Nature Rehabilitation' ? 'bg-campaign-nature' :
+                        project.category === 'Special Nation' ? 'bg-campaign-special' :
+                        project.category === 'Learn2Earn' ? 'bg-campaign-learn' :
+                        project.category === 'One Nation Explorers' ? 'bg-campaign-explorers' :
+                        'bg-accent'
+                      }`}
+                    >
+                      {project.category}
+                    </span>
+                  )}
                   {/* Status Badge */}
                   <span
                     className={`absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold text-white uppercase shadow-md ${project.status.toLowerCase() === 'ongoing'
@@ -240,6 +256,21 @@ export default function Projects({ projects }) {
                     <Calendar size={16} className="text-primary dark:text-accent" />
                     {selectedProject.date}
                   </span>
+                  {selectedProject.category && (
+                    <span
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black text-white uppercase ${
+                        selectedProject.category === 'Free Medical Camps' ? 'bg-campaign-medical' :
+                        selectedProject.category === 'Project Haya' ? 'bg-campaign-haya' :
+                        selectedProject.category === 'Nature Rehabilitation' ? 'bg-campaign-nature' :
+                        selectedProject.category === 'Special Nation' ? 'bg-campaign-special' :
+                        selectedProject.category === 'Learn2Earn' ? 'bg-campaign-learn' :
+                        selectedProject.category === 'One Nation Explorers' ? 'bg-campaign-explorers' :
+                        'bg-accent'
+                      }`}
+                    >
+                      {selectedProject.category}
+                    </span>
+                  )}
                   <span
                     className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white uppercase ${selectedProject.status.toLowerCase() === 'ongoing'
                         ? 'bg-amber-600 dark:bg-amber-500'

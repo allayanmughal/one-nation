@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Logo({ className = "h-12 w-12", showText = true, lightModeColor = "text-primary", darkModeColor = "dark:text-white" }) {
+export default function Logo({ className = "h-12 w-12", showText = true, showSlogan = true, lightModeColor = "text-white", darkModeColor = "dark:text-white" }) {
   return (
     <div className="flex items-center gap-3 select-none">
       <div className={`${className} flex items-center justify-center`}>
@@ -19,6 +19,11 @@ export default function Logo({ className = "h-12 w-12", showText = true, lightMo
           <span className="font-sans font-black text-[9px] sm:text-[10px] tracking-[0.18em] text-accent uppercase leading-none mt-1">
             PAKISTAN
           </span>
+          {showSlogan && (
+            <span className="font-sans font-bold text-[7px] sm:text-[8px] tracking-[0.05em] text-accent-light dark:text-accent-light/80 uppercase leading-none mt-1">
+              Be A Nation, Not Separation
+            </span>
+          )}
         </div>
       )}
     </div>

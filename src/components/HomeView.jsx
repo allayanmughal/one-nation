@@ -1,45 +1,37 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Flag, HeartHandshake, ShieldCheck, Compass, MessageSquare, Users, Heart } from 'lucide-react';
+import { ArrowRight, Flag, HeartHandshake, ShieldCheck, Compass, MessageSquare, Users, Heart, Award, Calendar, BookOpen } from 'lucide-react';
 import Hero from './Hero';
+import mushtaqGhaniPhoto from '../assets/mushtaq_ghani.jpg';
 
-// Sector Data for the 3D Perspective Impact Deck
-const IMPACT_SECTORS = [
+// Vision Pillars Data for Mushtaq Ahmed Ghani Showcase
+const PATRON_VISION = [
   {
     id: 1,
-    title: "Food Security Campaign",
-    subtitle: "Ration Distribution Drive",
-    target: "1,500 Families",
-    reached: "1,500 Families",
-    stat: "100%",
-    status: "Completed",
+    title: "Welfare Transparency",
+    subtitle: "Direct Outreach Model",
+    quote: "\"Trust is the currency of charity. By bypassing administrative bottlenecks, we ensure that every contribution translates directly into verified local aid on the ground.\"",
+    metric: "100% Audited Projects",
+    status: "Standard",
     frontBg: "bg-gradient-to-br from-emerald-950/40 to-black/85",
-    successStory: "\"The ration packs reached our remote village in Abbottabad just when we ran out of options. Absolute life-saver for my kids.\"",
-    beneficiary: "— Amina Bibi, Abbottabad"
   },
   {
     id: 2,
-    title: "RO Clean Water Plants",
-    subtitle: "Filtration Infrastructure",
-    target: "5 Plants",
-    reached: "3 Plants",
-    stat: "60%",
+    title: "Youth Empowerment",
+    subtitle: "Ground Mobilization",
+    quote: "\"Our young student volunteers are not passive spectators; they are the active logistics leaders of today's relief drives, training to build a stronger Pakistan.\"",
+    metric: "1,200+ Trained Ambassadors",
     status: "Active",
     frontBg: "bg-gradient-to-br from-blue-950/40 to-black/85",
-    successStory: "\"Clean water is no longer a luxury. Since the RO plant was installed near our school, water-borne illnesses have dropped to zero.\"",
-    beneficiary: "— Master Rafique, Haripur"
   },
   {
     id: 3,
-    title: "Winter Blanket Campaigns",
-    subtitle: "Household Relief",
-    target: "1,000 Households",
-    reached: "850 Households",
-    stat: "85%",
+    title: "National Cohesion",
+    subtitle: "Bridging Communities",
+    quote: "\"Unity is our ultimate shield. When we stand together to distribute water or food, regional and segment boundaries dissolve, leaving only one Pakistan.\"",
+    metric: "8 KP Districts Covered",
     status: "Active",
     frontBg: "bg-gradient-to-br from-purple-950/40 to-black/85",
-    successStory: "\"Winters in the hills are harsh. These high-quality blankets kept our grandparents warm through the worst snow spells.\"",
-    beneficiary: "— Tariq Mahmood, Nathiagali"
   }
 ];
 
@@ -196,6 +188,21 @@ function ParallaxProjectCard({ project, onClick }) {
           className="w-full h-full object-cover"
           loading="lazy"
         />
+        {project.category && (
+          <span
+            className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-[9px] font-black text-white uppercase shadow-sm ${
+              project.category === 'Free Medical Camps' ? 'bg-campaign-medical' :
+              project.category === 'Project Haya' ? 'bg-campaign-haya' :
+              project.category === 'Nature Rehabilitation' ? 'bg-campaign-nature' :
+              project.category === 'Special Nation' ? 'bg-campaign-special' :
+              project.category === 'Learn2Earn' ? 'bg-campaign-learn' :
+              project.category === 'One Nation Explorers' ? 'bg-campaign-explorers' :
+              'bg-accent'
+            }`}
+          >
+            {project.category}
+          </span>
+        )}
         <span
           className={`absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold text-white uppercase shadow-sm ${
             project.status.toLowerCase() === 'ongoing' ? 'bg-amber-600' : 'bg-primary'
@@ -220,9 +227,12 @@ function ParallaxProjectCard({ project, onClick }) {
 }
 
 // Sub-Component 4: 3D Perspective Stack Flip Deck (Impact deck)
-function ImpactDeck() {
+// Sub-Component 4: 3D Patron Showcase (replacing ImpactDeck)
+function PatronShowcase() {
   const [hoveredIdx, setHoveredIdx] = useState(null);
   const [flipped, setFlipped] = useState({ 0: false, 1: false, 2: false });
+  const [portraitCoords, setPortraitCoords] = useState({ rotateX: 0, rotateY: 0, sheenX: 50, sheenY: 50 });
+  const [portraitHovered, setPortraitHovered] = useState(false);
 
   const toggleFlip = (idx, e) => {
     e.stopPropagation();
@@ -232,38 +242,100 @@ function ImpactDeck() {
     }));
   };
 
+  const handlePortraitMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    const normX = (mouseX / width) - 0.5;
+    const normY = (mouseY / height) - 0.5;
+
+    setPortraitCoords({
+      rotateX: -normY * 20,
+      rotateY: normX * 20,
+      sheenX: (mouseX / width) * 100,
+      sheenY: (mouseY / height) * 100
+    });
+  };
+
   return (
     <section className="py-24 bg-gradient-to-b from-transparent to-gray-50/50 dark:to-dark-bg/10 border-t border-b border-gray-100 dark:border-dark-border overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Left Column Description */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
-              Direct Impact Sectors
+          {/* Left Column: Biography & Dynamic Portrait */}
+          <div className="lg:col-span-5 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
+            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase block mb-2">
+              Our Patron & Chief Advisor
             </span>
-            <h3 className="text-3xl sm:text-4xl font-display font-extrabold text-gray-900 dark:text-white mt-2 mb-6 leading-tight">
-              Interactive 3D Impact Deck
+            <h3 className="text-3xl sm:text-4xl font-display font-black text-gray-900 dark:text-white leading-tight mb-4">
+              Mushtaq Ahmed Ghani
             </h3>
-            <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-8 font-medium">
-              We focus our direct relief efforts on key pillars of human development. Sweep your cursor over the stack of cards on the right to interact, and click any card to flip and read verified success stories from Abbottabad and Haripur.
-            </p>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                <span className="w-6 h-6 rounded-full bg-primary/10 dark:bg-accent/15 flex items-center justify-center text-primary dark:text-accent text-xs">1</span>
-                <span>Hover a card to pull it to the front in Z-depth.</span>
+            
+            {/* Interactive Portrait Frame with Sheen */}
+            <motion.div
+              onMouseEnter={() => setPortraitHovered(true)}
+              onMouseMove={handlePortraitMove}
+              onMouseLeave={() => {
+                setPortraitHovered(false);
+                setPortraitCoords({ rotateX: 0, rotateY: 0, sheenX: 50, sheenY: 50 });
+              }}
+              animate={{
+                rotateX: portraitCoords.rotateX,
+                rotateY: portraitCoords.rotateY,
+                scale: portraitHovered ? 1.03 : 1
+              }}
+              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              style={{ transformStyle: 'preserve-3d', perspective: 1200 }}
+              className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-3xl overflow-hidden shadow-2xl border border-gray-200 dark:border-dark-border p-1 bg-white dark:bg-dark-card flex items-center justify-center cursor-pointer mb-8"
+            >
+              {/* Glossy Sheen overlay */}
+              <div 
+                className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 z-10"
+                style={{
+                  opacity: portraitHovered ? 0.45 : 0,
+                  background: `radial-gradient(circle 220px at ${portraitCoords.sheenX}% ${portraitCoords.sheenY}%, rgba(255, 255, 255, 0.25), transparent)`
+                }}
+              />
+              <div className="w-full h-full rounded-2xl overflow-hidden bg-primary-dark relative">
+                <img
+                  src={mushtaqGhaniPhoto}
+                  alt="Mushtaq Ahmed Ghani portrait"
+                  className="w-full h-full object-cover animate-pulse-slow"
+                  style={{ animationDuration: '4s' }}
+                />
               </div>
-              <div className="flex items-center gap-3 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                <span className="w-6 h-6 rounded-full bg-primary/10 dark:bg-accent/15 flex items-center justify-center text-primary dark:text-accent text-xs">2</span>
-                <span>Click "Success Story" to execute a complete 3D card flip.</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                <span className="w-6 h-6 rounded-full bg-primary/10 dark:bg-accent/15 flex items-center justify-center text-primary dark:text-accent text-xs">3</span>
-                <span>Verify transparency and read real local testimonials.</span>
-              </div>
+            </motion.div>
+
+            {/* Badges and Bio text */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-6 max-w-md">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black bg-primary/10 dark:bg-primary/20 text-primary dark:text-white uppercase border border-primary/10 dark:border-white/5 shadow-sm">
+                <Award size={11} className="text-accent" />
+                Veteran Lawmaker
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black bg-accent/15 text-accent-dark dark:text-accent uppercase border border-accent/10 shadow-sm">
+                <Calendar size={11} />
+                Speaker KP Assembly (2018-2024)
+              </span>
             </div>
+
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-medium mb-6 max-w-md">
+              As a dedicated public servant representing Abbottabad, Mushtaq Ahmed Ghani directs our humanitarian vision. He coordinates operations to bridge institutional links, ensuring transparency and structured outreach for welfare campaigns.
+            </p>
+
+            <a
+              href="https://en.wikipedia.org/wiki/Mushtaq_Ahmed_Ghani"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-50 hover:bg-gray-100 dark:bg-dark-bg/60 dark:hover:bg-dark-bg text-xs font-bold text-primary dark:text-accent rounded-xl border border-gray-150 dark:border-dark-border transition-colors hover:scale-[1.01] active:scale-95 shadow-sm cursor-pointer"
+            >
+              <BookOpen size={14} />
+              Read Biography on Wikipedia
+            </a>
           </div>
 
-          {/* Right Column Stack */}
+          {/* Right Column: 3D Quote Deck */}
           <div className="lg:col-span-7 flex justify-center items-center py-12 lg:py-20 relative min-h-[460px]">
             <div 
               style={{ 
@@ -272,7 +344,7 @@ function ImpactDeck() {
               }} 
               className="relative w-full max-w-[390px] h-[340px]"
             >
-              {IMPACT_SECTORS.map((sector, idx) => {
+              {PATRON_VISION.map((pillar, idx) => {
                 const isHovered = hoveredIdx === idx;
                 const isAnyHovered = hoveredIdx !== null;
                 const isFlipped = flipped[idx];
@@ -305,7 +377,7 @@ function ImpactDeck() {
 
                 return (
                   <motion.div
-                    key={sector.id}
+                    key={pillar.id}
                     onMouseEnter={() => setHoveredIdx(idx)}
                     onMouseLeave={() => setHoveredIdx(null)}
                     animate={{
@@ -335,7 +407,7 @@ function ImpactDeck() {
                       className="w-full h-full relative rounded-3xl shadow-xl transition-shadow duration-300"
                       style={{ transformStyle: 'preserve-3d' }}
                     >
-                      {/* FRONT CARD */}
+                      {/* FRONT CARD (Pillar / Slogan Quote) */}
                       <div
                         style={{ 
                           backfaceVisibility: 'hidden',
@@ -343,54 +415,38 @@ function ImpactDeck() {
                           width: '100%',
                           height: '100%'
                         }}
-                        className={`absolute inset-0 rounded-3xl p-8 border border-white/10 ${sector.frontBg} flex flex-col justify-between backdrop-blur-md text-white`}
+                        className={`absolute inset-0 rounded-3xl p-8 border border-white/10 ${pillar.frontBg} flex flex-col justify-between backdrop-blur-md text-white`}
                       >
                         <div className="flex justify-between items-start">
                           <div>
                             <span className="text-[10px] uppercase font-bold tracking-widest text-accent">
-                              {sector.subtitle}
+                              {pillar.subtitle}
                             </span>
                             <h4 className="text-xl font-display font-extrabold mt-1">
-                              {sector.title}
+                              {pillar.title}
                             </h4>
                           </div>
                           <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-white/10 text-white border border-white/20`}>
-                            {sector.status}
+                            {pillar.status}
                           </span>
                         </div>
 
-                        <div>
-                          <div className="flex justify-between items-end mb-2">
-                            <div>
-                              <span className="text-xs text-gray-400 block font-semibold">Reached</span>
-                              <span className="text-lg font-bold text-white">{sector.reached}</span>
-                            </div>
-                            <div className="text-right">
-                              <span className="text-xs text-gray-400 block font-semibold">Target</span>
-                              <span className="text-base font-semibold text-gray-300">{sector.target}</span>
-                            </div>
-                          </div>
-                          
-                          <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden mb-6">
-                            <div 
-                              style={{ width: sector.stat }}
-                              className="h-full bg-gradient-to-r from-accent to-accent-light rounded-full"
-                            />
-                          </div>
+                        <p className="text-sm italic leading-relaxed text-gray-200 font-medium">
+                          {pillar.quote}
+                        </p>
 
-                          <div className="flex justify-between items-center">
-                            <span className="text-xl font-black text-accent">{sector.stat}</span>
-                            <button
-                              onClick={(e) => toggleFlip(idx, e)}
-                              className="px-4 py-1.5 rounded-full text-xs font-bold bg-white text-primary hover:bg-accent hover:text-white transition-colors duration-200 shadow"
-                            >
-                              Success Story
-                            </button>
-                          </div>
+                        <div className="flex justify-between items-center border-t border-white/10 pt-4">
+                          <span className="text-xs font-bold text-accent">{pillar.metric}</span>
+                          <button
+                            onClick={(e) => toggleFlip(idx, e)}
+                            className="px-4 py-1.5 rounded-full text-xs font-bold bg-white text-primary hover:bg-accent hover:text-white transition-colors duration-200 shadow"
+                          >
+                            Details
+                          </button>
                         </div>
                       </div>
 
-                      {/* BACK CARD */}
+                      {/* BACK CARD (Narrative details) */}
                       <div
                         style={{ 
                           backfaceVisibility: 'hidden',
@@ -402,16 +458,19 @@ function ImpactDeck() {
                       >
                         <div>
                           <span className="text-[10px] uppercase font-bold tracking-widest text-accent block mb-2">
-                            Verified Beneficiary Story
+                            Pillar Core Narrative
                           </span>
-                          <p className="text-sm sm:text-base italic leading-relaxed text-gray-200 mt-2 font-medium">
-                            {sector.successStory}
+                          <h4 className="text-base font-display font-bold mb-3">{pillar.title}</h4>
+                          <p className="text-xs sm:text-sm leading-relaxed text-gray-300 font-medium">
+                            {idx === 0 ? "Under his advice, we operate direct channels of relief matching each donor package with specific manufacturer receipt logs, leaving zero margin for administrative leakage." :
+                             idx === 1 ? "We train student volunteers in ground logistics and emergency response, setting up college-level relief wings to manage distribution transparently." :
+                             "By standing united in welfare operations, our chapters dissolve regional boundaries and advocate for a stronger, integrated Pakistani community."}
                           </p>
                         </div>
 
                         <div className="flex justify-between items-end border-t border-white/10 pt-4">
                           <span className="text-xs font-bold text-accent">
-                            {sector.beneficiary}
+                            Patron Directive
                           </span>
                           <button
                             onClick={(e) => toggleFlip(idx, e)}
@@ -427,6 +486,38 @@ function ImpactDeck() {
               })}
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Sub-Component 5: Brand Positioning Quote
+function BrandPositioningQuote() {
+  return (
+    <section className="py-20 relative overflow-hidden bg-primary-dark border-t border-b border-white/5">
+      {/* Decorative glows */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <span className="text-[10px] sm:text-xs font-bold tracking-widest text-accent uppercase block mb-4">
+          Brand Positioning Statement
+        </span>
+        <div className="relative inline-block max-w-4xl mb-6">
+          {/* Large decorative quotation marks */}
+          <span className="absolute -top-12 -left-6 sm:-left-12 text-7xl sm:text-9xl text-accent/10 font-serif leading-none select-none">“</span>
+          
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-extrabold text-white leading-relaxed italic px-4 sm:px-12 relative z-10">
+            One Nation Pakistan is a youth-led humanitarian movement committed to serving humanity, protecting vulnerable communities, empowering future generations, and building a united Pakistan through sustainable social impact.
+          </h3>
+          
+          <span className="absolute -bottom-24 -right-6 sm:-right-12 text-7xl sm:text-9xl text-accent/10 font-serif leading-none select-none">”</span>
+        </div>
+        <div className="mt-8 flex items-center justify-center gap-3">
+          <div className="h-[1px] w-8 bg-accent/30" />
+          <span className="text-[9px] sm:text-xs font-bold tracking-wider text-accent-light uppercase">TOGETHER WE CAN CREATE A BETTER, STRONGER & COMPASSIONATE PAKISTAN</span>
+          <div className="h-[1px] w-8 bg-accent/30" />
         </div>
       </div>
     </section>
@@ -559,8 +650,8 @@ export default function HomeView({ projects }) {
         </div>
       </section>
 
-      {/* 4. 3D Perspective Impact Deck (Replacing static progress bars) */}
-      <ImpactDeck />
+      {/* 4. 3D Patron Showcase (Mushtaq Ahmed Ghani Vision Deck) */}
+      <PatronShowcase />
 
       {/* 5. Featured Projects Preview (3D Parallax cards) */}
       <section className="py-24">
@@ -596,6 +687,9 @@ export default function HomeView({ projects }) {
           </div>
         </div>
       </section>
+
+      {/* 5.5 Brand Positioning Statement Quote */}
+      <BrandPositioningQuote />
 
       {/* 6. Quick Links Navigation Grid (Magnetic Cards) */}
       <section className="py-20 bg-gray-50/50 dark:bg-dark-bg/20 border-t border-gray-100 dark:border-dark-border">
