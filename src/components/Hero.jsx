@@ -12,6 +12,15 @@ const HERO_IMAGES = [
 export default function Hero() {
   const [currentBg, setCurrentBg] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [particles] = useState(() => 
+    Array.from({ length: 25 }).map((_, i) => ({
+      id: i,
+      size: Math.random() * 4 + 1.5,
+      startX: Math.random() * 100,
+      speed: Math.random() * 10 + 7,
+      delay: Math.random() * 5
+    }))
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -63,13 +72,13 @@ export default function Hero() {
     >
       {/* Background Ken Burns Slideshow */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={currentBg}
-            initial={{ scale: 1.15, opacity: 0 }}
-            animate={{ scale: 1.02, opacity: 0.55 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 2.5, ease: "easeInOut" }}
+            initial={{ scale: 1.15, opacity: 0, x: -15, y: -8 }}
+            animate={{ scale: 1.05, opacity: 0.65, x: 0, y: 0 }}
+            exit={{ opacity: 0, scale: 1.0, x: 15, y: 8 }}
+            transition={{ duration: 4.5, ease: "easeInOut" }}
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${HERO_IMAGES[currentBg]})` }}
           />
@@ -114,6 +123,40 @@ export default function Hero() {
         >
           <StarburstIcon />
         </motion.div>
+
+        {/* Floating 3D Glowing Sparks Particles */}
+        {particles.map((p) => (
+          <motion.div
+            key={p.id}
+            initial={{ 
+              y: "110svh", 
+              x: `${p.startX}vw`, 
+              opacity: 0 
+            }}
+            animate={{ 
+              y: "-10svh",
+              opacity: [0, 0.65, 0.65, 0],
+              x: [
+                `${p.startX}vw`, 
+                `${p.startX + (Math.random() * 15 - 7.5) + (mousePos.x * 12)}vw`,
+                `${p.startX + (Math.random() * 20 - 10) + (mousePos.x * 18)}vw`
+              ]
+            }}
+            transition={{
+              duration: p.speed,
+              repeat: Infinity,
+              delay: p.delay,
+              ease: "linear"
+            }}
+            className="absolute rounded-full bg-accent/35 blur-[0.5px]"
+            style={{
+              width: p.size,
+              height: p.size,
+              boxShadow: "0 0 8px rgba(76, 175, 80, 0.45)",
+              transform: "translateZ(10px)"
+            }}
+          />
+        ))}
       </div>
 
       {/* Top spacer to push contents down below the header */}

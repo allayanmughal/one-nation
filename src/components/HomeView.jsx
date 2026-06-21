@@ -349,30 +349,30 @@ function PatronShowcase() {
                 const isAnyHovered = hoveredIdx !== null;
                 const isFlipped = flipped[idx];
 
-                let zOffset = -idx * 40;
-                let xOffset = idx * 35;
-                let yOffset = idx * 20;
+                let zOffset = -idx * 30;
+                let xOffset = idx * 60;
+                let yOffset = idx * 30;
                 let rotX = 18;
                 let rotY = -32;
                 let rotZ = -8;
                 let opacityVal = 1;
 
                 if (isHovered) {
-                  zOffset = 100;
-                  xOffset = -35;
-                  yOffset = -25;
+                  zOffset = 80;
+                  xOffset = idx * 60 - 20;
+                  yOffset = idx * 30 - 15;
                   rotX = 0;
                   rotY = isFlipped ? 180 : 0;
                   rotZ = 0;
                   opacityVal = 1;
                 } else if (isAnyHovered) {
-                  zOffset = -idx * 50 - 50;
-                  xOffset = idx * 45 + 15;
-                  yOffset = idx * 25 + 15;
+                  zOffset = -idx * 50 - 100;
+                  xOffset = idx * 80 + 20;
+                  yOffset = idx * 40 + 15;
                   rotX = 18;
                   rotY = -32;
                   rotZ = -8;
-                  opacityVal = 0.2;
+                  opacityVal = 0.15;
                 }
 
                 return (
