@@ -223,9 +223,10 @@ function PatronShowcase() {
   return (
     <section className="py-16 sm:py-24 bg-light-bg dark:bg-dark-bg border-t border-primary/5 dark:border-dark-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mb-10 lg:mb-12">
-          {/* Left: Portrait */}
-          <div className="lg:col-span-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          {/* Left Column: Portrait + Focus Areas */}
+          <div className="lg:col-span-5 flex flex-col gap-8">
+            {/* Portrait */}
             <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-primary/10 border border-primary/5 dark:border-dark-border aspect-[4/5] max-w-xs sm:max-w-sm mx-auto lg:mx-0 bg-white dark:bg-dark-card">
               <img
                 src={mushtaqGhaniPhoto}
@@ -234,36 +235,68 @@ function PatronShowcase() {
                 loading="lazy"
               />
             </div>
+
+            {/* Our Focus Areas */}
+            <div className="bg-white dark:bg-dark-card rounded-2xl p-6 sm:p-8 shadow-lg shadow-primary/8 border border-primary/5 dark:border-dark-border surface-card">
+              <div className="mb-6 sm:mb-8">
+                <h4 className="text-lg sm:text-xl font-display font-extrabold text-accent dark:text-accent">
+                  Our Focus Areas
+                </h4>
+                <div className="h-0.5 w-12 bg-accent mt-2 rounded-full" />
+              </div>
+
+              <div className="space-y-5">
+                {FOCUS_AREAS.map((area) => {
+                  const Icon = area.icon;
+                  return (
+                    <div key={area.title} className="flex gap-3 items-start">
+                      <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0 shadow-sm shadow-accent/30 mt-0.5">
+                        <Icon size={16} className="text-white" />
+                      </div>
+                      <div>
+                        <h5 className="text-xs sm:text-sm font-display font-extrabold text-primary dark:text-white mb-1">
+                          {area.title}
+                        </h5>
+                        <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {area.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
-          {/* Middle: Bio */}
-          <div className="lg:col-span-4 flex flex-col text-center lg:text-left justify-center">
-            <h3 className="text-3xl sm:text-4xl font-display font-black text-primary dark:text-white leading-tight mb-2">
-              Mushtaq Ahmed Ghani
-            </h3>
-            <div className="mb-5">
-              <span className="text-[10px] sm:text-xs font-bold tracking-[0.18em] text-accent uppercase">
-                Chairman & Humanitarian Leader
-              </span>
-              <div className="h-0.5 w-14 bg-accent mt-2 mx-auto lg:mx-0 rounded-full" />
+          {/* Right Column: Bio + Chairman's Message */}
+          <div className="lg:col-span-7 flex flex-col gap-8">
+            {/* Bio */}
+            <div className="flex flex-col text-center lg:text-left justify-center">
+              <h3 className="text-3xl sm:text-4xl font-display font-black text-primary dark:text-white leading-tight mb-2">
+                Mushtaq Ahmed Ghani
+              </h3>
+              <div className="mb-5">
+                <span className="text-[10px] sm:text-xs font-bold tracking-[0.18em] text-accent uppercase">
+                  Chairman & Humanitarian Leader
+                </span>
+                <div className="h-0.5 w-14 bg-accent mt-2 mx-auto lg:mx-0 rounded-full" />
+              </div>
+
+              <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-accent/10 text-accent-dark dark:text-accent uppercase border border-accent/15">
+                  Veteran Lawmaker
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-accent/10 text-accent-dark dark:text-accent uppercase border border-accent/15">
+                  Speaker KP Assembly (2018–2024)
+                </span>
+              </div>
+
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                As a dedicated public servant representing Abbottabad, Mushtaq Ahmed Ghani leads our humanitarian vision. He coordinates welfare operations with transparency and compassion, ensuring structured outreach reaches families in critical need across Khyber Pakhtunkhwa.
+              </p>
             </div>
 
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-accent/10 text-accent-dark dark:text-accent uppercase border border-accent/15">
-                Veteran Lawmaker
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-accent/10 text-accent-dark dark:text-accent uppercase border border-accent/15">
-                Speaker KP Assembly (2018–2024)
-              </span>
-            </div>
-
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-              As a dedicated public servant representing Abbottabad, Mushtaq Ahmed Ghani leads our humanitarian vision. He coordinates welfare operations with transparency and compassion, ensuring structured outreach reaches families in critical need across Khyber Pakhtunkhwa.
-            </p>
-          </div>
-
-          {/* Right: Chairman's Message card */}
-          <div className="lg:col-span-4">
+            {/* Chairman's Message card */}
             <div className="bg-white dark:bg-dark-card rounded-2xl p-6 sm:p-8 shadow-lg shadow-primary/8 border border-primary/5 dark:border-dark-border h-full flex flex-col surface-card">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center shrink-0">
@@ -311,37 +344,6 @@ function PatronShowcase() {
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Our Focus Areas */}
-        <div className="bg-white dark:bg-dark-card rounded-2xl p-6 sm:p-10 shadow-lg shadow-primary/8 border border-primary/5 dark:border-dark-border surface-card">
-          <div className="mb-8 sm:mb-10">
-            <h4 className="text-xl sm:text-2xl font-display font-extrabold text-primary dark:text-white">
-              Our Focus Areas
-            </h4>
-            <div className="h-0.5 w-14 bg-accent mt-2 rounded-full" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {FOCUS_AREAS.map((area) => {
-              const Icon = area.icon;
-              return (
-                <div key={area.title} className="flex gap-4 items-start">
-                  <div className="w-11 h-11 rounded-full bg-accent flex items-center justify-center shrink-0 shadow-sm shadow-accent/30">
-                    <Icon size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <h5 className="text-sm font-display font-extrabold text-primary dark:text-white mb-1.5">
-                      {area.title}
-                    </h5>
-                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                      {area.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>
@@ -462,7 +464,7 @@ export default function HomeView({ projects }) {
               <div className="lg:col-span-4 flex justify-start lg:justify-end">
                 <a
                   href="#/mission"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary hover:bg-primary-light dark:bg-accent dark:hover:bg-accent-light text-white dark:text-primary-dark font-extrabold text-sm uppercase tracking-wide rounded-full shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all duration-300 group"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent hover:bg-accent-light dark:bg-accent dark:hover:bg-accent-light text-white dark:text-primary-dark font-extrabold text-sm uppercase tracking-wide rounded-full shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all duration-300 group"
                 >
                   <span>Read Full Mission</span>
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

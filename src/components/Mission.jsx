@@ -81,7 +81,7 @@ export default function Mission() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase"
+            className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase"
           >
             Our Mission Pillars
           </motion.span>
@@ -90,7 +90,7 @@ export default function Mission() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-primary dark:text-white mt-2 mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-accent dark:text-white mt-2 mb-6 dark:text-white"
           >
             The Foundations of Our Impact
           </motion.h2>
@@ -140,10 +140,10 @@ export default function Mission() {
         {/* Expansion Section A: Execution pipeline flow */}
         <div className="mb-24">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               How We Work
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-accent dark:text-white mt-1">
               Our Distribution Pipeline
             </h3>
             <p className="text-xs sm:text-sm text-gray-500 mt-2">

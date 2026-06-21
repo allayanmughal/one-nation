@@ -73,10 +73,10 @@ export default function GetInvolved({ onVolunteerRegister }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+          <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
             Join the Movement
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-primary dark:text-white mt-2 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-accent dark:text-white mt-2 mb-6 dark:text-white">
             Two Paths. One Mission.
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
@@ -216,7 +216,7 @@ export default function GetInvolved({ onVolunteerRegister }) {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 py-4 bg-primary hover:bg-primary-light text-white font-bold rounded-xl shadow-md transition-all duration-300 active:scale-98 cursor-pointer disabled:opacity-50"
+                      className="w-full flex items-center justify-center gap-2 py-4 bg-accent hover:bg-accent-dark text-white font-bold rounded-xl shadow-md transition-all duration-300 active:scale-98 cursor-pointer disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>
@@ -373,10 +373,10 @@ export default function GetInvolved({ onVolunteerRegister }) {
         {/* Expansion Section A: Volunteer Roadmap */}
         <div className="mt-28 border-t border-primary/5 dark:border-dark-border/40 pt-20 mb-24">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Volunteer Journey
             </span>
-            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-accent dark:text-white mt-1">
               Your Path to Impact
             </h3>
             <p className="text-xs text-gray-500 mt-2">
@@ -410,10 +410,10 @@ export default function GetInvolved({ onVolunteerRegister }) {
         <div className="py-16 bg-white dark:bg-dark-card/30 border border-primary/5 dark:border-dark-border/40 rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+              <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
                 Got Questions?
               </span>
-              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
+              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-accent dark:text-white mt-1">
                 Volunteer FAQs
               </h3>
             </div>

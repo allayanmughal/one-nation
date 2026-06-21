@@ -55,10 +55,10 @@ export default function Contact({ onContactSubmit }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+          <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
             Get In Touch
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-primary dark:text-white mt-2 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-accent dark:text-white mt-2 mb-6 dark:text-white">
             Contact 1 Nation Pakistan
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
@@ -151,7 +151,7 @@ export default function Contact({ onContactSubmit }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <h3 className="text-2xl font-display font-extrabold text-primary dark:text-white mb-2">
+                  <h3 className="text-2xl font-display font-extrabold text-accent dark:text-white mb-2">
                     Send a Message
                   </h3>
 
@@ -231,7 +231,7 @@ export default function Contact({ onContactSubmit }) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 py-4 bg-primary hover:bg-primary-light text-white font-bold rounded-xl shadow transition-all duration-300 active:scale-98 cursor-pointer disabled:opacity-50"
+                    className="w-full flex items-center justify-center gap-2 py-4 bg-accent hover:bg-accent-dark text-white font-bold rounded-xl shadow transition-all duration-300 active:scale-98 cursor-pointer disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>

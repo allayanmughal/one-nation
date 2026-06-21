@@ -42,69 +42,69 @@ import AdminLogin from './components/AdminLogin';
 const SEED_PROJECTS = [
   {
     id: 1,
-    title: "Ration Distribution Drive",
+    title: "Medical Camp",
     location: "Abbottabad & Mansehra",
     date: "March 2026",
     status: "Completed",
-    category: "Project Haya",
-    description: "Provided essential food rations and grocery supplies to over 1,500 families affected by inflation.",
-    image: "/ration_drive.png",
-    details: "The ration packs were distributed transparently across two distribution points in KP. Each pack contained flour, ghee, sugar, pulses, tea, and dry milk. Volunteers monitored the list via local coordinators."
+    category: "Free Medical Camps",
+    description: "Providing free medical consultations, diagnostics, and essential medicines to underserved communities.",
+    image: "/medical_camp.jpeg",
+    details: "Our Medical Camp initiative brings quality healthcare directly to communities in need. Mobile clinics staffed with qualified physicians and paramedics offer free health screenings, vaccinations, and basic treatment."
   },
   {
     id: 2,
-    title: "Clean Water Filtration Plant",
-    location: "Haripur Rural Districts",
+    title: "Animal Rescue",
+    location: "Haripur & Surrounding Districts",
     date: "June 2026",
     status: "Ongoing",
     category: "Nature Rehabilitation",
-    description: "Installing reverse osmosis water filtration plants to supply clean drinking water to 5,000 residents.",
-    image: "/water_filtration.png",
-    details: "This project addresses critical arsenic and fluoride contamination in drinking water sources in Haripur's outskirts. Construction is complete, and we are currently assembling the filtration membranes and testing purity."
+    description: "Rescuing and rehabilitating injured and abandoned animals while promoting animal welfare awareness.",
+    image: "/animal_rescue.jpeg",
+    details: "This initiative focuses on animal rescue operations, rehabilitation centers, and community education on animal welfare. We partner with veterinarians to provide free medical care for rescued animals."
   },
   {
     id: 3,
-    title: "Winter Aid Campaign",
+    title: "Massive Plantation",
     location: "Galyat & Kaghan Valley",
     date: "January 2026",
     status: "Completed",
-    category: "Special Nation",
-    description: "Distributed heavy blankets, warm clothing, and fuel supplies to high-altitude mountain communities.",
-    image: "/winter_aid.png",
-    details: "High-altitude winter conditions severely impact low-income families. Our team coordinated with regional volunteers to distribute 500+ blanket packs, fleece jackets, and fuel logs to the Galyat region."
+    category: "Nature Rehabilitation",
+    description: "Large-scale tree plantation drive to combat deforestation and improve environmental sustainability.",
+    image: "/massive_plantation.jpeg",
+    details: "Our Massive Plantation initiative plants thousands of trees across KP. Volunteers engage in environmental conservation, creating green spaces and combating climate change impacts on mountain communities."
   },
   {
     id: 4,
-    title: "Youth Leadership Seminar",
-    location: "Peshawar Universities",
+    title: "Special Nation",
+    location: "Peshawar & Urban Centers",
     date: "October 2026",
     status: "Ongoing",
-    category: "One Nation Explorers",
-    description: "Creating advocacy chapters to train student leaders in disaster relief, first aid, and community service.",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
-    details: "Empowering youth is core to 1 Nation. These chapters conduct emergency response workshops, blood donation camps, and local fundraising drives, mobilizing over 400 ambassadors in three major universities."
+    category: "Special Nation",
+    description: "Dedicated welfare programs and support services for persons with disabilities.",
+    image: "/special_nation.jpeg",
+    details: "Special Nation focuses on empowering disabled individuals through vocational training, assistive devices, accessibility support, and inclusive community programs that ensure dignity and participation."
   },
   {
     id: 5,
-    title: "Mobile Health Clinics",
+    title: "pervaaz-e-zann",
     location: "KP Tribal Districts",
     date: "November 2026",
     status: "Ongoing",
-    category: "Free Medical Camps",
-    description: "Equipping specialized medical vans with basic diagnostics and medicines to travel to remote villages.",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
-    details: "Rural communities in remote valleys lack clinics. Mobile Health Clinic vans will operate weekly, staffed with volunteer physicians, delivering essential maternal care, pediatric checkups, and free medicines."
+    category: "Project Haya",
+    description: "Empowerment initiative supporting women's economic independence and skill development.",
+    image: "/pervaaz-e-zann.jpeg",
+    details: "pervaaz-e-zann (Women's Flight) provides vocational training, microfinance support, and market linkages for women entrepreneurs. Building economic self-reliance and social participation for women across KP."
   },
   {
     id: 6,
-    title: "IT Training Skills Lab",
-    location: "Havelian Skills Center",
+    title: "Initiative for Transgender",
+    location: "Havelian & Urban Centers",
     date: "December 2026",
     status: "Ongoing",
     category: "Learn2Earn",
-    description: "Establishing a digital skills training lab to teach sewing, basic coding, and design to local underprivileged youth.",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
-    details: "Learn2Earn aims to foster self-reliance. This lab will offer free certified computer courses, typing speed classes, graphic design, and basic freelancing tutorials to empower young boys and girls."
+    description: "Comprehensive support programs for transgender individuals including education, health, and livelihood support.",
+    image: "/initiative_transgender.jpeg",
+    details: "This initiative provides safe spaces, vocational training, mental health support, and social inclusion programs. We work to ensure transgender individuals have access to education, employment, and community belonging."
   }
 ];
 

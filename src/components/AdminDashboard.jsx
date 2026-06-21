@@ -128,7 +128,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
 
           {/* LEFT COLUMN: Sidebar Navigation */}
           <div className="lg:col-span-3 surface-card dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border p-6 shadow-lg shadow-primary/8 dark:shadow-sm">
-            <h2 className="text-lg font-display font-extrabold text-primary dark:text-accent mb-6 uppercase tracking-wider">
+            <h2 className="text-lg font-display font-extrabold text-accent dark:text-accent mb-6 uppercase tracking-wider">
               Control Panel
             </h2>
 
@@ -137,7 +137,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               <button
                 onClick={() => setActiveTab('projects')}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'projects'
-                    ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
+                    ? 'bg-accent text-white dark:bg-accent dark:text-primary-dark shadow'
                     : 'hover:bg-accent/5 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
                   }`}
               >
@@ -157,7 +157,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               <button
                 onClick={() => setActiveTab('volunteers')}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'volunteers'
-                    ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
+                    ? 'bg-accent text-white dark:bg-accent dark:text-primary-dark shadow'
                     : 'hover:bg-accent/5 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
                   }`}
               >
@@ -177,7 +177,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               <button
                 onClick={() => setActiveTab('inquiries')}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'inquiries'
-                    ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
+                    ? 'bg-accent text-white dark:bg-accent dark:text-primary-dark shadow'
                     : 'hover:bg-accent/5 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
                   }`}
               >
@@ -197,7 +197,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               <button
                 onClick={() => setActiveTab('newsletters')}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all cursor-pointer ${activeTab === 'newsletters'
-                    ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow'
+                    ? 'bg-accent text-white dark:bg-accent dark:text-primary-dark shadow'
                     : 'hover:bg-accent/5 dark:hover:bg-dark-bg/60 text-gray-600 dark:text-gray-400'
                   }`}
               >

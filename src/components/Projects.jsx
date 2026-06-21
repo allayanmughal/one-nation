@@ -17,10 +17,10 @@ export default function Projects({ projects }) {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-xl">
-            <span className="text-xs font-bold tracking-widest text-primary dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Our Initiatives
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-primary dark:text-white mt-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-accent dark:text-white mt-2 dark:text-white">
               Transforming Commmunities
             </h2>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-4">
@@ -35,8 +35,8 @@ export default function Projects({ projects }) {
                 key={tab}
                 onClick={() => setFilter(tab)}
                 className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 cursor-pointer ${filter === tab
-                    ? 'bg-primary text-white dark:bg-accent dark:text-primary-dark shadow-sm'
-                    : 'text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-accent'
+                    ? 'bg-accent text-white dark:bg-accent dark:text-primary-dark shadow-sm'
+                    : 'text-gray-500 dark:text-gray-400 hover:text-accent dark:hover:text-accent'
                   }`}
               >
                 {tab}
