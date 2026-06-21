@@ -7,22 +7,22 @@ export default function Mission() {
     {
       title: "National Unity & Social Cohesion",
       description: "Fostering solidarity across diverse cultural, linguistic, and regional groups to champion one Pakistani identity, as encapsulated by our tagline: 'Be a Nation, Not Separation.'",
-      icon: Flag,
+      image: "/national_unity.jpeg",
     },
     {
       title: "Community Welfare & Support",
       description: "Deploying targeted humanitarian relief, food drives, basic healthcare setups, and clean water schemes to underserved districts, supporting families in times of critical need.",
-      icon: HeartHandshake,
+      image: "/community_welfare.jpeg",
     },
     {
       title: "Youth Empowerment",
       description: "Mobilizing and training high school and university volunteers, equipping them with leadership, crisis management, and community organizing skills to lead future campaigns.",
-      icon: Flame,
+      image: "/youth_empowerment.jpeg",
     },
     {
       title: "Community Collaboration",
       description: "Collaborating with private CSR initiatives, academic institutions, and local NGOs to streamline distribution networks and maximize the reach of social aid programs.",
-      icon: Building2,
+      image: "/community_collaboration.jpeg",
     }
   ];
 
@@ -114,24 +114,33 @@ export default function Mission() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24"
         >
           {pillars.map((pillar, idx) => {
-            const IconComponent = pillar.icon;
             return (
               <motion.div
                 key={idx}
                 variants={cardVariants}
-                className="group relative surface-card dark:bg-dark-card rounded-3xl p-8 border border-primary/5 dark:border-dark-border overflow-hidden hover:border-accent/40 dark:hover:border-accent/40 shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full"
+                className="group relative surface-card dark:bg-dark-card rounded-3xl overflow-hidden border border-primary/5 dark:border-dark-border hover:border-accent/40 dark:hover:border-accent/40 shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full"
               >
-                <div className="absolute -top-12 -left-12 w-24 h-24 bg-primary/5 dark:bg-accent/5 rounded-full blur-xl group-hover:scale-[3] transition-transform duration-500 pointer-events-none" />
-                <div className="mb-6 w-14 h-14 rounded-full bg-accent dark:rounded-2xl dark:bg-accent/10 flex items-center justify-center text-white dark:text-accent group-hover:bg-accent-dark dark:group-hover:bg-accent dark:group-hover:text-primary-dark transition-all duration-300 shadow-sm shadow-accent/30">
-                  <IconComponent size={24} className="group-hover:scale-110 transition-transform duration-300" />
+                {/* Image Container */}
+                <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                  <img
+                    src={pillar.image}
+                    alt={pillar.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <h3 className="text-xl font-display font-extrabold text-primary dark:text-white mb-4 leading-tight group-hover:text-accent dark:group-hover:text-accent transition-colors duration-200">
-                  {pillar.title}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-grow">
-                  {pillar.description}
-                </p>
-                <div className="mt-8 h-1 w-12 bg-gray-200 dark:bg-gray-800 rounded group-hover:w-full group-hover:bg-accent transition-all duration-300" />
+
+                {/* Content */}
+                <div className="p-8 flex flex-col h-full">
+                  <h3 className="text-xl font-display font-extrabold text-primary dark:text-white mb-4 leading-tight group-hover:text-accent dark:group-hover:text-accent transition-colors duration-200">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-grow">
+                    {pillar.description}
+                  </p>
+                  <div className="mt-8 h-1 w-12 bg-gray-200 dark:bg-gray-800 rounded group-hover:w-full group-hover:bg-accent transition-all duration-300" />
+                </div>
               </motion.div>
             );
           })}
