@@ -6,37 +6,37 @@ export default function Mission() {
   const missions = [
     {
       title: "Ethical Growth & Character Development",
-      description: "We nurture honesty, integrity, empathy, respect, discipline, and responsible citizenship through ethical education, awareness programmes, and leadership development initiatives that help the younger generation understand right from wrong and build strong moral values.",
+      description: "We believe meaningful national change begins with the character of its people. Through ethical education, awareness programs, and leadership development initiatives, we strive to nurture honesty, integrity, empathy, respect, discipline, and responsible citizenship. Our mission is to groom the younger generation from the very basics—helping them understand the difference between right and wrong, good and bad, while building strong moral values, positive behaviour, and ethical leadership. By shaping character today, we are building stronger families, responsible citizens, and a better Pakistan for tomorrow.",
       icon: Compass,
       image: "/assets/ethical-growth-character-development.svg",
     },
     {
       title: "Nature Restoration & Climate Action",
-      description: "We promote tree plantation, combat deforestation, and raise awareness about climate change and global warming to restore forests, protect biodiversity, improve air quality, and conserve water resources.",
+      description: "We are committed to restoring Pakistan’s natural environment by promoting tree plantation, combating deforestation, and raising awareness about climate change and global warming. We believe that restoring forests means restoring wildlife, protecting biodiversity, improving air quality, conserving water resources, and creating a healthier future for generations to come. Through environmental education, community participation, and nationwide plantation campaigns, we aim to inspire every citizen to become a guardian of nature.",
       icon: Leaf,
       image: "/assets/nature-restoration-climate-action.svg",
     },
     {
       title: "Community Welfare & Humanitarian Relief",
-      description: "We uplift vulnerable communities through food assistance, free medical camps, healthcare support, clean water initiatives, disaster relief, and essential humanitarian services with compassion and dignity.",
+      description: "We work to uplift vulnerable communities by providing food assistance, free medical camps, healthcare support, clean water initiatives, disaster relief, and essential humanitarian services. Our mission is to stand beside those in need, ensuring dignity, compassion, and hope reach every individual regardless of background or circumstance.",
       icon: HeartHandshake,
       image: "/assets/community-welfare-humanitarian-relief.svg",
     },
     {
       title: "Youth Leadership & Volunteerism",
-      description: "We empower young people through leadership training, volunteer opportunities, skill development, internships, and civic engagement so they can become confident leaders and active contributors to Pakistan’s development.",
+      description: "We empower young people through leadership training, volunteer opportunities, skill development, internships, and civic engagement. By encouraging innovation, teamwork, and social responsibility, we prepare the next generation to become confident leaders and active contributors to Pakistan’s development.",
       icon: Users,
       image: "/assets/youth-leadership-volunteerism.svg",
     },
     {
       title: "Women Empowerment",
-      description: "We create equal opportunities through education, vocational training, entrepreneurship, financial independence, leadership development, and awareness initiatives that help women thrive with confidence, dignity, and purpose.",
+      description: "We believe empowered women build empowered communities. Through education, vocational training, entrepreneurship, financial independence, leadership development, and awareness initiatives, we strive to create equal opportunities where women can thrive with confidence, dignity, and purpose.",
       icon: Sparkles,
       image: "/assets/women-empowerment.svg",
     },
     {
       title: "Collaboration for National Impact",
-      description: "We work with educational institutions, healthcare organizations, NGOs, government departments, corporate partners, and local communities to maximize resources, strengthen impact, and create sustainable solutions for Pakistan’s future.",
+      description: "Lasting change is only possible through collective action. We collaborate with educational institutions, healthcare organizations, NGOs, government departments, corporate partners, and local communities to maximize resources, strengthen impact, and create sustainable solutions for Pakistan’s future.",
       icon: Handshake,
       image: "/assets/collaboration-for-national-impact.svg",
     }
@@ -45,23 +45,33 @@ export default function Mission() {
   const pipelineStages = [
     {
       step: "01",
-      title: "Needs Assessment",
-      desc: "Field coordinators survey target union councils and coordinate with local elders to build verified recipient logs."
+      title: "Ethical Awareness",
+      desc: "Building strong values, positive behaviour, and responsible citizenship."
     },
     {
       step: "02",
-      title: "Direct Procurement",
-      desc: "Rations and equipment are sourced directly from manufacturers to avoid middleman inflation and maximize resource utility."
+      title: "Community Assessment",
+      desc: "Understanding local challenges and identifying genuine needs."
     },
     {
       step: "03",
-      title: "Youth Deployment",
-      desc: "Our college and university volunteer wing is mobilized to coordinate and run the field distribution points."
+      title: "Strategic Planning",
+      desc: "Designing sustainable and measurable solutions."
     },
     {
       step: "04",
-      title: "Audited Logging",
-      desc: "We perform GPS-tagged verification and update the records immediately to ensure transparent tracking."
+      title: "Volunteer Mobilization",
+      desc: "Training and deploying skilled volunteers and leaders."
+    },
+    {
+      step: "05",
+      title: "Project Execution",
+      desc: "Implementing impactful initiatives with transparency."
+    },
+    {
+      step: "06",
+      title: "Impact & Sustainability",
+      desc: "Measuring results, empowering communities, and ensuring long-term positive change."
     }
   ];
 
@@ -229,14 +239,14 @@ export default function Mission() {
               How We Work
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-black dark:text-white mt-1">
-              Our Distribution Pipeline
+              OUR OPERATIONAL MODEL
             </h3>
             <p className="text-xs sm:text-sm text-gray-500 mt-2">
-              A structured lifecycle that governs the allocation and deployment of all aid materials.
+              A clear pathway from awareness to lasting impact through ethical action and community-led change.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {pipelineStages.map((stage, idx) => (
               <motion.div
                 key={idx}
