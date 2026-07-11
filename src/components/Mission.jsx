@@ -1,28 +1,44 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Flag, HeartHandshake, Flame, Building2, Eye, ShieldCheck, Compass, CheckCircle2 } from 'lucide-react';
+import { Eye, Compass, Leaf, HeartHandshake, Users, Sparkles, Handshake } from 'lucide-react';
 
 export default function Mission() {
-  const pillars = [
+  const missions = [
     {
-      title: "National Unity & Social Cohesion",
-      description: "Fostering solidarity across diverse cultural, linguistic, and regional groups to champion one Pakistani identity, as encapsulated by our tagline: 'Be a Nation, Not Separation.'",
-      image: "/national_unity.jpeg",
+      title: "Ethical Growth & Character Development",
+      description: "We nurture honesty, integrity, empathy, respect, discipline, and responsible citizenship through ethical education, awareness programmes, and leadership development initiatives that help the younger generation understand right from wrong and build strong moral values.",
+      icon: Compass,
+      image: "/assets/ethical-growth-character-development.svg",
     },
     {
-      title: "Community Welfare & Support",
-      description: "Deploying targeted humanitarian relief, food drives, basic healthcare setups, and clean water schemes to underserved districts, supporting families in times of critical need.",
-      image: "/community_welfare.jpeg",
+      title: "Nature Restoration & Climate Action",
+      description: "We promote tree plantation, combat deforestation, and raise awareness about climate change and global warming to restore forests, protect biodiversity, improve air quality, and conserve water resources.",
+      icon: Leaf,
+      image: "/assets/nature-restoration-climate-action.svg",
     },
     {
-      title: "Youth Empowerment",
-      description: "Mobilizing and training high school and university volunteers, equipping them with leadership, crisis management, and community organizing skills to lead future campaigns.",
-      image: "/youth_empowerment.jpeg",
+      title: "Community Welfare & Humanitarian Relief",
+      description: "We uplift vulnerable communities through food assistance, free medical camps, healthcare support, clean water initiatives, disaster relief, and essential humanitarian services with compassion and dignity.",
+      icon: HeartHandshake,
+      image: "/assets/community-welfare-humanitarian-relief.svg",
     },
     {
-      title: "Community Collaboration",
-      description: "Collaborating with private CSR initiatives, academic institutions, and local NGOs to streamline distribution networks and maximize the reach of social aid programs.",
-      image: "/community_collaboration.jpeg",
+      title: "Youth Leadership & Volunteerism",
+      description: "We empower young people through leadership training, volunteer opportunities, skill development, internships, and civic engagement so they can become confident leaders and active contributors to Pakistan’s development.",
+      icon: Users,
+      image: "/assets/youth-leadership-volunteerism.svg",
+    },
+    {
+      title: "Women Empowerment",
+      description: "We create equal opportunities through education, vocational training, entrepreneurship, financial independence, leadership development, and awareness initiatives that help women thrive with confidence, dignity, and purpose.",
+      icon: Sparkles,
+      image: "/assets/women-empowerment.svg",
+    },
+    {
+      title: "Collaboration for National Impact",
+      description: "We work with educational institutions, healthcare organizations, NGOs, government departments, corporate partners, and local communities to maximize resources, strengthen impact, and create sustainable solutions for Pakistan’s future.",
+      icon: Handshake,
+      image: "/assets/collaboration-for-national-impact.svg",
     }
   ];
 
@@ -105,46 +121,106 @@ export default function Mission() {
           </motion.p>
         </div>
 
-        {/* Cards Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24"
-        >
-          {pillars.map((pillar, idx) => {
-            return (
-              <motion.div
-                key={idx}
-                variants={cardVariants}
-                className="group relative surface-card dark:bg-dark-card rounded-3xl overflow-hidden border border-primary/5 dark:border-dark-border hover:border-accent/40 dark:hover:border-accent/40 shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full"
-              >
-                {/* Image Container */}
-                <div className="relative h-64 sm:h-56 md:h-48 overflow-hidden bg-gray-100 dark:bg-gray-900">
-                  <img
-                    src={pillar.image}
-                    alt={pillar.title}
-                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+        {/* Mission cards grid */}
+        <div className="mb-16">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-8"
+          >
+            {missions.slice(0, 3).map((mission, idx) => {
+              const Icon = mission.icon;
 
-                {/* Content */}
-                <div className="p-8 flex flex-col h-full">
-                  <h3 className="text-xl font-display font-extrabold text-primary dark:text-white mb-4 leading-tight group-hover:text-accent dark:group-hover:text-accent transition-colors duration-200">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-grow">
-                    {pillar.description}
-                  </p>
-                  <div className="mt-8 h-1 w-12 bg-gray-200 dark:bg-gray-800 rounded group-hover:w-full group-hover:bg-accent transition-all duration-300" />
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              return (
+                <motion.div
+                  key={idx}
+                  variants={cardVariants}
+                  className="group relative surface-card dark:bg-dark-card rounded-3xl overflow-hidden border border-primary/5 dark:border-dark-border hover:border-accent/40 dark:hover:border-accent/40 shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full"
+                >
+                  <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                    <img
+                      src={mission.image}
+                      alt={mission.title}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = '/assets/mission-placeholder.svg';
+                      }}
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
+                    <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-white/90 dark:bg-black/70 text-[11px] font-bold uppercase tracking-[0.24em] text-primary dark:text-white">
+                      {mission.title}
+                    </div>
+                  </div>
+                  <div className="p-8 flex flex-col h-full">
+                    <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                      <Icon size={22} />
+                    </div>
+                    <h3 className="text-xl font-display font-extrabold text-primary dark:text-white mb-4 leading-tight group-hover:text-accent dark:group-hover:text-accent transition-colors duration-200">
+                      {mission.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-grow">
+                      {mission.description}
+                    </p>
+                    <div className="mt-8 h-1 w-12 bg-gray-200 dark:bg-gray-800 rounded group-hover:w-full group-hover:bg-accent transition-all duration-300" />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+          >
+            {missions.slice(3).map((mission, idx) => {
+              const Icon = mission.icon;
+
+              return (
+                <motion.div
+                  key={idx + 3}
+                  variants={cardVariants}
+                  className="group relative surface-card dark:bg-dark-card rounded-3xl overflow-hidden border border-primary/5 dark:border-dark-border hover:border-accent/40 dark:hover:border-accent/40 shadow-lg shadow-primary/8 dark:shadow-sm hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col h-full"
+                >
+                  <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-900">
+                    <img
+                      src={mission.image}
+                      alt={mission.title}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = '/assets/mission-placeholder.svg';
+                      }}
+                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
+                    <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-white/90 dark:bg-black/70 text-[11px] font-bold uppercase tracking-[0.24em] text-primary dark:text-white">
+                      {mission.title}
+                    </div>
+                  </div>
+                  <div className="p-8 flex flex-col h-full">
+                    <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                      <Icon size={22} />
+                    </div>
+                    <h3 className="text-xl font-display font-extrabold text-primary dark:text-white mb-4 leading-tight group-hover:text-accent dark:group-hover:text-accent transition-colors duration-200">
+                      {mission.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed flex-grow">
+                      {mission.description}
+                    </p>
+                    <div className="mt-8 h-1 w-12 bg-gray-200 dark:bg-gray-800 rounded group-hover:w-full group-hover:bg-accent transition-all duration-300" />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
 
         {/* Expansion Section A: Execution pipeline flow */}
         <div className="mb-24">

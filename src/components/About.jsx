@@ -1,8 +1,40 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Award, ShieldAlert, Heart, Calendar, ArrowRight, ShieldCheck, Compass, CheckCircle2 } from 'lucide-react';
-import mushtaqGhaniPhoto from '../assets/mushtaq_ghani.jpg';
-import harmainGhaniPhoto from '../assets/harmain_ghani.jpg';
+import { Award, Calendar, ArrowRight, ShieldCheck, Compass, CheckCircle2, Heart } from 'lucide-react';
+import LeadershipModal from './LeadershipModal';
+
+const mushtaqGhaniPhoto = "/assets/mushtaq_ghani.jpg";
+const harmainGhaniPhoto = "/assets/harmain_ghani.jpg";
+
+const MUSHTAQ_SOCIAL = [
+  { icon: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/mgptiofficial' },
+  { icon: 'x', label: 'X', href: 'https://x.com/MushtaqGhaniPTI' },
+  { icon: 'wikipedia', label: 'Wikipedia', href: 'https://en.wikipedia.org/wiki/Mushtaq_Ahmed_Ghani' },
+];
+
+const HARMAIN_SOCIAL = [
+  { icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/harmain.ghani_official/' },
+  { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/harmain-ghani-a88561246' },
+  { icon: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/ghaniharmain' },
+];
+
+function SocialIcon({ type, size = 18, className = '' }) {
+  const props = { width: size, height: size, viewBox: '0 0 24 24', fill: 'currentColor', className };
+  switch (type) {
+    case 'facebook':
+      return <svg {...props}><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>;
+    case 'instagram':
+      return <svg {...props} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>;
+    case 'linkedin':
+      return <svg {...props}><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>;
+    case 'x':
+      return <svg {...props}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>;
+    case 'wikipedia':
+      return <svg {...props} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M8 8c1.5 2 3 4 4 8 1-4 2.5-6 4-8M9 16h6" /></svg>;
+    default:
+      return null;
+  }
+}
 
 // Reusable CountUp component with cubic ease-out
 function CountUp({ to, suffix = "", duration = 2 }) {
@@ -46,46 +78,52 @@ function CountUp({ to, suffix = "", duration = 2 }) {
 }
 
 export default function About() {
+  const [leadershipModal, setLeadershipModal] = useState(null);
   const stats = [
-    { label: "Volunteers Onboarded", count: "1200", suffix: "+" },
-    { label: "Active Welfare Projects", count: "15", suffix: "+" },
-    { label: "Cities Supported", count: "8", suffix: "" },
-    { label: "Lives Impacted", count: "50000", suffix: "+" }
+    { label: "Volunteers", count: "200", suffix: "+" },
+    { label: "Projects", count: "6", suffix: "+" },
+    { label: "Cities", count: "2", suffix: "" },
+    { label: "Lives Impacted", count: "83320", suffix: "+" }
   ];
 
   const milestones = [
     {
       year: "2024",
-      title: "Foundational Roots",
-      desc: "Conceived the welfare framework in Abbottabad, mobilizing the first 50 university students to coordinate local relief drives."
+      title: "Building the Foundation",
+      desc: "We laid the foundation of One Nation Pakistan by promoting youth engagement, community connection, and positive social interaction through events like Azadi Fest, Winter Fest, and educational collaborations."
     },
     {
       year: "2025",
-      title: "Regional Mobilization",
-      desc: "Expanded volunteer wings to Haripur, Mansehra, and Peshawar. Launched mobile health checkup camps in remote tribal villages."
+      title: "Community Relief & Social Impact",
+      desc: "Our mission expanded toward humanitarian service, delivering food assistance, medical support, and community welfare initiatives that positively impacted 80,000+ individuals."
     },
     {
       year: "2026",
-      title: "Nationwide Scaling",
-      desc: "Launched large-scale clean water filtration plant installations and secured corporate CSR alignment for sustainable impact."
+      title: "Expanding Sustainable Impact",
+      desc: "We launched flagship initiatives in healthcare, environmental conservation, animal welfare, women empowerment, and Ethical Growth, building a stronger and more sustainable future for communities across Pakistan."
     }
   ];
 
   const commitments = [
     {
-      title: "100% Financial Auditing",
-      desc: "Every rupee received is audited and transparently accounted for, with field distribution video reports shared directly with sponsors.",
+      title: "Transparency & Accountability",
+      desc: "We uphold the highest standards of integrity by ensuring responsible use of resources, ethical governance, and transparency in all our operations.",
       icon: ShieldCheck
     },
     {
-      title: "Youth Leadership Framework",
-      desc: "We train our student chapters in crisis management, logistics, and ground leadership to empower the next generation of changemakers.",
+      title: "Compassionate Service",
+      desc: "We serve communities with empathy and dignity, delivering humanitarian relief, healthcare, education, and social support where it is needed most.",
+      icon: Heart
+    },
+    {
+      title: "Ethical Growth & Sustainable Impact",
+      desc: "We empower individuals through ethical leadership, environmental responsibility, and community-driven initiatives that create lasting positive change.",
       icon: Compass
     },
     {
-      title: "Elders & Local Alignment",
-      desc: "We coordinate with local village councils (Jirgas) and community leaders to perform thorough needs assessments before allocating relief packs.",
-      icon: Heart
+      title: "Community Empowerment",
+      desc: "We believe lasting change comes from empowered communities. By engaging youth, volunteers, and local partners, we build solutions that create sustainable impact.",
+      icon: CheckCircle2
     }
   ];
 
@@ -120,7 +158,7 @@ export default function About() {
               transition={{ delay: 0.2 }}
               className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
             >
-              Founded on the principle of national integrity and social welfare, **1 Nation Pakistan** is a dedicated movement designed to bridge gaps between communities. We aim to cultivate volunteerism among youth, build resilient community infrastructure, and collaborate with institutions to deliver food, healthcare, and education to underserved regions.
+              Founded on the principle of national integrity and social welfare, <strong>1 Nation Pakistan</strong> is a dedicated movement designed to bridge gaps between communities. We aim to cultivate volunteerism among youth, build resilient community infrastructure, and collaborate with institutions to deliver food, healthcare, and education to underserved regions.
             </motion.p>
           </div>
 
@@ -148,7 +186,7 @@ export default function About() {
         {/* Expansion Section A: Milestones & Roadmap */}
         <div className="mb-24">
           <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
+            <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Our Journey
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
@@ -198,7 +236,7 @@ export default function About() {
                 We believe that trust is the currency of charity. Our operations adhere to strict governance rules to guarantee maximum local impact.
               </p>
             </div>
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {commitments.map((item, idx) => {
                 const Icon = item.icon;
                 return (
@@ -226,7 +264,7 @@ export default function About() {
         </div>
 
         {/* Leadership Section */}
-        <div>
+        <div className="mt-24 pt-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
               Our Leadership
@@ -237,129 +275,108 @@ export default function About() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto items-stretch">
-            {/* Patron Card */}
+            {/* Mushtaq Ghani Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="surface-card dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-lg relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              whileHover={{ y: -6 }}
+              onClick={() => setLeadershipModal('executive')}
+              className="surface-card dark:bg-dark-card rounded-3xl border-2 border-transparent hover:border-accent/40 dark:hover:border-accent/30 shadow-lg hover:shadow-2xl relative overflow-hidden group transition-all duration-300 flex flex-col h-full cursor-pointer"
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-full blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
               <div className="h-4 bg-gradient-to-r from-primary to-accent" />
-
-              <div className="p-8 flex flex-col items-center text-center flex-grow justify-between">
-                <div className="flex flex-col items-center">
-                  <div className="relative mb-6">
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-primary/10 to-accent/20 flex items-center justify-center p-1 border-2 border-accent/30 shadow-md">
-                      <div className="w-full h-full rounded-full bg-primary-dark flex items-center justify-center overflow-hidden">
-                        <img
-                          src={mushtaqGhaniPhoto}
-                          alt="Mushtaq Ahmed Ghani"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+              <div className="p-8 flex flex-col items-center text-center flex-1 h-full">
+                <div className="relative mb-6 shrink-0">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-primary/10 to-accent/20 flex items-center justify-center p-1 border-2 border-accent/30 shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-full h-full rounded-full bg-primary-dark overflow-hidden">
+                      <img src={mushtaqGhaniPhoto} alt="Mushtaq Ahmed Ghani" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     </div>
-                    <span className="absolute bottom-1 right-1 bg-accent text-primary-dark font-extrabold text-[9px] px-2 py-0.5 rounded-full uppercase tracking-wider shadow">
-                      PATRON
-                    </span>
                   </div>
-
-                  <h4 className="text-xl font-display font-extrabold text-primary dark:text-white mb-1">
-                    Mushtaq Ahmed Ghani
-                  </h4>
-                  <p className="text-xs font-bold text-primary dark:text-accent tracking-wide uppercase mb-4">
-                    Chief Patron & Advisor
-                  </p>
-
-                  <div className="flex flex-wrap justify-center gap-2 mb-6">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-primary/10 dark:bg-primary/20 text-primary dark:text-white uppercase">
-                      <Award size={10} className="text-accent" />
-                      KP Assembly Member
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-accent/15 text-accent-dark dark:text-accent uppercase">
-                      <Calendar size={10} />
-                      Speaker (2018-2024)
-                    </span>
-                  </div>
-
-                  <hr className="w-full border-primary/5 dark:border-dark-border mb-6" />
-
-                  <p className="text-sm text-gray-600 dark:text-gray-300 italic leading-relaxed mb-6">
-                    "A veteran lawmaker and public servant representing Abbottabad. Having served as Speaker of the Khyber Pakhtunkhwa Assembly, he guides our welfare vision to ensure transparency, structured growth, and collaboration with national and provincial institutions."
-                  </p>
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-accent text-primary-dark font-extrabold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow whitespace-nowrap">Patron</span>
                 </div>
 
-                <a
-                  href="https://en.wikipedia.org/wiki/Mushtaq_Ahmed_Ghani"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-white hover:bg-accent/5 dark:bg-dark-bg/60 dark:hover:bg-dark-bg text-xs font-bold text-primary dark:text-accent rounded-xl border border-primary/10 dark:border-dark-border transition-colors hover:scale-[1.01] active:scale-95 shadow-sm cursor-pointer"
-                >
-                  Read Biography on Wikipedia
-                </a>
+                <h4 className="text-xl font-display font-extrabold text-primary dark:text-white mb-1 shrink-0">Mushtaq Ahmed Ghani</h4>
+                <p className="text-xs font-bold text-primary dark:text-accent tracking-wide uppercase mb-4 shrink-0 min-h-[2.5rem] flex items-center justify-center">Patron & Chief of One Nation Pakistan</p>
+
+                <div className="flex flex-wrap justify-center gap-2 mb-4 min-h-[4.5rem] items-center shrink-0">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-primary/10 dark:bg-primary/20 text-primary dark:text-white uppercase">
+                    <Award size={10} className="text-accent" /> MPA & Health Committee Chairman
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-accent/15 text-accent-dark dark:text-accent uppercase">
+                    <Calendar size={10} /> Speaker KP Assembly (2018–2023)
+                  </span>
+                </div>
+
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed flex-grow mb-0">
+                  A distinguished public servant and education pioneer. Former Minister for Higher Education & Information (2013–2018) and Speaker of the KP Assembly (2018–2023). Founder of Pine Hills Education System (est. 1984), serving as Chief Patron & Chairman.
+                </p>
+
+                <div className="mt-auto w-full pt-6 shrink-0">
+                  <div className="flex flex-wrap items-center justify-center gap-2 min-h-[2.25rem] mb-4" onClick={(e) => e.stopPropagation()}>
+                    {MUSHTAQ_SOCIAL.map((s) => (
+                      <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" title={s.label} aria-label={s.label} className="p-2.5 rounded-full bg-primary/10 hover:bg-accent/20 text-primary dark:text-accent border border-primary/10 hover:scale-110 transition-all"><SocialIcon type={s.icon} /></a>
+                    ))}
+                  </div>
+                  <div className="w-full pt-3 border-t border-primary/10 dark:border-dark-border flex items-center justify-center gap-1.5 text-xs font-bold text-accent uppercase tracking-wide opacity-70 group-hover:opacity-100 transition-opacity">
+                    View Executive Body <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </div>
             </motion.div>
 
-            {/* Harmain Ghani Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="surface-card dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border shadow-lg shadow-primary/8 dark:shadow-lg relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              whileHover={{ y: -6 }}
+              onClick={() => setLeadershipModal('organizing')}
+              className="surface-card dark:bg-dark-card rounded-3xl border-2 border-transparent hover:border-accent/40 dark:hover:border-accent/30 shadow-lg hover:shadow-2xl relative overflow-hidden group transition-all duration-300 flex flex-col h-full cursor-pointer"
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 rounded-full blur-xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
               <div className="h-4 bg-gradient-to-r from-accent to-primary" />
-
-              <div className="p-8 flex flex-col items-center text-center flex-grow justify-between">
-                <div className="flex flex-col items-center">
-                  <div className="relative mb-6">
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-primary/10 to-accent/20 flex items-center justify-center p-1 border-2 border-accent/30 shadow-md">
-                      <div className="w-full h-full rounded-full bg-primary-dark flex items-center justify-center overflow-hidden">
-                        <img
-                          src={harmainGhaniPhoto}
-                          alt="Harmain Ghani"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+              <div className="p-8 flex flex-col items-center text-center flex-1 h-full">
+                <div className="relative mb-6 shrink-0">
+                  <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-primary/10 to-accent/20 flex items-center justify-center p-1 border-2 border-accent/30 shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-full h-full rounded-full bg-primary-dark overflow-hidden">
+                      <img src={harmainGhaniPhoto} alt="Dr. Harmain Ghani" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     </div>
-                    <span className="absolute bottom-1 right-1 bg-accent text-primary-dark font-extrabold text-[9px] px-2 py-0.5 rounded-full uppercase tracking-wider shadow">
-                      CO-FOUNDER
-                    </span>
                   </div>
-
-                  <h4 className="text-xl font-display font-extrabold text-primary dark:text-white mb-1">
-                    Harmain Ghani
-                  </h4>
-                  <p className="text-xs font-bold text-primary dark:text-accent tracking-wide uppercase mb-4">
-                    Co-Founder & Executive Director
-                  </p>
-
-                  <div className="flex flex-wrap justify-center gap-2 mb-6">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-primary/10 dark:bg-primary/20 text-primary dark:text-white uppercase">
-                      <Award size={10} className="text-accent" />
-                      Executive Director
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-accent/15 text-accent-dark dark:text-accent uppercase">
-                      <Calendar size={10} />
-                      Operations Lead
-                    </span>
-                  </div>
-
-                  <hr className="w-full border-primary/5 dark:border-dark-border mb-6" />
-
-                  <p className="text-sm text-gray-600 dark:text-gray-300 italic leading-relaxed mb-6">
-                    "As the Co-Founder and Executive Director, Harmain drives the organizational strategy, youth coordination wings, and ground execution. She ensures transparent distribution loops, coordinates medical camps, and leads regional disaster relief programs across Khyber Pakhtunkhwa."
-                  </p>
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-accent text-primary-dark font-extrabold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow whitespace-nowrap">Founder & CEO</span>
                 </div>
 
-                <span className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 max-w-[250px] mt-4">
-                  (Executive Member of 1 Nation Pakistan)
-                </span>
+                <h4 className="text-xl font-display font-extrabold text-primary dark:text-white mb-1 shrink-0">Dr. Harmain Ghani</h4>
+                <p className="text-xs font-bold text-primary dark:text-accent tracking-wide uppercase mb-4 shrink-0 min-h-[2.5rem] flex items-center justify-center">Founder & CEO of One Nation Pakistan</p>
+
+                <div className="flex flex-col items-center gap-2 mb-4 min-h-[4.5rem] justify-center shrink-0">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-primary/10 dark:bg-primary/20 text-primary dark:text-white uppercase">
+                    <Award size={10} className="text-accent" /> Executive Director, Pine Hills Education System
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-accent/15 text-accent-dark dark:text-accent uppercase">
+                    <Calendar size={10} /> Clinical Pharmacist & Youth Leader
+                  </span>
+                </div>
+
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed flex-grow mb-0">
+                Founder & CEO of One Nation Pakistan and Executive Director of Pine Hills Education System. Clinical Pharmacist, Social Entrepreneur, Philanthropist, Humanitarian, and Youth Leader dedicated to serving communities across Pakistan.
+                </p>
+
+                <div className="mt-auto w-full pt-6 shrink-0">
+                  <div className="flex flex-wrap items-center justify-center gap-2 min-h-[2.25rem] mb-4" onClick={(e) => e.stopPropagation()}>
+                    {HARMAIN_SOCIAL.map((s) => (
+                      <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" title={s.label} aria-label={s.label} className="p-2.5 rounded-full bg-primary/10 hover:bg-accent/20 text-primary dark:text-accent border border-primary/10 hover:scale-110 transition-all"><SocialIcon type={s.icon} /></a>
+                    ))}
+                  </div>
+                  <div className="w-full pt-3 border-t border-primary/10 dark:border-dark-border flex items-center justify-center gap-1.5 text-xs font-bold text-accent uppercase tracking-wide opacity-70 group-hover:opacity-100 transition-opacity">
+                    View Organizing Body <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
+
+        <LeadershipModal isOpen={leadershipModal === 'executive'} onClose={() => setLeadershipModal(null)} type="executive" />
+        <LeadershipModal isOpen={leadershipModal === 'organizing'} onClose={() => setLeadershipModal(null)} type="organizing" />
       </div>
     </section>
   );

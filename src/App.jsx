@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, ArrowUp, CheckCircle2, Phone, Heart } from 'lucide-react';
@@ -45,7 +47,7 @@ const SEED_PROJECTS = [
     title: "Medical Camp",
     location: "Abbottabad & Mansehra",
     date: "March 2026",
-    status: "Completed",
+    status: "Ongoing (Twice a month)",
     category: "Free Medical Camps",
     description: "Providing free medical consultations, diagnostics, and essential medicines to underserved communities.",
     image: "/medical_camp.jpeg",

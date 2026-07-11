@@ -299,7 +299,7 @@ export default function Projects({ projects }) {
                     }}
                     className="px-6 py-3 bg-primary hover:bg-primary-light dark:bg-accent dark:hover:bg-accent-light text-white dark:text-primary-dark font-bold text-sm rounded-full shadow transition-all duration-300 hover:scale-[1.02]"
                   >
-                    Support This Project
+                    {selectedProject.title.toLowerCase().includes('medical') ? 'Become a Volunteer' : 'Support This Project'}
                   </button>
                 </div>
               </div>

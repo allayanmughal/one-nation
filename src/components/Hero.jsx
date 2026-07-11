@@ -12,7 +12,7 @@ const HERO_IMAGES = [
 export default function Hero() {
   const [currentBg, setCurrentBg] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [particles] = useState(() => 
+  const [particles] = useState(() =>
     Array.from({ length: 25 }).map((_, i) => ({
       id: i,
       size: Math.random() * 4 + 1.5,
@@ -63,8 +63,8 @@ export default function Hero() {
   };
 
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       className="relative min-h-[100svh] flex flex-col justify-between items-center overflow-hidden bg-black py-12 text-center"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -128,16 +128,16 @@ export default function Hero() {
         {particles.map((p) => (
           <motion.div
             key={p.id}
-            initial={{ 
-              y: "110svh", 
-              x: `${p.startX}vw`, 
-              opacity: 0 
+            initial={{
+              y: "110svh",
+              x: `${p.startX}vw`,
+              opacity: 0
             }}
-            animate={{ 
+            animate={{
               y: "-10svh",
               opacity: [0, 0.65, 0.65, 0],
               x: [
-                `${p.startX}vw`, 
+                `${p.startX}vw`,
                 `${p.startX + (Math.random() * 15 - 7.5) + (mousePos.x * 12)}vw`,
                 `${p.startX + (Math.random() * 20 - 10) + (mousePos.x * 18)}vw`
               ]
@@ -163,11 +163,11 @@ export default function Hero() {
       <div className="h-16 sm:h-20 w-full flex-shrink-0 relative z-20" />
 
       {/* Hero Content with 3D Parallax */}
-      <motion.div 
+      <motion.div
         className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-20 flex-1 flex flex-col justify-center"
-        style={{ 
-          transformStyle: 'preserve-3d', 
-          rotateX: -mousePos.y * 18, 
+        style={{
+          transformStyle: 'preserve-3d',
+          rotateX: -mousePos.y * 18,
           rotateY: mousePos.x * 18,
           transition: "transform 0.2s cubic-bezier(0.25, 1, 0.5, 1)"
         }}
@@ -213,12 +213,12 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           className="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed"
-          style={{ 
+          style={{
             filter: 'drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.9))',
             transform: "translateZ(45px)"
           }}
         >
-          1 Nation Pakistan unites resources, institutions, and dedicated volunteers to foster social welfare, national cohesion, and direct relief across Pakistan.
+          Ye Watan Hamara Hy<br />Ham Hain Pasbaan Is K.
         </motion.p>
 
         {/* Action Buttons */}

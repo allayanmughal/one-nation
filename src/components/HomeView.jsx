@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Flag, HeartHandshake, ShieldCheck, Compass, MessageSquare, Users, Heart, BookOpen, HeartPulse, Quote } from 'lucide-react';
+import { ArrowRight, Flag, HeartHandshake, ShieldCheck, Compass, MessageSquare, Users, Heart, BookOpen, HeartPulse, Quote, Shield, Award, GraduationCap, Activity } from 'lucide-react';
 import Hero from './Hero';
-import mushtaqGhaniPhoto from '../assets/mushtaq_ghani.jpg';
+const mushtaqGhaniPhoto = "/assets/mushtaq_ghani.jpg";
+const harmainGhaniPhoto = "/assets/harmain_ghani.jpg";
+const ambassador1Photo = "/assets/Ambassador1.jpg";
+const ambassador2Photo = "/assets/Ambassador2.jpg";
 
 // Sub-Component: Decorative Leaf Branch SVG
 function LeafBranch({ className = "" }) {
   return (
-    <svg 
-      viewBox="0 0 100 100" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="1.5" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
+    <svg
+      viewBox="0 0 100 100"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className={className}
     >
       {/* Main Stem */}
@@ -70,7 +73,7 @@ function InteractiveTiltCard({ children, className = "" }) {
     const height = rect.height;
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    
+
     const normX = (mouseX / width) - 0.5;
     const normY = (mouseY / height) - 0.5;
 
@@ -96,13 +99,13 @@ function InteractiveTiltCard({ children, className = "" }) {
         scale: isHovered ? 1.025 : 1
       }}
       transition={{ type: "spring", stiffness: 150, damping: 22 }}
-      style={{ 
-        transformStyle: 'preserve-3d', 
-        perspective: 1200 
+      style={{
+        transformStyle: 'preserve-3d',
+        perspective: 1200
       }}
       className={`relative overflow-hidden transition-all duration-300 ${className}`}
     >
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 z-10"
         style={{
           opacity: isHovered ? 0.35 : 0,
@@ -167,23 +170,21 @@ function ParallaxProjectCard({ project, onClick }) {
         />
         {project.category && (
           <span
-            className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-[9px] font-black text-white uppercase shadow-sm ${
-              project.category === 'Free Medical Camps' ? 'bg-campaign-medical' :
+            className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-[9px] font-black text-white uppercase shadow-sm ${project.category === 'Free Medical Camps' ? 'bg-campaign-medical' :
               project.category === 'Project Haya' ? 'bg-campaign-haya' :
-              project.category === 'Nature Rehabilitation' ? 'bg-campaign-nature' :
-              project.category === 'Special Nation' ? 'bg-campaign-special' :
-              project.category === 'Learn2Earn' ? 'bg-campaign-learn' :
-              project.category === 'One Nation Explorers' ? 'bg-campaign-explorers' :
-              'bg-accent'
-            }`}
+                project.category === 'Nature Rehabilitation' ? 'bg-campaign-nature' :
+                  project.category === 'Special Nation' ? 'bg-campaign-special' :
+                    project.category === 'Learn2Earn' ? 'bg-campaign-learn' :
+                      project.category === 'One Nation Explorers' ? 'bg-campaign-explorers' :
+                        'bg-accent'
+              }`}
           >
             {project.category}
           </span>
         )}
         <span
-          className={`absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold text-white uppercase shadow-sm ${
-            project.status.toLowerCase() === 'ongoing' ? 'bg-amber-600' : 'bg-primary'
-          }`}
+          className={`absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold text-white uppercase shadow-sm ${project.status.toLowerCase() === 'ongoing' ? 'bg-amber-600' : 'bg-primary'
+            }`}
         >
           {project.status}
         </span>
@@ -208,42 +209,80 @@ function PatronShowcase() {
   return (
     <section className="py-16 sm:py-24 bg-light-bg dark:bg-dark-bg border-t border-primary/5 dark:border-dark-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          {/* Left Column: Portrait + Focus Areas */}
-          <div className="lg:col-span-5 flex flex-col gap-8">
-            {/* Portrait */}
-            <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-primary/10 border border-primary/5 dark:border-dark-border aspect-[4/5] max-w-xs sm:max-w-sm mx-auto lg:mx-0 bg-white dark:bg-dark-card">
+        {/* Top part: Portrait on left (red border), Bio milestones on right (bluish border) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 mb-8 items-stretch">
+          {/* Portrait with red border */}
+          <div className="md:col-span-5 flex justify-center">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-primary/10 border-4 border-red-600 aspect-[4/5] w-full max-w-sm bg-white dark:bg-dark-card">
               <img
-                src={mushtaqGhaniPhoto}
+                src={mushtaqGhaniPhoto.src || mushtaqGhaniPhoto}
                 alt="Mushtaq Ahmed Ghani portrait"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
+              {/* Name Overlay at Bottom */}
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                <span className="block text-[10px] font-bold text-accent uppercase tracking-widest mb-1">Chairman</span>
+                <h3 className="text-base sm:text-lg font-display font-black text-white leading-tight">MUSHTAQ AHMED GHANI</h3>
+                <p className="text-[11px] text-gray-300 font-medium mt-0.5">Patron &amp; Chief of One Nation Pakistan</p>
+              </div>
             </div>
+          </div>
 
-            {/* Our Focus Areas */}
-            <div className="bg-white dark:bg-dark-card rounded-2xl p-6 sm:p-8 shadow-lg shadow-primary/8 border border-primary/5 dark:border-dark-border surface-card">
-              <div className="mb-6 sm:mb-8">
-                <h4 className="text-lg sm:text-xl font-display font-extrabold text-black dark:text-white">
-                  Our Focus Areas
-                </h4>
-                <div className="h-0.5 w-12 bg-accent mt-2 rounded-full" />
+          {/* Bio card with bluish border */}
+          <div className="md:col-span-7 flex flex-col justify-center bg-white dark:bg-dark-card rounded-2xl p-6 sm:p-8 border-4 border-blue-600/80 shadow-lg">
+            <div className="flex flex-col text-left justify-center">
+              <h3 className="text-2xl sm:text-3xl font-display font-black text-primary dark:text-white leading-tight mb-2">
+                MUSHTAQ AHMED GHANI
+              </h3>
+              <div className="mb-5">
+                <span className="text-[10px] sm:text-xs font-bold tracking-[0.18em] text-accent uppercase">
+                  Patron &amp; Chief of One Nation Pakistan
+                </span>
+                <div className="h-0.5 w-14 bg-accent mt-2 rounded-full" />
               </div>
 
-              <div className="space-y-5">
-                {FOCUS_AREAS.map((area) => {
-                  const Icon = area.icon;
+              {/* Career Milestones */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                {[
+                  {
+                    title: "Minister of Higher Education & Information",
+                    subtitle: "Government of Khyber Pakhtunkhwa",
+                    date: "2013 - 2018",
+                    icon: Shield,
+                  },
+                  {
+                    title: "Speaker, KP Assembly",
+                    subtitle: "Provincial Legislature Leadership",
+                    date: "2018 - 2023",
+                    icon: Award,
+                  },
+                  {
+                    title: "Member of Provincial Assembly",
+                    subtitle: "Chairman, Health Committee",
+                    date: "Currently Serving",
+                    icon: Users,
+                  },
+                  {
+                    title: "Founder, Pine Hills Education System",
+                    subtitle: "Pioneer of modern education in Abbottabad",
+                    date: "Est. 1984",
+                    icon: GraduationCap,
+                  }
+                ].map((item, index) => {
+                  const IconComponent = item.icon;
                   return (
-                    <div key={area.title} className="flex gap-3 items-start">
-                      <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center shrink-0 shadow-sm shadow-accent/30 mt-0.5">
-                        <Icon size={16} className="text-white" />
+                    <div key={index} className="p-4 rounded-xl bg-primary/5 dark:bg-white/5 border border-primary/10 dark:border-white/10 hover:border-accent/40 hover:scale-[1.02] transition-all duration-300 flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-accent/15 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5">
+                        <IconComponent size={18} />
                       </div>
-                      <div>
-                        <h5 className="text-xs sm:text-sm font-display font-extrabold text-primary dark:text-white mb-1">
-                          {area.title}
-                        </h5>
-                        <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
-                          {area.description}
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-bold text-accent uppercase tracking-wider mb-0.5">{item.date}</span>
+                        <h4 className="text-xs sm:text-sm font-display font-extrabold text-primary dark:text-white leading-tight mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium leading-normal">
+                          {item.subtitle}
                         </p>
                       </div>
                     </div>
@@ -252,83 +291,45 @@ function PatronShowcase() {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Right Column: Bio + Chairman's Message */}
-          <div className="lg:col-span-7 flex flex-col gap-8">
-            {/* Bio */}
-            <div className="flex flex-col text-center lg:text-left justify-center">
-              <h3 className="text-3xl sm:text-4xl font-display font-black text-primary dark:text-white leading-tight mb-2">
-                Mushtaq Ahmed Ghani
-              </h3>
-              <div className="mb-5">
-                <span className="text-[10px] sm:text-xs font-bold tracking-[0.18em] text-accent uppercase">
-                  Chairman & Humanitarian Leader
-                </span>
-                <div className="h-0.5 w-14 bg-accent mt-2 mx-auto lg:mx-0 rounded-full" />
-              </div>
-
-              <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-5">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-accent/10 text-accent-dark dark:text-accent uppercase border border-accent/15">
-                  Veteran Lawmaker
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-accent/10 text-accent-dark dark:text-accent uppercase border border-accent/15">
-                  Speaker KP Assembly (2018–2024)
-                </span>
-              </div>
-
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                As a dedicated public servant representing Abbottabad, Mushtaq Ahmed Ghani leads our humanitarian vision. He coordinates welfare operations with transparency and compassion, ensuring structured outreach reaches families in critical need across Khyber Pakhtunkhwa.
-              </p>
+        {/* Bottom part: Chairman's Message card */}
+        <div className="w-full bg-white dark:bg-dark-card rounded-2xl p-6 sm:p-8 shadow-lg shadow-primary/8 border border-primary/5 dark:border-dark-border flex flex-col surface-card">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center shrink-0">
+              <Quote size={18} className="text-white fill-white/20" />
             </div>
+            <h4 className="text-lg font-display font-extrabold text-primary dark:text-white">
+              Chairman&apos;s Message
+            </h4>
+          </div>
 
-            {/* Chairman's Message card */}
-            <div className="bg-white dark:bg-dark-card rounded-2xl p-6 sm:p-8 shadow-lg shadow-primary/8 border border-primary/5 dark:border-dark-border h-full flex flex-col surface-card">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center shrink-0">
-                  <Quote size={18} className="text-white fill-white/20" />
-                </div>
-                <h4 className="text-lg font-display font-extrabold text-primary dark:text-white">
-                  Chairman&apos;s Message
-                </h4>
-              </div>
+          <p className="text-sm sm:text-base font-bold text-accent leading-relaxed mb-4">
+            Our mission is to serve humanity with integrity, transparency and compassion.
+          </p>
 
-              <p className="text-sm sm:text-base font-bold text-accent leading-relaxed mb-4">
-                Our mission is to serve humanity with integrity, transparency and compassion.
-              </p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+            At One Nation Pakistan, we believe that every act of service strengthens the bonds of our nation. Through youth-led volunteer chapters and direct field outreach, we deliver food security, clean water, and emergency relief to underserved communities.
+          </p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Together with our volunteers and collaborators, we are building a future where compassion drives action — standing united as one nation, not separation.
+          </p>
 
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
-                At One Nation Pakistan, we believe that every act of service strengthens the bonds of our nation. Through youth-led volunteer chapters and direct field outreach, we deliver food security, clean water, and emergency relief to underserved communities.
-              </p>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-                Together with our volunteers and collaborators, we are building a future where compassion drives action — standing united as one nation, not separation.
-              </p>
-
-              <div className="mb-6">
-                <p className="text-accent font-serif italic text-xl sm:text-2xl leading-none mb-1">
-                  Mushtaq Ahmed Ghani
-                </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
-                  Chairman & Humanitarian Leader
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3 mt-auto">
-                <a
-                  href="#/projects"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-primary hover:bg-primary-light dark:bg-accent dark:hover:bg-accent-light text-white dark:text-primary-dark font-bold text-sm rounded-xl shadow-md shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95"
-                >
-                  <span>View Projects</span>
-                  <ArrowRight size={16} />
-                </a>
-                <a
-                  href="#/get-involved"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white dark:bg-dark-bg border-2 border-primary/20 dark:border-dark-border hover:border-accent text-primary dark:text-white font-bold text-sm rounded-xl transition-all hover:scale-[1.02] active:scale-95"
-                >
-                  <Heart size={16} className="text-accent fill-accent/20" />
-                  <span>Support Our Mission</span>
-                </a>
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+            <a
+              href="#/projects"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-primary hover:bg-primary-light dark:bg-accent dark:hover:bg-accent-light text-white dark:text-primary-dark font-bold text-sm rounded-xl shadow-md shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95"
+            >
+              <span>View Projects</span>
+              <ArrowRight size={16} />
+            </a>
+            <a
+              href="#/get-involved"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white dark:bg-dark-bg border-2 border-primary/20 dark:border-dark-border hover:border-accent text-primary dark:text-white font-bold text-sm rounded-xl transition-all hover:scale-[1.02] active:scale-95"
+            >
+              <Heart size={16} className="text-accent fill-accent/20" />
+              <span>Support Our Mission</span>
+            </a>
           </div>
         </div>
       </div>
@@ -336,37 +337,185 @@ function PatronShowcase() {
   );
 }
 
-// Sub-Component 5: Brand Positioning Quote
-function BrandPositioningQuote() {
+// Sub-Component 4.5: Co-Founder Showcase (Dr. Harmain Ghani)
+function CoFounderShowcase() {
   return (
-    <section className="py-20">
+    <section className="py-16 sm:py-24 bg-white dark:bg-dark-card border-t border-primary/5 dark:border-dark-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-primary-dark text-white rounded-[2.5rem] border border-white/5 overflow-hidden relative p-8 sm:p-12">
-          {/* Decorative glows */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/5 pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-white/5 pointer-events-none" />
-          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="max-w-4xl mx-auto text-center relative z-10">
-            <span className="text-[10px] sm:text-xs font-bold tracking-widest text-accent uppercase block mb-4">
-              Brand Positioning Statement
-            </span>
-            <div className="relative inline-block max-w-4xl mb-6">
-              <span className="absolute -top-12 -left-6 sm:-left-12 text-7xl sm:text-9xl text-accent/10 font-serif leading-none select-none">“</span>
-
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-extrabold text-white leading-relaxed italic px-4 sm:px-12 relative z-10">
-                One Nation Pakistan is a youth-led humanitarian movement committed to serving humanity, protecting vulnerable communities, empowering future generations, and building a united Pakistan through sustainable social impact.
-              </h3>
-
-              <span className="absolute -bottom-24 -right-6 sm:-right-12 text-7xl sm:text-9xl text-accent/10 font-serif leading-none select-none">”</span>
-            </div>
-            <div className="mt-8 flex items-center justify-center gap-3">
-              <div className="h-[1px] w-8 bg-accent/30" />
-              <span className="text-[9px] sm:text-xs font-bold tracking-wider text-accent-light uppercase">TOGETHER WE CAN CREATE A BETTER, STRONGER & COMPASSIONATE PAKISTAN</span>
-              <div className="h-[1px] w-8 bg-accent/30" />
+        {/* Top part: Portrait on left (red border), Bio milestones on right (bluish border) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 mb-8 items-stretch">
+          {/* Portrait with red border */}
+          <div className="md:col-span-5 flex justify-center">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-primary/10 border-4 border-red-600 aspect-[4/5] w-full max-w-sm bg-white dark:bg-dark-card">
+              <img
+                src={harmainGhaniPhoto.src || harmainGhaniPhoto}
+                alt="Dr. Harmain Ghani portrait"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              {/* Name Overlay at Bottom */}
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                <span className="block text-[10px] font-bold text-accent uppercase tracking-widest mb-1">Founder &amp; CEO</span>
+                <h3 className="text-base sm:text-lg font-display font-black text-white leading-tight">DR. HARMAIN GHANI</h3>
+                <p className="text-[11px] text-gray-300 font-medium mt-0.5">One Nation Pakistan</p>
+              </div>
             </div>
           </div>
+
+          {/* Bio card with bluish border */}
+          <div className="md:col-span-7 flex flex-col justify-center bg-light-bg dark:bg-dark-bg rounded-2xl p-6 sm:p-8 border-4 border-blue-600/80 shadow-lg">
+            <div className="flex flex-col text-left justify-center">
+              <h3 className="text-2xl sm:text-3xl font-display font-black text-primary dark:text-white leading-tight mb-2">
+                DR. HARMAIN GHANI
+              </h3>
+              <div className="mb-5">
+                <span className="text-[10px] sm:text-xs font-bold tracking-[0.18em] text-accent uppercase">
+                  Founder &amp; CEO of One Nation Pakistan
+                </span>
+                <div className="h-0.5 w-14 bg-accent mt-2 rounded-full" />
+              </div>
+
+              {/* Career Milestones */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                {[
+                  {
+                    title: "Founder & CEO",
+                    subtitle: "One Nation Pakistan Welfare Initiatives",
+                    date: "Founder",
+                    icon: Award,
+                  },
+                  {
+                    title: "Executive Director",
+                    subtitle: "Pine Hills Education System",
+                    date: "Executive",
+                    icon: GraduationCap,
+                  },
+                  {
+                    title: "Clinical Pharmacist & Entrepreneur",
+                    subtitle: "Combining medicine & social impact",
+                    date: "Professional",
+                    icon: Activity,
+                  },
+                  {
+                    title: "Philanthropist & Youth Leader",
+                    subtitle: "Mobilizing 1,200+ student volunteers",
+                    date: "Core Commitments",
+                    icon: Users,
+                  }
+                ].map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <div key={index} className="p-4 rounded-xl bg-primary/5 dark:bg-white/5 border border-primary/10 dark:border-white/10 hover:border-accent/40 hover:scale-[1.02] transition-all duration-300 flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-accent/15 border border-accent/20 flex items-center justify-center text-accent shrink-0 mt-0.5">
+                        <IconComponent size={18} />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-bold text-accent uppercase tracking-wider mb-0.5">{item.date}</span>
+                        <h4 className="text-xs sm:text-sm font-display font-extrabold text-primary dark:text-white leading-tight mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium leading-normal">
+                          {item.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom part: Founder's Message card */}
+        <div className="w-full bg-white dark:bg-dark-card rounded-2xl p-6 sm:p-8 shadow-lg shadow-primary/8 border border-primary/5 dark:border-dark-border flex flex-col surface-card">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center shrink-0">
+              <Quote size={18} className="text-white fill-white/20" />
+            </div>
+            <h4 className="text-lg font-display font-extrabold text-primary dark:text-white">
+              Founder&apos;s Message
+            </h4>
+          </div>
+
+          <div className="space-y-4 text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-left">
+            <p>
+              Dr. Harmain Ghani is dedicated to building a more united, empowered, and compassionate Pakistan. Through One Nation Pakistan, he leads transformative initiatives in healthcare, education, women empowerment, environmental sustainability, humanitarian response, and youth development, bringing together institutions, professionals, and volunteers to create lasting social impact across the country.
+            </p>
+            <p className="font-semibold text-accent italic">
+              &ldquo;Driven by the belief that meaningful change begins with collective action, Dr. Harmain Ghani envisions a Pakistan where every individual has the opportunity to contribute, every community has the power to thrive, and every act of service helps build a stronger nation.&rdquo;
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+            <a
+              href="#/get-involved"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-accent hover:bg-accent-dark text-white font-bold text-sm rounded-xl shadow-md transition-all hover:scale-[1.02] active:scale-95"
+            >
+              <Heart size={16} className="fill-white/20" />
+              <span>Join as Volunteer</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Sub-Component 5: Ambassadors Section
+function AmbassadorsSection() {
+  const ambassadors = [
+    {
+      name: "Dr. Waseef Ullah",
+      role: "Chief Ambassador",
+      department: "Medical & Health Care Projects",
+      image: ambassador1Photo,
+    },
+    {
+      name: "Ayesha Khan",
+      role: "Chief Ambassador",
+      department: "Youth & Community Development",
+      image: ambassador2Photo,
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white dark:bg-dark-card border-t border-primary/5 dark:border-dark-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
+            Our Voices
+          </span>
+          <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-primary dark:text-white mt-1">
+            Global Ambassadors
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-500 mt-2">
+            Meet the leaders heading our regional chapters and specialized welfare campaigns.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+          {ambassadors.map((amb, idx) => (
+            <div key={idx} className="surface-card dark:bg-dark-bg/60 rounded-3xl p-6 border border-primary/5 dark:border-dark-border shadow-lg flex flex-col sm:flex-row items-center gap-6 group hover:shadow-xl transition-all duration-300">
+              <div className="w-36 h-36 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-accent/20">
+                <img
+                  src={amb.image.src || amb.image}
+                  alt={amb.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="text-center sm:text-left">
+                <h4 className="text-lg font-display font-bold text-primary dark:text-white mb-1">
+                  {amb.name}
+                </h4>
+                <p className="text-xs font-extrabold text-accent uppercase tracking-wide mb-2">
+                  {amb.role}
+                </p>
+                <span className="inline-flex px-2.5 py-1 rounded-full text-[10px] font-bold bg-primary/5 dark:bg-white/5 text-gray-600 dark:text-gray-400">
+                  {amb.department}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -414,7 +563,7 @@ export default function HomeView({ projects }) {
                   "Be a Nation, Not Separation"
                 </h2>
                 <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mb-8">
-                  We advocate for national unity across all segments of Pakistan. By organizing volunteer wings and establishing structured distribution lines, we deliver food security, clean water filtration, and emergency relief to families in critical need.
+                  One Nation Pakistan brings together compassionate people, trusted institutions, strategic partners, and dedicated volunteers to strengthen national unity, empower communities, and create lasting social impact through education, healthcare, humanitarian action, environmental sustainability, and youth led community development across Pakistan.
                 </p>
                 <a
                   href="#/mission"
@@ -481,8 +630,14 @@ export default function HomeView({ projects }) {
         </div>
       </section>
 
-      {/* 3. Why 1 Nation Pakistan (Tilt Cards Grid) */}
-      <section className="py-24 bg-light-bg dark:bg-dark-bg">
+      {/* 3. 3D Patron Showcase (Mushtaq Ahmed Ghani Vision Deck) */}
+      <PatronShowcase />
+
+      {/* 3.5. Co-Founder Showcase (Dr. Harmain Ghani) */}
+      <CoFounderShowcase />
+
+      {/* 4. Why 1 Nation Pakistan (Tilt Cards Grid) */}
+      <section className="py-24 bg-light-bg dark:bg-dark-bg border-t border-primary/5 dark:border-dark-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold tracking-widest text-accent dark:text-accent uppercase">
@@ -520,9 +675,6 @@ export default function HomeView({ projects }) {
         </div>
       </section>
 
-      {/* 4. 3D Patron Showcase (Mushtaq Ahmed Ghani Vision Deck) */}
-      <PatronShowcase />
-
       {/* 5. Featured Projects Preview (3D Parallax cards) */}
       <section className="py-24 bg-light-bg dark:bg-dark-bg border-t border-primary/5 dark:border-dark-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -559,8 +711,8 @@ export default function HomeView({ projects }) {
         </div>
       </section>
 
-      {/* 5.5 Brand Positioning Statement Quote */}
-      <BrandPositioningQuote />
+      {/* 6. Ambassadors Section */}
+      <AmbassadorsSection />
 
     </div>
   );
