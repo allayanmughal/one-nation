@@ -55,7 +55,7 @@ const SEED_PROJECTS = [
   },
   {
     id: 2,
-    title: "Animal Rescue",
+    title: "Stray Animal Welfare",
     location: "Haripur & Surrounding Districts",
     date: "June 2026",
     status: "Ongoing",
@@ -66,14 +66,14 @@ const SEED_PROJECTS = [
   },
   {
     id: 3,
-    title: "Massive Plantation",
+    title: "Nature Rehabilitation",
     location: "Galyat & Kaghan Valley",
     date: "January 2026",
     status: "Completed",
     category: "Nature Rehabilitation",
     description: "Large-scale tree plantation drive to combat deforestation and improve environmental sustainability.",
     image: "/massive_plantation.jpeg",
-    details: "Our Massive Plantation initiative plants thousands of trees across KP. Volunteers engage in environmental conservation, creating green spaces and combating climate change impacts on mountain communities."
+    details: "Our Nature Rehabilitation initiative plants thousands of trees across KP. Volunteers engage in environmental conservation, creating green spaces, and combating climate change impacts on mountain communities."
   },
   {
     id: 4,
@@ -88,25 +88,14 @@ const SEED_PROJECTS = [
   },
   {
     id: 5,
-    title: "pervaaz-e-zann",
+    title: "Project Haya",
     location: "KP Tribal Districts",
     date: "November 2026",
     status: "Ongoing",
     category: "Project Haya",
     description: "Empowerment initiative supporting women's economic independence and skill development.",
     image: "/pervaaz-e-zann.jpeg",
-    details: "pervaaz-e-zann (Women's Flight) provides vocational training, microfinance support, and market linkages for women entrepreneurs. Building economic self-reliance and social participation for women across KP."
-  },
-  {
-    id: 6,
-    title: "Initiative for Transgender",
-    location: "Havelian & Urban Centers",
-    date: "December 2026",
-    status: "Ongoing",
-    category: "Learn2Earn",
-    description: "Comprehensive support programs for transgender individuals including education, health, and livelihood support.",
-    image: "/initiative_transgender.jpeg",
-    details: "This initiative provides safe spaces, vocational training, mental health support, and social inclusion programs. We work to ensure transgender individuals have access to education, employment, and community belonging."
+    details: "Project Haya promotes the values of modesty, dignity, and moral responsibility through awareness campaigns, educational workshops, and community engagement. The initiative empowers individuals, especially youth, to build strong character, uphold ethical values, and contribute positively to society."
   }
 ];
 

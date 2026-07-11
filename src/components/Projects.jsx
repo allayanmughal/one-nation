@@ -6,9 +6,16 @@ export default function Projects({ projects }) {
   const [filter, setFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
 
+  const getProjectStatusType = (status) => {
+    const normalizedStatus = String(status || '').toLowerCase();
+    if (normalizedStatus.includes('ongoing')) return 'ongoing';
+    if (normalizedStatus.includes('completed')) return 'completed';
+    return 'other';
+  };
+
   const filteredProjects = projects.filter((project) => {
     if (filter === 'all') return true;
-    return project.status.toLowerCase() === filter;
+    return getProjectStatusType(project.status) === filter;
   });
 
   return (
@@ -88,12 +95,12 @@ export default function Projects({ projects }) {
                   )}
                   {/* Status Badge */}
                   <span
-                    className={`absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold text-white uppercase shadow-md ${project.status.toLowerCase() === 'ongoing'
+                    className={`absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold text-white uppercase shadow-md ${getProjectStatusType(project.status) === 'ongoing'
                         ? 'bg-amber-600 dark:bg-amber-500'
                         : 'bg-primary dark:bg-primary-light'
                       }`}
                   >
-                    {project.status.toLowerCase() === 'ongoing' ? (
+                    {getProjectStatusType(project.status) === 'ongoing' ? (
                       <Clock size={12} className="animate-spin" style={{ animationDuration: '3s' }} />
                     ) : (
                       <CheckCircle size={12} />
