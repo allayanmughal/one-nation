@@ -6,6 +6,57 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
   const [activeTab, setActiveTab] = useState('projects');
   const [searchQuery, setSearchQuery] = useState('');
 
+  const PREDEFINED_CATEGORIES = [
+    'Free Medical Camps',
+    'Project Haya',
+    'Nature Rehabilitation',
+    'Special Nation',
+    'Learn2Earn',
+    'One Nation Explorers'
+  ];
+
+  const [isCustomCategory, setIsCustomCategory] = useState(false);
+
+  const handleProjectImageError = (event) => {
+    event.target.src = '/placeholder-project.jpg';
+  };
+
+  // A normal Google Drive "share" link (e.g. .../file/d/FILE_ID/view?usp=sharing
+  // or .../open?id=FILE_ID) points to an HTML viewer page, not raw image bytes,
+  // so an <img> tag can never render it directly. This extracts the file ID
+  // from any of the common Drive link formats.
+  const extractGoogleDriveFileId = (url) => {
+    if (!url) return null;
+    const patterns = [
+      /drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/,
+      /drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/,
+      /drive\.google\.com\/uc\?(?:export=[a-z]+&)?id=([a-zA-Z0-9_-]+)/,
+      /drive\.google\.com\/thumbnail\?id=([a-zA-Z0-9_-]+)/,
+      /lh3\.googleusercontent\.com\/d\/([a-zA-Z0-9_-]+)/
+    ];
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match) return match[1];
+    }
+    return null;
+  };
+
+  // Converts any Google Drive link into a direct, hotlink-friendly image URL.
+  // Non-Drive URLs are returned untouched.
+  const normalizeImageUrl = (url) => {
+    if (!url) return url;
+    const fileId = extractGoogleDriveFileId(url);
+    if (!fileId) return url;
+    return `https://lh3.googleusercontent.com/d/${fileId}`;
+  };
+
+  const getProjectImageSrc = (imageUrl) => {
+    if (!imageUrl) return '/placeholder-project.jpg';
+    if (imageUrl.startsWith('/')) return imageUrl;
+    const normalized = normalizeImageUrl(imageUrl);
+    return `/api/image-proxy?url=${encodeURIComponent(normalized)}`;
+  };
+
   // Forms states
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
@@ -23,12 +74,30 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
   // Project modal form changes
   const handleProjectFormChange = (e) => {
     const { name, value } = e.target;
+    if (name === 'image') {
+      setProjectForm(prev => ({ ...prev, image: normalizeImageUrl(value) }));
+      return;
+    }
     setProjectForm(prev => ({ ...prev, [name]: value }));
+  };
+
+  // Only the dropdown (not the manual text input) should be able to
+  // switch in/out of custom-category mode.
+  const handleCategorySelectChange = (e) => {
+    const { value } = e.target;
+    if (value === '__custom__') {
+      setIsCustomCategory(true);
+      setProjectForm(prev => ({ ...prev, category: '' }));
+    } else {
+      setIsCustomCategory(false);
+      setProjectForm(prev => ({ ...prev, category: value }));
+    }
   };
 
   // Open modal for adding a project
   const handleAddProjectClick = () => {
     setEditingProject(null);
+    setIsCustomCategory(false);
     setProjectForm({
       title: '',
       description: '',
@@ -45,6 +114,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
   // Open modal for editing a project
   const handleEditProjectClick = (project) => {
     setEditingProject(project.id);
+    setIsCustomCategory(Boolean(project.category) && !PREDEFINED_CATEGORIES.includes(project.category));
     setProjectForm({
       title: project.title,
       description: project.description,
@@ -59,58 +129,91 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
   };
 
   // Submit project (Add or Edit)
-  const handleProjectSubmit = (e) => {
+  const handleProjectSubmit = async (e) => {
     e.preventDefault();
     if (!projectForm.title || !projectForm.description || !projectForm.location) {
       alert("Please fill in all required fields.");
       return;
     }
 
-    if (editingProject) {
-      // Edit mode
-      const updated = projects.map(p =>
-        p.id === editingProject ? { ...p, ...projectForm } : p
-      );
-      setProjects(updated);
-      localStorage.setItem('one_nation_projects', JSON.stringify(updated));
-    } else {
-      // Add mode
-      const newProject = {
-        id: Date.now(),
-        ...projectForm
-      };
-      const updated = [newProject, ...projects];
-      setProjects(updated);
-      localStorage.setItem('one_nation_projects', JSON.stringify(updated));
-    }
+    try {
+      if (editingProject) {
+        const response = await fetch('/api/projects', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: editingProject, ...projectForm })
+        });
 
-    setIsProjectModalOpen(false);
+        if (!response.ok) throw new Error('Failed to update project');
+        const updatedProject = await response.json();
+        setProjects((prev) => prev.map((p) => p.id === editingProject ? updatedProject : p));
+      } else {
+        const response = await fetch('/api/projects', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(projectForm)
+        });
+
+        if (!response.ok) throw new Error('Failed to create project');
+        const createdProject = await response.json();
+        setProjects((prev) => [createdProject, ...prev]);
+      }
+
+      setIsProjectModalOpen(false);
+    } catch (error) {
+      console.error('Project save failed:', error);
+      alert('Unable to save the project right now. Please try again.');
+    }
   };
 
   // Delete project
-  const handleDeleteProject = (id) => {
+  const handleDeleteProject = async (id) => {
     if (window.confirm("Are you sure you want to delete this project? It will be removed from the live website immediately.")) {
-      const updated = projects.filter(p => p.id !== id);
-      setProjects(updated);
-      localStorage.setItem('one_nation_projects', JSON.stringify(updated));
+      try {
+        const normalizedId = Number(id);
+        const response = await fetch(`/api/projects?id=${normalizedId}`, { method: 'DELETE' });
+        if (!response.ok) throw new Error('Failed to delete project');
+
+        const refreshed = await fetch('/api/projects').then((res) => res.json());
+        setProjects(refreshed);
+      } catch (error) {
+        console.error('Project delete failed:', error);
+        alert('Unable to delete the project right now. Please try again.');
+      }
     }
   };
 
   // Delete volunteer submission
-  const handleDeleteVolunteer = (email) => {
+  const handleDeleteVolunteer = async (id) => {
     if (window.confirm("Delete this volunteer registration?")) {
-      const updated = volunteers.filter(v => v.email !== email);
-      setVolunteers(updated);
-      localStorage.setItem('one_nation_volunteers', JSON.stringify(updated));
+      try {
+        const normalizedId = Number(id);
+        const response = await fetch(`/api/volunteers?id=${normalizedId}`, { method: 'DELETE' });
+        if (!response.ok) throw new Error('Failed to delete volunteer');
+
+        const refreshed = await fetch('/api/volunteers').then((res) => res.json());
+        setVolunteers(refreshed);
+      } catch (error) {
+        console.error('Volunteer delete failed:', error);
+        alert('Unable to delete the volunteer entry right now. Please try again.');
+      }
     }
   };
 
   // Delete contact inquiry
-  const handleDeleteInquiry = (email, index) => {
+  const handleDeleteInquiry = async (id) => {
     if (window.confirm("Delete this message inquiry?")) {
-      const updated = inquiries.filter((_, idx) => idx !== index);
-      setInquiries(updated);
-      localStorage.setItem('one_nation_inquiries', JSON.stringify(updated));
+      try {
+        const normalizedId = Number(id);
+        const response = await fetch(`/api/contact?id=${normalizedId}`, { method: 'DELETE' });
+        if (!response.ok) throw new Error('Failed to delete inquiry');
+
+        const refreshed = await fetch('/api/contact').then((res) => res.json());
+        setInquiries(refreshed);
+      } catch (error) {
+        console.error('Inquiry delete failed:', error);
+        alert('Unable to delete the inquiry right now. Please try again.');
+      }
     }
   };
 
@@ -294,9 +397,10 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                       <tr key={project.id} className="border-b border-gray-50 dark:border-dark-border hover:bg-gray-50/50 dark:hover:bg-dark-bg/20 transition-colors">
                         <td className="py-4 px-4 flex items-center gap-4">
                           <img
-                            src={project.image}
+                            src={getProjectImageSrc(project.image)}
                             alt={project.title}
                             className="w-12 h-12 object-cover rounded-lg flex-shrink-0"
+                            onError={handleProjectImageError}
                           />
                           <div>
                             <h4 className="font-extrabold text-primary dark:text-white line-clamp-1">{project.title}</h4>
@@ -309,8 +413,8 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                         </td>
                         <td className="py-4 px-4">
                           <span className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase ${project.status.toLowerCase() === 'ongoing'
-                              ? 'bg-amber-100 dark:bg-amber-500/10 text-amber-800 dark:text-amber-400'
-                              : 'bg-green-100 dark:bg-primary-light/10 text-primary dark:text-primary-light'
+                              ? 'bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300'
+                              : 'bg-green-100 dark:bg-emerald-500/20 text-green-800 dark:text-emerald-300'
                             }`}>
                             {project.status}
                           </span>
@@ -376,7 +480,8 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                           </td>
                           <td className="py-4 px-4 text-right">
                             <button
-                              onClick={() => handleDeleteVolunteer(volunteer.email)}
+                              type="button"
+                              onClick={() => handleDeleteVolunteer(volunteer.id)}
                               className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10 text-gray-600 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 transition-colors cursor-pointer"
                               title="Delete Submission"
                             >
@@ -429,7 +534,8 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                           </td>
                           <td className="py-4 px-4 text-right">
                             <button
-                              onClick={() => handleDeleteInquiry(inquiry.email, idx)}
+                              type="button"
+                              onClick={() => handleDeleteInquiry(inquiry.id)}
                               className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-500/10 text-gray-600 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 transition-colors cursor-pointer"
                             >
                               <Trash2 size={16} />
@@ -582,19 +688,42 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                   </div>
                   <div>
                     <label className="block text-xs text-gray-500 mb-1">Campaign Category</label>
-                    <select
-                      name="category"
-                      value={projectForm.category}
-                      onChange={handleProjectFormChange}
-                      className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
-                    >
-                      <option value="Free Medical Camps">Free Medical Camps</option>
-                      <option value="Project Haya">Project Haya</option>
-                      <option value="Nature Rehabilitation">Nature Rehabilitation</option>
-                      <option value="Special Nation">Special Nation</option>
-                      <option value="Learn2Earn">Learn2Earn</option>
-                      <option value="One Nation Explorers">One Nation Explorers</option>
-                    </select>
+                    {isCustomCategory ? (
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          name="category"
+                          required
+                          autoFocus
+                          placeholder="Type category name"
+                          value={projectForm.category}
+                          onChange={handleProjectFormChange}
+                          className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsCustomCategory(false);
+                            setProjectForm(prev => ({ ...prev, category: PREDEFINED_CATEGORIES[0] }));
+                          }}
+                          className="shrink-0 px-3 rounded-xl border border-primary/5 dark:border-dark-border text-xs font-bold text-gray-500 hover:text-primary dark:hover:text-accent cursor-pointer"
+                        >
+                          List
+                        </button>
+                      </div>
+                    ) : (
+                      <select
+                        name="category"
+                        value={projectForm.category}
+                        onChange={handleCategorySelectChange}
+                        className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
+                      >
+                        {PREDEFINED_CATEGORIES.map((cat) => (
+                          <option key={cat} value={cat}>{cat}</option>
+                        ))}
+                        <option value="__custom__">Other (type manually)</option>
+                      </select>
+                    )}
                   </div>
                 </div>
 
@@ -605,8 +734,12 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                     name="image"
                     value={projectForm.image}
                     onChange={handleProjectFormChange}
+                    placeholder="https://... or a Google Drive share link"
                     className="w-full px-4 py-3 bg-gray-50 dark:bg-dark-bg/60 border border-primary/5 dark:border-dark-border rounded-xl outline-none focus:border-primary dark:focus:border-accent text-primary dark:text-white"
                   />
+                  <p className="text-[11px] font-medium text-gray-400 mt-1">
+                    Google Drive links are auto-converted. Make sure the file's sharing setting is "Anyone with the link".
+                  </p>
                 </div>
 
                 {/* Brief description */}

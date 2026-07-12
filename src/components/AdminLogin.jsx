@@ -9,21 +9,29 @@ export default function AdminLogin({ onLoginSuccess }) {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
-    // Simulated short network delay for transition feedback
-    setTimeout(() => {
-      if (username === 'admin' && password === '1NationPakistan@2026') {
-        sessionStorage.setItem('one_nation_admin_auth', 'true');
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (response.ok) {
         onLoginSuccess();
       } else {
-        setError('Invalid username or password. Please try again.');
-        setIsLoading(false);
+        const data = await response.json().catch(() => ({}));
+        setError(data.error || 'Invalid username or password. Please try again.');
       }
-    }, 1000);
+    } catch (error) {
+      setError('Unable to reach the authentication service. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

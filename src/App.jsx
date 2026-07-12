@@ -146,9 +146,7 @@ export default function App() {
   };
 
   const [currentPage, setCurrentPage] = useState(parseHash());
-  const [adminAuthenticated, setAdminAuthenticated] = useState(
-    sessionStorage.getItem('one_nation_admin_auth') === 'true'
-  );
+  const [adminAuthenticated, setAdminAuthenticated] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Global State (Dynamic and Sync'd with local storage)
@@ -164,42 +162,61 @@ export default function App() {
 
   // Local Storage and Theme Initialization
   useEffect(() => {
-    // 1. Projects
-    localStorage.removeItem('one_nation_projects'); // Force reset to seed data
-    const localProjects = localStorage.getItem('one_nation_projects');
-    if (localProjects) {
-      setProjects(JSON.parse(localProjects));
-    } else {
-      setProjects(SEED_PROJECTS);
-      localStorage.setItem('one_nation_projects', JSON.stringify(SEED_PROJECTS));
-    }
+    const loadData = async () => {
+      try {
+        const authRes = await fetch('/api/admin/me');
+        if (authRes.ok) {
+          const authData = await authRes.json();
+          setAdminAuthenticated(authData.authenticated);
+        }
+      } catch (error) {
+        console.error('Failed to check admin auth:', error);
+      }
 
-    // 2. Volunteers
-    const localVolunteers = localStorage.getItem('one_nation_volunteers');
-    if (localVolunteers) {
-      setVolunteers(JSON.parse(localVolunteers));
-    } else {
-      setVolunteers(SEED_VOLUNTEERS);
-      localStorage.setItem('one_nation_volunteers', JSON.stringify(SEED_VOLUNTEERS));
-    }
+      try {
+        const [projectsRes, volunteersRes, inquiriesRes] = await Promise.all([
+          fetch('/api/projects'),
+          fetch('/api/volunteers'),
+          fetch('/api/contact')
+        ]);
 
-    // 3. Contact Inquiries
-    const localInquiries = localStorage.getItem('one_nation_inquiries');
-    if (localInquiries) {
-      setInquiries(JSON.parse(localInquiries));
-    } else {
-      setInquiries(SEED_INQUIRIES);
-      localStorage.setItem('one_nation_inquiries', JSON.stringify(SEED_INQUIRIES));
-    }
+        if (projectsRes.ok) {
+          const projectsData = await projectsRes.json();
+          setProjects(projectsData.length > 0 ? projectsData : SEED_PROJECTS);
+        } else {
+          setProjects(SEED_PROJECTS);
+        }
 
-    // 4. Newsletter
-    const localNews = localStorage.getItem('one_nation_newsletters');
-    if (localNews) {
-      setNewsletters(JSON.parse(localNews));
-    } else {
-      setNewsletters(SEED_NEWSLETTERS);
-      localStorage.setItem('one_nation_newsletters', JSON.stringify(SEED_NEWSLETTERS));
-    }
+        if (volunteersRes.ok) {
+          const volunteersData = await volunteersRes.json();
+          setVolunteers(volunteersData.length > 0 ? volunteersData : SEED_VOLUNTEERS);
+        } else {
+          setVolunteers(SEED_VOLUNTEERS);
+        }
+
+        if (inquiriesRes.ok) {
+          const inquiriesData = await inquiriesRes.json();
+          setInquiries(inquiriesData.length > 0 ? inquiriesData : SEED_INQUIRIES);
+        } else {
+          setInquiries(SEED_INQUIRIES);
+        }
+      } catch (error) {
+        console.error('Failed to load data from database:', error);
+        setProjects(SEED_PROJECTS);
+        setVolunteers(SEED_VOLUNTEERS);
+        setInquiries(SEED_INQUIRIES);
+      }
+
+      const localNews = localStorage.getItem('one_nation_newsletters');
+      if (localNews) {
+        setNewsletters(JSON.parse(localNews));
+      } else {
+        setNewsletters(SEED_NEWSLETTERS);
+        localStorage.setItem('one_nation_newsletters', JSON.stringify(SEED_NEWSLETTERS));
+      }
+    };
+
+    loadData();
 
     // 5. Theme Sync
     const isDark = localStorage.getItem('one_nation_dark_mode') === 'true';
@@ -246,16 +263,34 @@ export default function App() {
   };
 
   // Callback handlers for submissions
-  const handleVolunteerRegister = (newVolunteer) => {
-    const updated = [newVolunteer, ...volunteers];
-    setVolunteers(updated);
-    localStorage.setItem('one_nation_volunteers', JSON.stringify(updated));
+  const handleVolunteerRegister = async (newVolunteer) => {
+    const response = await fetch('/api/volunteers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newVolunteer)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to submit volunteer registration');
+    }
+
+    const created = await response.json();
+    setVolunteers((prev) => [created, ...prev]);
   };
 
-  const handleContactSubmit = (newInquiry) => {
-    const updated = [newInquiry, ...inquiries];
-    setInquiries(updated);
-    localStorage.setItem('one_nation_inquiries', JSON.stringify(updated));
+  const handleContactSubmit = async (newInquiry) => {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newInquiry)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to submit contact inquiry');
+    }
+
+    const created = await response.json();
+    setInquiries((prev) => [created, ...prev]);
   };
 
   // Footer Newsletter submission
@@ -284,8 +319,13 @@ export default function App() {
     });
   };
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('one_nation_admin_auth');
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+
     setAdminAuthenticated(false);
     window.location.hash = '#/home';
   };

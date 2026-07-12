@@ -41,21 +41,22 @@ export default function GetInvolved({ onVolunteerRegister }) {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await onVolunteerRegister(formData);
       setIsSuccess(true);
-      // Callback to add registration to App state
-      onVolunteerRegister(formData);
-      // Reset form
       setFormData({ fullName: '', email: '', phone: '', city: '', notes: '' });
       setFocusedField(null);
-    }, 1500);
+    } catch (error) {
+      console.error('Failed to submit volunteer registration:', error);
+      setErrors((prev) => ({ ...prev, submit: 'Unable to save your registration right now. Please try again.' }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {

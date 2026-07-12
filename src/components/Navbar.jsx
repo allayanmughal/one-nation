@@ -76,7 +76,7 @@ export default function Navbar({ darkMode, toggleDarkMode, activeSection, setAct
             </nav>
           ) : (
             <div className="hidden md:flex items-center space-x-3 text-sm">
-              <span className={`font-semibold ${isScrolled ? 'text-primary dark:text-accent' : 'text-accent'}`}>Admin Portal Mockup</span>
+              <span className={`font-semibold ${isScrolled ? 'text-primary dark:text-accent' : 'text-accent'}`}>Admin Portal</span>
               <span className={isScrolled ? "text-gray-300" : "text-white/40"}>|</span>
               <span className={isScrolled ? "text-gray-500" : "text-white/80"}>Local State Only</span>
             </div>

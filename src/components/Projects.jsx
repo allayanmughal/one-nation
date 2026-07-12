@@ -6,6 +6,16 @@ export default function Projects({ projects }) {
   const [filter, setFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
 
+  const handleProjectImageError = (event) => {
+    event.target.src = '/placeholder-project.jpg';
+  };
+
+  const getProjectImageSrc = (imageUrl) => {
+    if (!imageUrl) return '/placeholder-project.jpg';
+    if (imageUrl.startsWith('/')) return imageUrl;
+    return `/api/image-proxy?url=${encodeURIComponent(imageUrl)}`;
+  };
+
   const getProjectStatusType = (status) => {
     const normalizedStatus = String(status || '').toLowerCase();
     if (normalizedStatus.includes('ongoing')) return 'ongoing';
@@ -72,10 +82,11 @@ export default function Projects({ projects }) {
                 {/* Image & Status Badge */}
                 <div className="relative h-56 overflow-hidden bg-gray-100">
                   <img
-                    src={project.image}
+                    src={getProjectImageSrc(project.image)}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
+                    onError={handleProjectImageError}
                   />
                   {/* Category Badge */}
                   {project.category && (
@@ -240,9 +251,10 @@ export default function Projects({ projects }) {
               {/* Large Image */}
               <div className="h-64 sm:h-80 overflow-hidden relative">
                 <img
-                  src={selectedProject.image}
+                  src={getProjectImageSrc(selectedProject.image)}
                   alt={selectedProject.title}
                   className="w-full h-full object-cover"
+                  onError={handleProjectImageError}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 {/* Title inside image for styling */}

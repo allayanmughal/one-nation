@@ -27,19 +27,21 @@ export default function Contact({ onContactSubmit }) {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await onContactSubmit(formData);
       setIsSuccess(true);
-      // Callback to add contact inquiry to App state
-      onContactSubmit(formData);
-      // Reset form
       setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1500);
+    } catch (error) {
+      console.error('Failed to submit inquiry:', error);
+      setErrors((prev) => ({ ...prev, submit: 'Unable to send your message right now. Please try again.' }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
