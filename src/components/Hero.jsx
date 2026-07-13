@@ -13,7 +13,7 @@ export default function Hero() {
   const [currentBg, setCurrentBg] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [particles] = useState(() =>
-    Array.from({ length: 25 }).map((_, i) => ({
+    Array.from({ length: 8 }).map((_, i) => ({
       id: i,
       size: Math.random() * 4 + 1.5,
       startX: Math.random() * 100,

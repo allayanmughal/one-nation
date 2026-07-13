@@ -1,12 +1,16 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function Logo({ className = "h-12 w-12", showText = true, showSlogan = true, lightModeColor = "text-white", darkModeColor = "dark:text-white" }) {
   return (
     <div className="flex items-center gap-3 select-none">
       <div className={`${className} flex items-center justify-center`}>
-        <img
+        <Image
           src="/logo.jpeg"
           alt="1 Nation Pakistan"
+          width={48}
+          height={48}
+          priority
           className="h-full w-auto object-contain rounded-full bg-white dark:bg-transparent p-0.5 shadow-sm border border-primary/10 dark:border-white/10 dark:invert dark:hue-rotate-180 dark:mix-blend-screen transition-all duration-300"
         />
       </div>

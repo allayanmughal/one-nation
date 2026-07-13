@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Calendar, CheckCircle, Clock, Info, X } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Projects({ projects }) {
   const [filter, setFilter] = useState('all');
@@ -81,9 +82,11 @@ export default function Projects({ projects }) {
               >
                 {/* Image & Status Badge */}
                 <div className="relative h-56 overflow-hidden bg-gray-100">
-                  <img
+                  <Image
                     src={getProjectImageSrc(project.image)}
                     alt={project.title}
+                    width={600}
+                    height={400}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                     onError={handleProjectImageError}
@@ -252,9 +255,11 @@ export default function Projects({ projects }) {
 
               {/* Large Image */}
               <div className="h-64 sm:h-80 overflow-hidden relative">
-                <img
+                <Image
                   src={getProjectImageSrc(selectedProject.image)}
                   alt={selectedProject.title}
+                  width={800}
+                  height={400}
                   className="w-full h-full object-cover"
                   onError={handleProjectImageError}
                 />

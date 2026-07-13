@@ -28,17 +28,18 @@ function Instagram({ size = 20, className = "" }) {
 
 // Components
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import HomeView from './components/HomeView';
 import About from './components/About';
 import Mission from './components/Mission';
 import Projects from './components/Projects';
 import GetInvolved from './components/GetInvolved';
-import SocialProof from './components/SocialProof';
 import Contact from './components/Contact';
-import AdminDashboard from './components/AdminDashboard';
 import Logo from './components/Logo';
-import HomeView from './components/HomeView';
-import AdminLogin from './components/AdminLogin';
+import dynamic from 'next/dynamic';
+
+const AdminDashboard = dynamic(() => import('./components/AdminDashboard'), { ssr: false });
+const AdminLogin = dynamic(() => import('./components/AdminLogin'), { ssr: false });
+const SocialProof = dynamic(() => import('./components/SocialProof'), { ssr: false });
 
 // SEED DATA FOR DEMO RUNS
 const SEED_PROJECTS = [

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle2, MessageSquare, ShieldCheck, Heart, Sparkles, Building, Phone } from 'lucide-react';
+import Image from 'next/image';
 
 export default function GetInvolved({ onVolunteerRegister }) {
   // Volunteer Form State
@@ -342,9 +343,11 @@ export default function GetInvolved({ onVolunteerRegister }) {
 
               {/* Ad Cover Image Placeholder */}
               <div className="h-44 relative bg-gray-100 overflow-hidden">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80"
                   alt="Welfare drives in KP"
+                  width={800}
+                  height={350}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-black/45 flex flex-col justify-end p-5">

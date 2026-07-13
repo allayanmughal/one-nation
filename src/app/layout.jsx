@@ -1,4 +1,19 @@
+import { Montserrat, Poppins } from "next/font/google";
 import "../index.css";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-display",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-sans",
+});
 
 export const metadata = {
   title: "1 Nation Pakistan | Be a Nation, Not Separation",
@@ -23,9 +38,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${montserrat.variable} ${poppins.variable}`}>
+      <head>
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1920&q=85" />
+      </head>
       <body>
-        <div id="root">{children}</div>
+        {children}
       </body>
     </html>
   );

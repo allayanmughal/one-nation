@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Award, Calendar, ArrowRight, ShieldCheck, Compass, CheckCircle2, Heart } from 'lucide-react';
+import Image from 'next/image';
 import LeadershipModal from './LeadershipModal';
 
 const mushtaqGhaniPhoto = "/assets/mushtaq_ghani.jpg";
@@ -289,7 +290,7 @@ export default function About() {
                 <div className="relative mb-6 shrink-0">
                   <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-primary/10 to-accent/20 flex items-center justify-center p-1 border-2 border-accent/30 shadow-md group-hover:scale-105 transition-transform duration-300">
                     <div className="w-full h-full rounded-full bg-primary-dark overflow-hidden">
-                      <img src={mushtaqGhaniPhoto} alt="Mushtaq Ahmed Ghani" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                      <Image src={mushtaqGhaniPhoto} alt="Mushtaq Ahmed Ghani" width={128} height={128} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     </div>
                   </div>
                   <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-accent text-primary-dark font-extrabold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow whitespace-nowrap">Patron</span>
@@ -338,7 +339,7 @@ export default function About() {
                 <div className="relative mb-6 shrink-0">
                   <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-primary/10 to-accent/20 flex items-center justify-center p-1 border-2 border-accent/30 shadow-md group-hover:scale-105 transition-transform duration-300">
                     <div className="w-full h-full rounded-full bg-primary-dark overflow-hidden">
-                      <img src={harmainGhaniPhoto} alt="Dr. Harmain Ghani" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                      <Image src={harmainGhaniPhoto} alt="Dr. Harmain Ghani" width={128} height={128} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     </div>
                   </div>
                   <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-accent text-primary-dark font-extrabold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow whitespace-nowrap">Founder & CEO</span>
