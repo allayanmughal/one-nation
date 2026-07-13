@@ -65,7 +65,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[100svh] flex flex-col justify-between items-center overflow-hidden bg-black py-12 text-center"
+      className="relative h-[100svh] flex flex-col justify-between items-center overflow-hidden bg-black py-4 text-center"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ perspective: 1200 }}
@@ -160,7 +160,7 @@ export default function Hero() {
       </div>
 
       {/* Top spacer to push contents down below the header */}
-      <div className="h-16 sm:h-20 w-full flex-shrink-0 relative z-20" />
+      <div className="h-14 sm:h-16 w-full flex-shrink-0 relative z-20" />
 
       {/* Hero Content with 3D Parallax */}
       <motion.div
@@ -173,7 +173,7 @@ export default function Hero() {
         }}
       >
         {/* Tagline Badge */}
-        <div className="flex justify-center w-full mb-6 sm:mb-8" style={{ transform: "translateZ(30px)" }}>
+        <div className="flex justify-center w-full mb-4 sm:mb-6" style={{ transform: "translateZ(30px)" }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -186,7 +186,7 @@ export default function Hero() {
         </div>
 
         {/* Main Animated Headline with drop shadow filters for maximum readability */}
-        <h1 className="text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight leading-none mb-6" style={{ transform: "translateZ(60px)" }}>
+        <h1 className="text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight leading-none mb-4" style={{ transform: "translateZ(60px)" }}>
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -212,7 +212,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed"
+          className="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed"
           style={{
             filter: 'drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.9))',
             transform: "translateZ(45px)"
@@ -255,7 +255,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Scroll Down Indicator */}
-      <div className="relative z-20 flex justify-center flex-shrink-0 mt-8 mb-4" style={{ transform: "translateZ(20px)" }}>
+      <div className="relative z-20 flex justify-center flex-shrink-0 mt-3 mb-1" style={{ transform: "translateZ(20px)" }}>
         <motion.button
           onClick={() => handleScrollTo('about')}
           animate={{ y: [0, 8, 0] }}

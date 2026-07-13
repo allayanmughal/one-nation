@@ -137,7 +137,7 @@ export default function Projects({ projects }) {
                     {project.title}
                   </h3>
 
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6 line-clamp-2">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                     {project.description}
                   </p>
 
@@ -237,8 +237,10 @@ export default function Projects({ projects }) {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 350 }}
-              className="bg-white dark:bg-dark-card rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-primary/5 dark:border-dark-border text-left relative"
+              className="bg-white dark:bg-dark-card rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto overscroll-contain shadow-2xl border border-primary/5 dark:border-dark-border text-left relative"
               onClick={(e) => e.stopPropagation()}
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
@@ -305,7 +307,7 @@ export default function Projects({ projects }) {
                   Project Details
                 </h4>
 
-                <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6 break-words whitespace-normal">
                   {selectedProject.details || selectedProject.description}
                 </p>
 

@@ -25,7 +25,11 @@ export default function GetInvolved({ onVolunteerRegister }) {
 
   const validate = () => {
     const tempErrors = {};
-    if (!formData.fullName.trim()) tempErrors.fullName = "Full Name is required";
+    if (!formData.fullName.trim()) {
+      tempErrors.fullName = "Full Name is required";
+    } else if (/[0-9]/.test(formData.fullName)) {
+      tempErrors.fullName = "Full Name cannot contain numbers";
+    }
     if (!formData.email.trim()) {
       tempErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -36,7 +40,11 @@ export default function GetInvolved({ onVolunteerRegister }) {
     } else if (!/^\+?[0-9\s-]{10,15}$/.test(formData.phone)) {
       tempErrors.phone = "Phone number is invalid";
     }
-    if (!formData.city.trim()) tempErrors.city = "City/Location is required";
+    if (!formData.city.trim()) {
+      tempErrors.city = "City/Location is required";
+    } else if (/[0-9]/.test(formData.city)) {
+      tempErrors.city = "City cannot contain numbers";
+    }
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
@@ -61,6 +69,14 @@ export default function GetInvolved({ onVolunteerRegister }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === 'city' || name === 'fullName') {
+      const stripped = value.replace(/[0-9]/g, '');
+      setFormData((prev) => ({ ...prev, [name]: stripped }));
+      if (errors[name]) {
+        setErrors((prev) => ({ ...prev, [name]: null }));
+      }
+      return;
+    }
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: null }));

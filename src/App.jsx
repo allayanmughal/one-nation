@@ -495,20 +495,22 @@ export default function App() {
       )}
 
       {/* 4. GLOBAL FLOATING WHATSAPP CHAT BUBBLE (Bottom Right) */}
-      <a
-        href="https://wa.me/923435707812?text=Hello%20%231NationPakistan%2C%20I%20would%20like%20to%20get%20more%20information%20on%20how%20to%20support%20or%20participate%20in%20your%20causes."
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] text-white flex items-center justify-center rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer"
-        title="Chat on WhatsApp"
-      >
-        {/* Pulsing Concentric Outer Ring */}
-        <span className="absolute -inset-2 rounded-full border-2 border-[#25D366]/40 animate-ping pointer-events-none" />
-        <span className="absolute -inset-4 rounded-full border-2 border-[#25D366]/15 animate-pulse-slow pointer-events-none" />
-        
-        {/* WhatsApp Icon */}
-        <Phone size={24} className="fill-current text-white group-hover:rotate-12 transition-transform duration-300 relative z-10" />
-      </a>
+      {currentPage !== 'admin' && (
+        <a
+          href="https://wa.me/923435707812?text=Hello%20%231NationPakistan%2C%20I%20would%20like%20to%20get%20more%20information%20on%20how%20to%20support%20or%20participate%20in%20your%20causes."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] text-white flex items-center justify-center rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer"
+          title="Chat on WhatsApp"
+        >
+          {/* Pulsing Concentric Outer Ring */}
+          <span className="absolute -inset-2 rounded-full border-2 border-[#25D366]/40 animate-ping pointer-events-none" />
+          <span className="absolute -inset-4 rounded-full border-2 border-[#25D366]/15 animate-pulse-slow pointer-events-none" />
+          
+          {/* WhatsApp Icon */}
+          <Phone size={24} className="fill-current text-white group-hover:rotate-12 transition-transform duration-300 relative z-10" />
+        </a>
+      )}
 
       {/* 5. GLOBAL SCROLL TO TOP TRIGGER */}
       <AnimatePresence>

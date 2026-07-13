@@ -405,7 +405,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                           <div>
                             <h4 className="font-extrabold text-primary dark:text-white line-clamp-1">{project.title}</h4>
                             <p className="text-xs text-primary dark:text-accent font-bold mt-0.5">{project.category || 'Welfare'}</p>
-                            <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">{project.description}</p>
+                            <p className="text-xs text-gray-500 mt-0.5">{project.description}</p>
                           </div>
                         </td>
                         <td className="py-4 px-4 font-semibold text-gray-700 dark:text-gray-300">
@@ -620,7 +620,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-white dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border max-w-lg w-full p-6 sm:p-8 shadow-2xl relative text-left"
+              className="bg-white dark:bg-dark-card rounded-3xl border border-primary/5 dark:border-dark-border max-w-lg w-full max-h-[90vh] overflow-y-auto overscroll-contain p-6 sm:p-8 shadow-2xl relative text-left"
             >
               <button
                 onClick={() => setIsProjectModalOpen(false)}
