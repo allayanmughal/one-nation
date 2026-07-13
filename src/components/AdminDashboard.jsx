@@ -348,7 +348,7 @@ export default function AdminDashboard({ projects, setProjects, volunteers, setV
                         'Newsletter Subscriber Log'}
                 </h3>
                 <p className="text-xs text-gray-500 mt-1">
-                  Local storage mockup environment. Updates persist locally in your browser.
+                  Live database environment. All changes are saved to the server.
                 </p>
               </div>
 
